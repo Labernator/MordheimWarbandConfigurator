@@ -1,0 +1,84 @@
+{
+    "pages": [
+        {
+            "link": "/the-rules/the-pre-battle-sequence",
+            "header": "The Pre-Battle Sequence",
+            "parent": "/the-rules"
+        },
+        {
+            "link": "/the-rules/game-structure",
+            "header": "Game Structure",
+            "parent": "/the-rules"
+        },
+        {
+            "link": "/the-rules/the-priority-phase",
+            "header": "The Priority Phase",
+            "parent": "/the-rules"
+        },
+        {
+            "link": "/the-rules/the-action-phase",
+            "header": "The Action Phase",
+            "parent": "/the-rules"
+        },
+        {
+            "link": "/the-rules/types-of-action",
+            "header": "Types of Action",
+            "parent": "/the-rules"
+        },
+        {
+            "link": "/the-rules/fighter-actions",
+            "header": "Fighter Actions",
+            "parent": "/the-rules"
+        },
+        {
+            "link": "/the-rules/movement",
+            "header": "Movement",
+            "parent": "/the-rules"
+        },
+        {
+            "link": "/the-rules/terrain",
+            "header": "Terrain",
+            "parent": "/the-rules"
+        },
+        {
+            "link": "/the-rules/shooting",
+            "header": "Shooting",
+            "parent": "/the-rules"
+        },
+        {
+            "link": "/the-rules/magic",
+            "header": "Magic",
+            "parent": "/the-rules"
+        },
+        {
+            "link": "/the-rules/close-combat",
+            "header": "Close Combat",
+            "parent": "/the-rules"
+        },
+        {
+            "link": "/the-rules/resolve-hits",
+            "header": "Resolve Hits",
+            "parent": "/the-rules"
+        },
+        {
+            "link": "/the-rules/the-end-phase",
+            "header": "The End Phase",
+            "parent": "/the-rules"
+        },
+        {
+            "link": "/the-rules/the-post-battle-sequence",
+            "header": "Post Battle Sequence",
+            "parent": "/the-rules"
+        },
+        {
+            "link": "/the-rules/gaining-experience",
+            "header": "Gaining Experience",
+            "parent": "/the-rules"
+        },
+        {
+            "link": "/the-rules",
+            "header": "Core Rules",
+            "parent": "/"
+        }
+        ]
+}

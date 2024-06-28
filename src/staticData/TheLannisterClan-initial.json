@@ -1,0 +1,423 @@
+{
+    "name": "The Lannister Clan",
+    "faction": "Norse Explorer",
+    "plot": "The Body Trade",
+    "campaignpoints": 0,
+    "cash": 1,
+    "stash": [],
+    "rating": 499,
+    "routlimit": 3,
+    "units": [
+        {
+            "name": "Tywin",
+            "type": "Jarl",
+            "cost": 105,
+            "armour": "-",
+            "xp": 0,
+            "stats": {
+                "movement": 4,
+                "weaponskill": 4,
+                "ballisticskill": 3,
+                "strength": 4,
+                "toughness": 3,
+                "wounds": 2,
+                "attacks": "2",
+                "leadership": 8,
+                "initiative": 4
+            },
+            "weapons": [
+                {
+                    "name": "Flail",
+                    "range": "Melee",
+                    "strength": "+2",
+                    "traits": [
+                        "Heavy",
+                        "Two-handed"
+                    ]
+                }
+            ],
+            "skilllists": [
+                "Combat",
+                "Speed",
+                "Special"
+            ],
+            "rules": [
+                {
+                    "name": "Leader",
+                    "text": "See the respective rule in the Leadership & Psychology section."
+                }
+            ]
+        },
+        {
+            "name": "Jamie",
+            "type": "Berserker",
+            "cost": 70,
+            "armour": "-",
+            "xp": 0,
+            "stats": {
+                "movement": 4,
+                "weaponskill": 4,
+                "ballisticskill": 3,
+                "strength": 4,
+                "toughness": 3,
+                "wounds": 2,
+                "leadership": 7,
+                "initiative": 3,
+                "attacks": "1"
+            },
+            "weapons": [
+                {
+                    "name": "Dagger",
+                    "range": "Melee",
+                    "strength": "+0",
+                    "traits": [
+                        "Enemy armour save +1"
+                    ]
+                }
+            ],
+            "skilllists": [
+                "Combat",
+                "Strength",
+                "Special"
+            ],
+            "rules": [
+                {
+                    "name": "Frenzy",
+                    "text": "See the respective rule in the Leadership & Psychology section."
+                }
+            ]
+        },
+        {
+            "name": "Pyat Pree",
+            "type": "Wizard",
+            "cost": 45,
+            "armour": "-",
+            "xp": 0,
+            "stats": {
+                "movement": 4,
+                "weaponskill": 3,
+                "ballisticskill": 2,
+                "strength": 3,
+                "toughness": 3,
+                "wounds": 1,
+                "attacks": "1",
+                "leadership": 7,
+                "initiative": 4
+            },
+            "weapons": [
+                {
+                    "name": "Dagger",
+                    "range": "Melee",
+                    "strength": "+0",
+                    "traits": [
+                        "Enemy armour save +1"
+                    ]
+                }
+            ],
+            "skilllists": [
+                "Combat",
+                "Academic",
+                "Strength"
+            ],
+            "rules": [
+                {
+                    "name": "Wizard",
+                    "text": "Fireball (D7) - Range 18\" - S3 (+1 when taking an S1 hit himself)"
+                }
+            ]
+        },
+        {
+            "name": "The Mountain",
+            "type": "Wulfen",
+            "cost": 110,
+            "armour": "-",
+            "xp": 0,
+            "stats": {
+                "movement": 6,
+                "weaponskill": 4,
+                "ballisticskill": 0,
+                "strength": 4,
+                "toughness": 4,
+                "wounds": 2,
+                "attacks": "2",
+                "leadership": 7,
+                "initiative": 4
+            },
+            "skilllists": [
+                "Combat",
+                "Speed",
+                "Special"
+            ],
+            "rules": [
+                {
+                    "name": "Fearsome",
+                    "text": "The warrior causes Fear in opposing models."
+                },
+                {
+                    "name": "Immune to Psychology",
+                    "text": "Wulfen automatically pass any Leadership-based test they are required to take."
+                },
+                {
+                    "name": "Bestial",
+                    "text": "Wulfen may never become the leader of the warband."
+                }
+            ]
+        },
+        {
+            "name": "Joffrey",
+            "type": "Bondsman",
+            "cost": 17,
+            "armour": "-",
+            "xp": 0,
+            "stats": {
+                "movement": 4,
+                "weaponskill": 3,
+                "ballisticskill": 2,
+                "strength": 3,
+                "toughness": 3,
+                "wounds": 1,
+                "attacks": "1",
+                "leadership": 6,
+                "initiative": 2
+            },
+            "weapons": [
+                {
+                    "name": "2x Dagger",
+                    "range": "Melee",
+                    "strength": "+0",
+                    "traits": [
+                        "Enemy armour save +1"
+                    ]
+                }
+            ],
+            "skilllists": [
+                "Combat",
+                "Speed",
+                "Special"
+            ]
+        },
+        {
+            "name": "Myrcella",
+            "type": "Bondsman",
+            "cost": 17,
+            "armour": "-",
+            "xp": 0,
+            "stats": {
+                "movement": 4,
+                "weaponskill": 3,
+                "ballisticskill": 2,
+                "strength": 3,
+                "toughness": 3,
+                "wounds": 1,
+                "attacks": "1",
+                "leadership": 6,
+                "initiative": 2
+            },
+            "weapons": [
+                {
+                    "name": "2x Dagger",
+                    "range": "Melee",
+                    "strength": "+0",
+                    "traits": [
+                        "Enemy armour save +1"
+                    ]
+                }
+            ],
+            "skilllists": [
+                "Combat",
+                "Speed",
+                "Special"
+            ]
+        },
+        {
+            "name": "Arya Stark",
+            "type": "Tilean Marksman",
+            "cost": 30,
+            "armour": "5+",
+            "xp": 0,
+            "stats": {
+                "movement": 4,
+                "weaponskill": 3,
+                "ballisticskill": 4,
+                "strength": 3,
+                "toughness": 3,
+                "wounds": 1,
+                "attacks": "1",
+                "leadership": 7,
+                "initiative": 3
+            },
+            "wargear": [
+                "Light Armour (Armour Save +2)"
+            ],
+            "weapons": [
+                {
+                    "name": "Sword",
+                    "range": "Melee",
+                    "strength": "+1",
+                    "traits": [
+                        "Parry"
+                    ]
+                },
+                {
+                    "name": "Dagger",
+                    "range": "Melee",
+                    "strength": "+0",
+                    "traits": [
+                        "Enemy armour save +1"
+                    ]
+                },
+                {
+                    "name": "Crossbow",
+                    "range": "36\"",
+                    "strength": "4",
+                    "traits": [
+                        "Move or Shoot"
+                    ]
+                }
+            ],
+            "rules": [
+                {
+                    "name": "Steady Hands",
+                    "text": "The Expert Marksman’s ignores to-hit modifiers for long range when shooting her crossbow."
+                },
+                {
+                    "name": "Dead Eye Shot",
+                    "text": "The Tilean Marksman ignores to-hit modifiers for cover when shooting her cross-bow."
+                }
+            ]
+        },
+        {
+            "name": "Myrcella",
+            "type": "Bondsman",
+            "cost": 17,
+            "armour": "-",
+            "xp": 0,
+            "stats": {
+                "movement": 4,
+                "weaponskill": 3,
+                "ballisticskill": 2,
+                "strength": 3,
+                "toughness": 3,
+                "wounds": 1,
+                "attacks": "1",
+                "leadership": 6,
+                "initiative": 2
+            },
+            "weapons": [
+                {
+                    "name": "2x Dagger",
+                    "range": "Melee",
+                    "strength": "+0",
+                    "traits": [
+                        "Enemy armour save +1"
+                    ]
+                }
+            ],
+            "skilllists": [
+                "Combat",
+                "Speed",
+                "Special"
+            ]
+        },
+        {
+            "name": "Lancel",
+            "type": "Hunter",
+            "cost": 30,
+            "armour": "-",
+            "xp": 0,
+            "stats": {
+                "movement": 4,
+                "weaponskill": 3,
+                "ballisticskill": 3,
+                "strength": 3,
+                "toughness": 3,
+                "wounds": 1,
+                "attacks": "1",
+                "leadership": 7,
+                "initiative": 3
+            },
+            "weapons": [
+                {
+                    "name": "Dagger",
+                    "range": "Melee",
+                    "strength": "+0",
+                    "traits": [
+                        "Enemy armour save +1"
+                    ]
+                },
+                {
+                    "name": "Javelin",
+                    "range": "8\"",
+                    "strength": "as User",
+                    "traits": [
+                        "Thrown weapon (No penalties for moving and shooting)"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Janei",
+            "type": "Hunter",
+            "cost": 30,
+            "armour": "-",
+            "xp": 0,
+            "stats": {
+                "movement": 4,
+                "weaponskill": 3,
+                "ballisticskill": 3,
+                "strength": 3,
+                "toughness": 3,
+                "wounds": 1,
+                "attacks": "1",
+                "leadership": 7,
+                "initiative": 3
+            },
+            "weapons": [
+                {
+                    "name": "Dagger",
+                    "range": "Melee",
+                    "strength": "+0",
+                    "traits": [
+                        "Enemy armour save +1"
+                    ]
+                },
+                {
+                    "name": "Javelin",
+                    "range": "8\"",
+                    "strength": "as User",
+                    "traits": [
+                        "Thrown weapon (No penalties for moving and shooting)"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Akhar, Chron & Khorghar",
+            "type": "3x Wolf",
+            "cost": 45,
+            "armour": "-",
+            "xp": 0,
+            "stats": {
+                "movement": 9,
+                "weaponskill": 3,
+                "ballisticskill": 0,
+                "strength": 3,
+                "toughness": 3,
+                "wounds": 1,
+                "attacks": "1",
+                "leadership": 5,
+                "initiative": 3
+            },
+            "rules": [
+                {
+                    "name": "Animals",
+                    "text": "Wolves never gain Experience."
+                },
+                {
+                    "name": "Pack Leader",
+                    "text": "In the event that no Wulfen is included in the warband due to a death or an injury, the wolves cannot be used until the creature is replaced."
+                }
+            ]
+        }
+    ]
+}

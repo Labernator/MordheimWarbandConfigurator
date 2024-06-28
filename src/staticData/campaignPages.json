@@ -1,0 +1,42 @@
+{
+    "pages": [
+        {
+            "link": "/campaign-play",
+            "header": "Campaign",
+            "parent": "/"
+        },
+        {
+            "link": "/campaign-play/warband-creation",
+            "header": "Warband creation",
+            "parent": "/campaign-play"
+        },
+        {
+            "link": "/campaign-play/campaign-weather",
+            "header": "Weather",
+            "parent": "/campaign-play"
+        },
+        {
+            "link": "/campaign-play/fire",
+            "header": "Fire",
+            "parent": "/campaign-play"
+        },
+        {
+            "link": "/campaign-play/post-game-sequence",
+            "header": "Post game sequence",
+            "parent": "/campaign-play"
+        },
+        {
+            "link": "/campaign-play/plots",
+            "header": "Campaign plots",
+            "parent": "/plots"
+        },{
+            "link": "/campaign-play/infamous-haunts",
+            "header": "Infamouse Haunts",
+            "parent": "/campaign-play"
+        },{
+            "link": "/campaign-play/plots",
+            "header": "Plots",
+            "parent": "/campaign-play"
+        }
+        ]
+}

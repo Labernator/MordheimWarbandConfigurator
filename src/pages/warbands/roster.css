@@ -1,0 +1,187 @@
+.pdf-container {
+    width: 29.7cm;
+    height: 21cm;
+    margin: 10mm;
+    padding: 10mm;
+    font-family: sans-serif;
+    font-size: 12px;
+    position: absolute;
+    top: -10000px
+}
+
+.warband-card {
+    width: 13.8cm;
+    height: 9.5cm;
+    background-image: url(light-texture-bg-sm.jpg);
+    background-size: 100%;
+    background-repeat: repeat-y;
+    overflow: hidden;
+    box-shadow: 2px 2px 5px 3px rgba(0, 0, 0, 0.5), -2px -2px 5px 3px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    color: #000;
+    margin: 0;
+    box-shadow: none;
+    border: 1px solid #636363;
+    page-break-inside: avoid;
+    font-size: 11px;
+    display: inline-block;
+    border-radius: 20px;
+    position: relative;
+}
+
+.warband-name {
+    width: 100%;
+    padding: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.warband-name-bg {
+    width: 100%;
+    height: 3rem;
+    background-image: url(bg-menu-sm.png);
+    background-repeat: repeat-x;
+    background-position: center;
+    color: white;
+    position: relative;
+}
+
+.warband-cost-bg {
+    position: absolute;
+    right: -9px;
+    top: -7px;
+    background-color: #d6d6d6;
+    border-radius: 50%;
+    border: 5px solid #302429;
+    height: 60px;
+    width: 60px;
+    z-index: 15;
+}
+
+.warband-cost {
+    padding-top: 7px;
+    text-align: center;
+    vertical-align: middle;
+    color: #000;
+    font-size: 1.3rem;
+    line-height: 1.1;
+    font-weight: 600;
+}
+
+.warband-cost>div {
+    font-size: 0.8rem;
+}
+
+h5 {
+    color: #e3a453;
+    text-transform: uppercase;
+    text-shadow: 1px 1px #000;
+}
+
+.ml-2,
+.mx-2 {
+    margin-left: .5rem !important;
+}
+
+.badge:empty {
+    display: none;
+}
+
+h5 .badge {
+    color: #000;
+    text-transform: none;
+    text-shadow: none;
+}
+
+.badge-light {
+    color: #212529;
+    background-color: #f8f9fa;
+}
+
+.badge {
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+}
+
+.warband-rules-section {
+    white-space: pre-wrap;
+}
+
+h5 {
+    font-style: normal;
+    letter-spacing: 1px;
+    text-rendering: optimizeLegibility;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+
+.h5,
+h5 {
+    font-size: 1.25rem;
+}
+
+.warband-table {
+    width: 100%;
+    margin-bottom: 0.1rem;
+    background-color: transparent;
+    display: table;
+    table-layout: fixed;
+}
+
+.warband-stats tbody tr td {
+    text-align: center;
+}
+
+.warband-table td,
+.warband-table th {
+    border: 0;
+}
+
+.bg-underhive-dark {
+    background-color: #9496a5;
+    color: white;
+}
+
+.bg-underhive-light {
+    background-color: #d8dfed;
+    color: black;
+}
+
+.warband-stats thead tr th {
+    border-bottom: 2px solid #324a5f;
+    text-align: center;
+}
+
+.warband-table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.warband-table th {
+    border-top: 0;
+}
+
+.warband-table-sm td,
+.warband-table-sm th {
+    padding: .3rem;
+}
+
+.warband-table td,
+.warband-table th {
+    padding: .3rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+th {
+    text-align: inherit;
+}

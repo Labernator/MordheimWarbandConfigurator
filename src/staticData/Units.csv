@@ -1,0 +1,21 @@
+﻿Warband Type;Heroes;Cost;M;WS;BS;S;T;W;I;A;Ld;Rating;Starting XP;Special Rules;Skills;Large
+;;;;;;;;;;;;;;;;
+Skaven;Assassin Adept;60;6;4;4;4;3;1;5;1;7;;20;Leader, Perfect Killer;Combat,Shooting,Academic,Strength,Speed,Skaven;
+Skaven;Eshin Sorcerer;45;5;3;3;3;3;1;4;1;6;;8;Wizard [Magic of the horned rat];Academic,Speed,Skaven;
+Skaven;Black Skaven;40;6;4;3;4;3;1;5;1;6;;0;;Combat,Shooting,Strength,Speed,Skaven;
+Skaven;Night Runner;20;6;2;3;3;3;1;4;1;4;;0;;Combat,Shooting,Skaven;
+Skaven;Verminkin;20;5;3;3;3;3;1;4;1;5;5;0;;;
+Skaven;Giant Rats;15;6;2;0;3;3;1;4;1;4;5;0;Animals (No Experience);;
+Skaven;Rat Ogre;210;6;3;3;5;5;3;4;3;4;20;0;Fear, Stupidity, Animal (No Experience), Large Target;;x
+Middenheimers;Captain;60;4;4;4;4;3;1;4;1;8;;20;Leader;Combat,Shooting,Academic,Strength,Speed;
+Middenheimers;Champion;35;4;4;3;4;3;1;3;1;7;;8;;Combat,Shooting,Speed;
+Middenheimers;Youngblood;15;4;2;2;3;3;1;3;1;6;;0;;Combat,Shooting,Speed;
+Middenheimers;Warriors;25;4;3;3;3;3;1;3;1;7;5;;;;
+Middenheimers;Marksmen;25;4;3;3;3;3;1;3;1;7;5;;;;
+Middenheimers;Swordsmen;35;4;4;3;3;3;1;3;1;7;5;;Expert Swordsmen;;
+Cult of the Possessed;Magister;70;4;4;4;3;3;1;3;1;8;;20;Leader, Wizard [Chaos Rituals];Combat,Academic,Speed;
+Cult of the Possessed;Possessed;90;5;4;0;4;4;2;4;2;7;;8;Cause Fear, Mutations;Combat,Strength,Speed;
+Cult of the Possessed;Mutant;25;4;3;3;3;3;1;3;1;7;;0;Mutations;Combat,Speed;
+Cult of the Possessed;Dark Souls;35;4;2;2;4;3;1;3;1;6;5;;Crazed;;
+Cult of the Possessed;Brethren;25;4;3;3;3;3;1;3;1;7;5;;;;
+Cult of the Possessed;Beastmen;45;4;4;3;3;4;2;3;1;7;5;;;;

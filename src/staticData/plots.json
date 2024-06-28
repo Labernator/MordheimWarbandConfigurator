@@ -1,0 +1,213 @@
+    {
+        "plots": [
+            {
+                "name": "New World, Old Grudges",
+                "description": "A tale of ancient rivalries and revenge.",
+                "objectives": [
+                    {
+                        "name": "Playing a scenario",
+                        "condition": "Just participate in a scenario. Nothing more.",
+                        "reward": "+2 CP"
+                    },
+                    {
+                        "name": "Winning a scenario",
+                        "condition": "Win the scenario!",
+                        "reward": "+2 CP"
+                    },
+                    {
+                        "name": "Lustrian item recovered",
+                        "condition": "Roll a 4+ on D6 for the first time an item (not Weapon!) of at least rare 8 is acquired.",
+                        "reward": "+1 CP"
+                    },
+                    {
+                        "name": "Natural Enemy Leader OOA",
+                        "condition": "Any time the leader of a natural enemy warband is taken out of action.",
+                        "reward": "+2D3 CP"
+                    },
+                    {
+                        "name": "Natural Enemy Sacrificed",
+                        "condition": "Roll a 4+ on D6 everytime a natural enemy is successfully sacrificed.",
+                        "reward": "+1 CP"
+                    }
+                ],
+                "achievements": [
+                    {
+                        "name": "Blood for the Snake God",
+                        "cp": 5,
+                        "text": "Any hero or henchman captured by the warband must be sacrificed. Models captured this way, cannot be sacrificed straight after the battle they were taken captive in. Their warband can win them back by playing the scenario \"Hangman's Square\"\nInstead of searching for rare items during the post battle sequence, one or more Heroes may visit the Sacrificial Stone to participate in the ceremony. Only captured models from the natural enemies warbands may be sacrificed. Animals may not be sacrificed. Roll on the Ceremony of Sacrifice Chart for each victim. Apply a +1 modifier to the roll for each hero beyond the first to participate in the ceremony."
+                    },
+                    {
+                        "name": "Fury of Lustria",
+                        "cp": 10,
+                        "text": "Any immobilized (serious injury, bolas, nets) natural enemy may be captured if taken out of action so long as the capturing warband does not rout before the captured warriors warband.\nThe warband may buy Spider Spittle for 20gc without the need to search for it."
+                    },
+                    {
+                        "name": "Awesome Savagery",
+                        "cp": 15,
+                        "text": "The warband gets to re-roll failed attack rolls in the first round of combat when fighting natural enemies or a Warband containing a Greater Artefact. In addition, the warband can re-roll failed rout tests. When facing their natural enemies, the warband can never voluntarily rout unless its leader is out of action."
+                    },
+                    {
+                        "name": "Soteks Chosen",
+                        "cp": 20,
+                        "text": "Nominate a skink hero. He gains access to Strength and Combat skills. For every 3 sacrificed models, the skink gains 2D6 experience. If the skink hero dies, replace it with another hero from your warband."
+                    },
+                    {
+                        "name": "Spawning Pool",
+                        "cp": 25,
+                        "text": "The warband establishes a Spawning Pool in the daemon swamp. Every time a henchman dies after a match it is replaced from the spawning pool for free. The Spawning pool counts as an Encampment."
+                    },
+                    {
+                        "name": "Cleansing",
+                        "cp": 35,
+                        "text": "Each natural enemy warband routed by the warband is eliminated from the campaign."
+                    },
+                    {
+                        "name": "Eradication",
+                        "cp": 40,
+                        "text": "If all your natural enemies are eliminated from the campaign, you win!"
+                    }
+                ]
+            },
+            {
+                "name": "The Body Trade",
+                "description": "A dark story of illicit organ trafficking.",
+                "objectives": [
+                    {
+                        "name": "Playing a scenario",
+                        "condition": "Just participate in a scenario. Nothing more.",
+                        "reward": "+2 CP"
+                    },
+                    {
+                        "name": "Winning a scenario",
+                        "condition": "Win the scenario!",
+                        "reward": "+2 CP"
+                    },
+                    {
+                        "name": "Intelligence Gathered",
+                        "condition": "Win a scenario where information points were gathered.",
+                        "reward": "+2 CP"
+                    },
+                    {
+                        "name": "Hostage Captured",
+                        "condition": "Roll a 4+ on D6 for every captive, slave or straggler that was newly obtained.",
+                        "reward": "+1 CP"
+                    },
+                    {
+                        "name": "Constabulary bribed",
+                        "condition": "Roll a 4+ on D6 for every bribe paid to a 'Guardians of the Peace' plot.",
+                        "reward": "+1 CP"
+                    }
+                ],
+                "achievements": [
+                    {
+                        "name": "Bribery",
+                        "cp": 5,
+                        "text": "Any warriors being placed or having been placed under arrest can be released without rolling on the Conviction Chart by paying a bribe. The warband can pay an amount in gold crowns to the constabulary equal to double the number of experience points the warrior has. In addition, any warband leader following this plot can be disguised wearing Cathayan silk clothes."
+                    },
+                    {
+                        "name": "Slaver Ring",
+                        "cp": 10,
+                        "text": "Whenever another player sells captives to slavers at a price of D6x5 gold crowns, they should be offered to warbands in the slaver ring. The warband may trade captured warriors from other warbands. The warband leader gains the 'Slaver' skill. There may never be more than two warriors with this skill in the warband at any one time. Any Hero or Henchman put out of action in hand-to-hand combat by a Slaver will automatically be captured. Heroes captured may not be eaten or ransomed to another warband during the post battle sequence. Heroes, Henchmen or Blood Pact Hired Swords captured may be exchanged with their starting warband for stragglers or captured warriors. Campaign points can only be scored in an exchange when a greater number of non-friendly models are received by the slaver than were given."
+                    },
+                    {
+                        "name": "Kidnappings",
+                        "cp": 15,
+                        "text": "Whenever the warband rolls on the Cargo Chart, the player may elect for it to contain a hostage instead of the resulted rolled. The warband may lease any vehicle at a discount of 50% through the slaver ring without making a search roll. The vehicle cannot be exchanged or sold. At the end of a battle when cargo markers were used to represent hidden hostages roll a D6 for every 4 captured models still aboard a vehicle. On a roll of 6 the warband gets +2 CP."
+                    },
+                    {
+                        "name": "Tanners Alley",
+                        "cp": 20,
+                        "text": "The warband must visit location (1 1 1 1 1) in the next exploration phase. If another warband has already taken up residence in the Tannery then the encampment can be disputed by playing 'The Sting' scenario. If the challengers win the battle without collapsing the building then they take possession of the encampment deeds. If the burning building collapses then the encampment is razed. The challengers may restore it."
+                    },
+                    {
+                        "name": "Sleeper Cell",
+                        "cp": 25,
+                        "text": "The player can activate the cell to support their cloaked purpose in any large confrontations. Deploy an additional Henchman group of D3 warriors. Normal limits for warband maximum can be ignored but limits for the number of Henchman of any one type must be adhered to as normal."
+                    },
+                    {
+                        "name": "Reluctant Overseers",
+                        "cp": 35,
+                        "text": "The player can choose to play the 'Swap Meat' special scenario instead of a core scenario whenever he picks a scenario to play. The warband is either taking captives to trade with a Dark Elf or Fire Dwarf slave-master. Choose either. D3 Dark Elf Corsairs or Chaos Dwarf models may be deployed at the start of every battle."
+                    },
+                    {
+                        "name": "Human Chattel",
+                        "cp": 40,
+                        "text": "If the warband has taken twelve captives the player must play the 'Burrow Town Collapsing' scenario. The body trader plays the role of a smuggler. Twelve hostage objective markers replace the body trader player's contraband items normally used in this scenario. A guard must be assigned to both ends of the hostage chain for it to move. If the player wins the game by escaping through the sewers with the hostage chain or routing all enemy warbands then the body trader is declared winner of the campaign."
+                    }
+                ]
+            },
+            {
+                "name": "Poisoning the Well",
+                "description": "",
+                "objectives": [
+                    {
+                        "name": "Playing a scenario",
+                        "condition": "Just participate in a scenario. Nothing more.",
+                        "reward": "+2 CP"
+                    },
+                    {
+                        "name": "Winning a scenario",
+                        "condition": "Win the scenario!",
+                        "reward": "+2 CP"
+                    },
+                    {
+                        "name": "Objective Tainted",
+                        "condition": "Roll a 4+ on D6 everytime the warband taints an objective with wyrdstone.",
+                        "reward": "+1 CP"
+                    },
+                    {
+                        "name": "Destroyed Encampment",
+                        "condition": "Whenever an encampment is burnt to the ground.",
+                        "reward": "+2D3 CP"
+                    },
+                    {
+                        "name": "Poisoned out of action",
+                        "condition": "Roll a 4+ on D6 for every enemy henchman that permanently dies from using a poisoned or warpstone weapon.",
+                        "reward": "+1 CP"
+                    },
+                    {
+                        "name": "Poisoned hero out of action",
+                        "condition": "For every enemy hero that permanently dies from using a poisoned or warpstone weapon.",
+                        "reward": "+2D3 CP"
+                    }
+                ],
+                "achievements": [
+                    {
+                        "name": "An Endless Web of Sewers",
+                        "cp": 5,
+                        "text": "In any match that is played within the city, the warband may choose to begin the game underground."
+                    },
+                    {
+                        "name": "Eye for Warpstone",
+                        "cp": 10,
+                        "text": "From now on, when the warband acquires a treasure, they may choose for it to be tained."
+                    },
+                    {
+                        "name": "Emmisary of Skavenblight",
+                        "cp": 15,
+                        "text": "An Albino Storm Vermin hired sword joins the warband via a blood pact. If this hired sword dies permanently, the warband gets a new one and has to pay 40gc."
+                    },
+                    {
+                        "name": "Gaze of the Council",
+                        "cp": 20,
+                        "text": "Black Lotus, Dark Venom, Spider Spittle and Manticore Spoor are common items for the warband. In addition, one henchman at a time may now also use poisons."
+                    },
+                    {
+                        "name": "Mortslieb Falling",
+                        "cp": 25,
+                        "text": "Whenever the warband rolls a Random Happening, they may choose to change that happening to \"55 - Shard of Wyrdstone\". Choose a place on the battlefield and roll an artillery and scatter dice to determine its final falling place (re-roll the hit symbol, it always scatters)"
+                    },
+                    {
+                        "name": "Assassination Protocol",
+                        "cp": 35,
+                        "text": "From now on, when you take out the leader of a warband following another plot, the leader is automatically dead. No need to roll on the Serious Injury chart. This applies for the first leader you take out from each plot."
+                    },
+                    {
+                        "name": "An Invitation to the Thirteen",
+                        "cp": 40,
+                        "text": "Rout out any other \"Poisoning the Well\" warband to win the campaign. If there is no other warband playing this plot, you automatically win the campaign."
+                    }
+                ]
+            }
+        ]
+    }
