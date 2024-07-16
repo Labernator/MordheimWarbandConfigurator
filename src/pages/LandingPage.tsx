@@ -20,7 +20,7 @@ export const LandingPage = () => {
             </div>
         </div>
         <div id="load-warbands" className="new-warbands">
-            <h2 style={{ float: "left" }}>Load from file</h2>
+            <h2 style={{ float: "left" }}>Load existing warband</h2>
             <label htmlFor="file-uploader">
                 <WarbandLoader />
                 <FontAwesomeIcon icon={faFileArchive} className="file-uploader-icon" onClick={() => document.getElementById("file-uploader")?.click()}></FontAwesomeIcon>

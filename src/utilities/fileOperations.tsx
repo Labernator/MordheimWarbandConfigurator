@@ -79,7 +79,7 @@ export const LocalStorageContainer = () => {
                         <td>{getWarbandRating(state.warriors)}</td>
                     </tr>;
                 }) :
-                <tr><td colSpan={3}>Nothing has been stored yet or you have cleared your cache recently</td></tr>
+                <tr><td colSpan={3}>Nothing has been stored yet or you have cleared your cache</td></tr>
             }
         </tbody>
     </table>
