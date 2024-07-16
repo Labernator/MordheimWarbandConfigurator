@@ -1,19 +1,9 @@
 {
-  "short_name": "Mordheim Warband Creator",
-  "name": "A small website to create & maintain mordheim warbands",
+  "short_name": "MWC",
+  "name": "Mordheim Warband Creator",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
+      "src": "Mordheim.png",
       "type": "image/png",
       "sizes": "512x512"
     }
