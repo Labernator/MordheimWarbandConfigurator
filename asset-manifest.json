@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/mordheim-warband-configurator/static/css/main.ccaf0d3b.css",
-    "main.js": "/mordheim-warband-configurator/static/js/main.510a14aa.js",
-    "static/js/213.623e1b63.chunk.js": "/mordheim-warband-configurator/static/js/213.623e1b63.chunk.js",
-    "static/js/455.b0b1c9a6.chunk.js": "/mordheim-warband-configurator/static/js/455.b0b1c9a6.chunk.js",
-    "static/media/dark-texture-bg.jpg": "/mordheim-warband-configurator/static/media/dark-texture-bg.ede8dd70bd87764be2b5.jpg",
-    "static/media/tile-blank.jpg": "/mordheim-warband-configurator/static/media/tile-blank.b65ede6f3b2389672d1e.jpg",
-    "static/media/symbol-of-chaos.png": "/mordheim-warband-configurator/static/media/symbol-of-chaos.2d01c57d6cabe0255e79.png",
-    "static/media/skaven-logo-1091215167.png": "/mordheim-warband-configurator/static/media/skaven-logo-1091215167.fb69aed983b6c4e56458.png",
-    "static/media/middenheim.png": "/mordheim-warband-configurator/static/media/middenheim.9752fcc6fa7bc2ef65c7.png",
-    "static/media/light-texture-bg-sm.jpg": "/mordheim-warband-configurator/static/media/light-texture-bg-sm.1765786029d41dd51ed7.jpg",
-    "static/media/bg-menu-sm.png": "/mordheim-warband-configurator/static/media/bg-menu-sm.5cdfa55048f6280f375e.png",
-    "index.html": "/mordheim-warband-configurator/index.html",
-    "main.ccaf0d3b.css.map": "/mordheim-warband-configurator/static/css/main.ccaf0d3b.css.map",
-    "main.510a14aa.js.map": "/mordheim-warband-configurator/static/js/main.510a14aa.js.map",
-    "213.623e1b63.chunk.js.map": "/mordheim-warband-configurator/static/js/213.623e1b63.chunk.js.map",
-    "455.b0b1c9a6.chunk.js.map": "/mordheim-warband-configurator/static/js/455.b0b1c9a6.chunk.js.map"
+    "main.css": "/MordheimWarbandConfigurator/static/css/main.d6aa7790.css",
+    "main.js": "/MordheimWarbandConfigurator/static/js/main.d99c59aa.js",
+    "static/js/213.623e1b63.chunk.js": "/MordheimWarbandConfigurator/static/js/213.623e1b63.chunk.js",
+    "static/js/455.b0b1c9a6.chunk.js": "/MordheimWarbandConfigurator/static/js/455.b0b1c9a6.chunk.js",
+    "static/media/dark-texture-bg.jpg": "/MordheimWarbandConfigurator/static/media/dark-texture-bg.ede8dd70bd87764be2b5.jpg",
+    "static/media/tile-blank.jpg": "/MordheimWarbandConfigurator/static/media/tile-blank.b65ede6f3b2389672d1e.jpg",
+    "static/media/symbol-of-chaos.png": "/MordheimWarbandConfigurator/static/media/symbol-of-chaos.2d01c57d6cabe0255e79.png",
+    "static/media/skaven-logo-1091215167.png": "/MordheimWarbandConfigurator/static/media/skaven-logo-1091215167.fb69aed983b6c4e56458.png",
+    "static/media/middenheim.png": "/MordheimWarbandConfigurator/static/media/middenheim.9752fcc6fa7bc2ef65c7.png",
+    "static/media/light-texture-bg-sm.jpg": "/MordheimWarbandConfigurator/static/media/light-texture-bg-sm.1765786029d41dd51ed7.jpg",
+    "static/media/bg-menu-sm.png": "/MordheimWarbandConfigurator/static/media/bg-menu-sm.5cdfa55048f6280f375e.png",
+    "index.html": "/MordheimWarbandConfigurator/index.html",
+    "main.d6aa7790.css.map": "/MordheimWarbandConfigurator/static/css/main.d6aa7790.css.map",
+    "main.d99c59aa.js.map": "/MordheimWarbandConfigurator/static/js/main.d99c59aa.js.map",
+    "213.623e1b63.chunk.js.map": "/MordheimWarbandConfigurator/static/js/213.623e1b63.chunk.js.map",
+    "455.b0b1c9a6.chunk.js.map": "/MordheimWarbandConfigurator/static/js/455.b0b1c9a6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ccaf0d3b.css",
-    "static/js/main.510a14aa.js"
+    "static/css/main.d6aa7790.css",
+    "static/js/main.d99c59aa.js"
   ]
 }
