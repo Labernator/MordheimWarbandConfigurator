@@ -1,97 +1,86 @@
-import OutofAction from './outofaction.png';
-import FleshWound from './fleshwound.png';
-import SeriousInjury from './seriousinjury.png';
+import { IFullEquipment, IRules } from "../types/warrior";
 
-export const OutofActionPic = OutofAction;
-export const FleshWoundPic = FleshWound;
-export const SeriousInjuryPic = SeriousInjury;
-
-export interface IPageInfo {
-        "link": string;
-        "header": string;
-        "parent": string;
+export enum DialogType {
+        Fighter = "Fighter",
+        HiredSword = "HiredSword",
+        DramatisPersonae = "DramatisPersonae",
+        TradingPost = "Trading",
+        PrintRoster = "Print",
+        Maintain = "MaintainUnit"
 };
-export const tempWarband = {
-        cash: 0,
-        stash: [],
-        rating: 0,
-        units: [],
-        bodycount: 0,
-        treasure: 0,
-        routlimit: 0
+export interface IDisplayWeapon {
+        list: string;
+        equipment: string;
+        price: number;
 }
-export interface ITempWarband {
-        name?: string;
-        faction: string;
-        cash: number;
-        stash: string[];
+
+export interface IIncompleteUnit {
+        warband: string;
+        type: string;
+        cost: number;
+        xp: number;
+        A: number;
+        M: number;
+        WS: number;
+        BS: number;
+        Ld: number;
+        W: number;
+        T: number;
+        S: number;
+        I: number;
+        max: number;
         rating: number;
-        units: IUnit[];
-        bodycount: number;
-        treasure: number;
-        routlimit: number;
+        animal: string | null;
+        large: string | null;
+        weapons?: IFullEquipment[];
+        skills?: string[];
+        wargear?: string[];
+        rules?: IRules[];
+        equipment: string;
+};
+
+export interface IUnit extends IIncompleteUnit {
+        name: string;
 }
-export interface IWarband {
-        "name": string;
-        "faction": string;
-        "campaignpoints": number;
-        "cash": number;
-        "stash": string[];
-        "rating": number;
-        "units": IUnit[];
-        bodycount: number;
-        treasure: number;
-        "routlimit": number;
-}
-export interface IUnit {
-        "name": string;
-        "type": string;
-        "cost": number;
-        "armour": string;
-        "xp": number;
-        "stats": IStats;
-        "weapons"?: IWeapon[];
-        "skilllists"?: string[];
-        "wargear"?: string[];
-        "rules"?: IRules[];
-};
-export interface IRules {
-        "name": string;
-        "text": string;
-};
-export interface IStats {
-        "movement": number;
-        "weaponskill": number;
-        "ballisticskill": number;
-        "strength": number;
-        "toughness": number;
-        "wounds": number;
-        "leadership": number;
-        "initiative": number;
-        "attacks": string;
+export interface ITempUnit {
+        warband: string;
+        name: string;
+        type: string;
+        cost: number;
+        armour: string;
+        xp: number;
+        // stats: IStats;
+        A: number;
+        M: number;
+        WS: number;
+        BS: number;
+        Ld: number;
+        W: number;
+        T: number;
+        S: number;
+        I: number;
+        // weapons?: IWeapon[];
+        weapons?: IFullEquipment[];
+        skills?: string[];
+        wargear?: string[];
+        rules?: IRules[];
 };
 
-export interface IWeapon {
-        "name": string;
-        "range": string;
-        "strength": string;
-        "traits": string[];
+export interface IWeapon extends IWeaponProfile {
+        cost: number;
 };
 
-export interface IPlot {
-        "name": string;
-        "objectives": IObjectives[];
-        "achievements": IAchievement[];
+export interface IWeaponProfile {
+        name: string;
+        range: string;
+        strength: string;
+        traits: string[];
 };
 
-export interface IObjectives{
-        "name": string;
-        "condition": string;
-        "reward": string;
+export interface IEquipment {
+        name: string;
+        range?: string;
+        strength?: string;
+        traits?: string[];
 };
 
-export interface IAchievement {
-        "name": string;
-        "cp": number;
-        "text": string;
-};

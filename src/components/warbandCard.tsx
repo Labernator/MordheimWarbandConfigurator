@@ -1,5 +1,5 @@
 import React from "react";
-import { IWarband } from "../staticData";
+import { IWarband } from "../types/warband";
 export const WarbandCard = ({ warband }: { warband: IWarband | undefined }) => {
     if (!warband) {
         return <React.Fragment></React.Fragment>;
@@ -11,10 +11,9 @@ export const WarbandCard = ({ warband }: { warband: IWarband | undefined }) => {
                     <h5 className="d-md-inline-block"><span className="badge badge-light mr-2" id="warband-label"></span>{warband.name}<small className="ml-2">-</small><small className="ml-2">{warband.faction}</small></h5>
                 </div>
             </div>
-            <div className="button button--primary button--lg" >Warband Rating : {warband.rating}</div>
-            <div className="button button--primary button--lg" >Body Count : {warband.bodycount}</div>
-            <div className="button button--primary button--lg" >Rout Limit : {warband.routlimit}</div>
-            <div className="button button--primary button--lg" >Campaign Points : {warband.campaignpoints}</div>
+            {/* <div className="button button--primary button--lg" >Warband Rating : {warband.rating}</div>
+            <div className="button button--primary button--lg" >Body Count : {warband.bodycount}</div> */}
+            {/* <div className="button button--primary button--lg" >Rout Limit : {warband.routlimit}</div> */}
             <div className="button button--primary button--lg" >Stashed Gold : {warband.cash}</div>
             <div className="button button--primary button--lg" >Treasures : {warband.treasure}</div>
 

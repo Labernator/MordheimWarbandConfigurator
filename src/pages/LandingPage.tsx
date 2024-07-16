@@ -1,40 +1,30 @@
+import { faFileArchive } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Link } from "react-router-dom";
-import fs from 'fs';
-import csv from 'csv-parser';
+import { WarbandNameInput, WarbandSelector } from "../components/render/Warband";
+import { LocalStorageContainer, WarbandLoader } from "../utilities/fileOperations";
 
-const results: string[] = [];
-
-fs.createReadStream('../staticData/Units.csv')
-  .pipe(csv())
-  .on('data', (data) => results.push(data))
-  .on('end', () => {
-    console.log(results);
-    // Output: Array of objects, each representing a row in the CSV
-  });
 export const LandingPage = () => {
-    return <React.Fragment>
-        <h2>Create new warband</h2>
-        <Link to="/creator" state="Middenheim"><div className="gangTile_xHBb"><div className="gangTile_xHBb middenheim"></div><h2>Middenheim</h2></div></Link>
-        <Link to="/creator" state="Skaven"><div className="gangTile_xHBb"><div className="gangTile_xHBb skaven"></div><h2>Skaven</h2></div></Link>
-        <Link to="/creator" state="The Possessed"><div className="gangTile_xHBb"><div className="gangTile_xHBb possessed"></div><h2>The Possessed</h2></div></Link>
-        <label htmlFor="file-uploader" className="flex-container">
-            <input
-                id="file-uploader"
-                type="file"
-                accept=".json"
-                style={{ display: "none" }}
-                onChange={() => {
-                    const reader = new FileReader();
-                    reader.onload = (ev: ProgressEvent<FileReader>) => {
-                        // setWarbandList(JSON.parse(ev.target?.result as string));
-                    };
-                    reader.readAsText((document.querySelector("#file-uploader") as HTMLInputElement)?.files?.item(0) as File);
-                }}
-            />
-            <button className="page-btn" onClick={() => document.getElementById("file-uploader")?.click()}>Load crew from file</button>
-        </label>
+    return <React.Fragment >
+        <div id="load-warbands" className="new-warbands">
+        <h2>Load from local storage</h2>
+            <LocalStorageContainer />
+        </div>
+        <div id="new-warbands" className="new-warbands">
+            <h2>Create new warband</h2>
+            <WarbandNameInput />
+            <div className="warband-selections">
+                <WarbandSelector faction="Cult of the Possessed" />
+                <WarbandSelector faction="Middenheim" />
+                <WarbandSelector faction="Skaven" />
+            </div>
+        </div>
+        <div id="load-warbands" className="new-warbands">
+            <h2 style={{ float: "left" }}>Load from file</h2>
+            <label htmlFor="file-uploader">
+                <WarbandLoader />
+                <FontAwesomeIcon icon={faFileArchive} className="file-uploader-icon" onClick={() => document.getElementById("file-uploader")?.click()}></FontAwesomeIcon>
+            </label>
+        </div>
     </React.Fragment>;
 };
-
-
