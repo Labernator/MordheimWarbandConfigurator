@@ -1,30 +1,50 @@
-import { faFileArchive } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { WarbandNameInput, WarbandSelector } from "../components/render/Warband";
-import { LocalStorageContainer, WarbandLoader } from "../utilities/fileOperations";
+
+import { SelectWarbandButton, WarbandDropdown, WarbandNameInput, LocalStorageContainer, WarbandLoader } from "../components/addWarband/warbandControls";
 
 export const LandingPage = () => {
-    return <React.Fragment >
-        <div id="load-warbands" className="new-warbands">
-        <h2>Load from local storage</h2>
-            <LocalStorageContainer />
-        </div>
-        <div id="new-warbands" className="new-warbands">
-            <h2>Create new warband</h2>
-            <WarbandNameInput />
-            <div className="warband-selections">
-                <WarbandSelector faction="Cult of the Possessed" />
-                <WarbandSelector faction="Middenheim" />
-                <WarbandSelector faction="Skaven" />
+    return <React.Fragment>
+        <div id="create-warbands" className="reate-warbands">
+            <div>
+                <div className="dialog-headerer">
+                    <h2>Create new Warband</h2>
+                </div>
+                <WarbandNameInput />
+                    <WarbandDropdown />
+                    <SelectWarbandButton />
+            </div>
+            <div>
+                <div className="dialog-headerer">
+                    <h2>Load existing Warband</h2>
+                </div>
+
+                    <label htmlFor="file-uploader">
+                        <WarbandLoader />
+
+                        <select
+                            value={"Load from file"}
+                            onClick={() => document.getElementById("file-uploader")?.click()}
+                            onChange={() => document.getElementById("file-uploader")?.click()}
+                            style={{ width: "100%", borderLeft: "solid 1em #33925d", borderBottom: "solid 3px #33925d"}}
+                            className="input input-dropdown ">
+                            <option key={"load"} label={`Select a local file`} value={"select"}></option>
+                        </select>
+
+                    </label>
+
+            </div>
+            <div>
+                <div className="dialog-headerer">
+                    <h2>Load from local storage</h2>
+                </div>
+
+                    <LocalStorageContainer />
+
             </div>
         </div>
-        <div id="load-warbands" className="new-warbands">
-            <h2 style={{ float: "left" }}>Load existing warband</h2>
-            <label htmlFor="file-uploader">
-                <WarbandLoader />
-                <FontAwesomeIcon icon={faFileArchive} className="file-uploader-icon" onClick={() => document.getElementById("file-uploader")?.click()}></FontAwesomeIcon>
-            </label>
-        </div>
+
+
     </React.Fragment>;
 };
+
+

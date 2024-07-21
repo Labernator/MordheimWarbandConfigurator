@@ -1,26 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAppSelector } from "../redux/store";
-import { WarriorDropdown, WarriorHeadCount, WarriorNameInput } from "../components/render/Warrior";
-import { WarbandFunds, WarriorSheet } from "../components/render/WarriorSheet";
-import { DialogHeader } from "../components/render/DialogHeader";
+import { useNavigate } from "react-router-dom";
+import { AddWarriorButton, AddWarriorCloseButton, SpellSelectionDropdown, WarriorDropdown, WarriorHeadCount, WarriorNameInput } from "../components/addWarrior/WarriorControls";
+import { WarriorSheet } from "../components/addWarrior/WarriorSheet";
 export const AddWarriorPage = () => {
+    const navigate = useNavigate();
     const warband = useAppSelector((state) => state.warband);
+    useEffect(() => {
+        if (!warband.name) {
+            navigate("/");
+        }
+    }, [navigate, warband]);
     const warrior = useAppSelector((state) => state.warrior);
-    const delta = useAppSelector((state) => state.funds);
+    console.log(warrior.rules)
     return <React.Fragment>
         <div id="new-warbands" className="new-warbands">
-            <h2>Add Warrior</h2>
-            <div className="warband-overview dialog-page">
-                <div className="content-container">
+            <div>
+                <div className="dialog-headerer">
+                    <h2>Add Warrior</h2>
+                    <AddWarriorCloseButton />
+                </div>
+
+                <div className="content-container warband-overview">
                     <WarriorNameInput />
-                    <WarbandFunds cash={warband.cash - (delta)} />
                     <WarriorDropdown />
                     <WarriorSheet warrior={warrior} />
                     <WarriorHeadCount />
+                    {warrior.rules?.find((rule) => rule.rule === "Wizard") ? <SpellSelectionDropdown/> : null}
                 </div>
-                <DialogHeader />
             </div>
+            <AddWarriorButton />
+
         </div>
+
     </React.Fragment>;
 };
 

@@ -126,21 +126,18 @@ export const StatsSection = ({ unit }: { unit:  IWarrior }) => {
 };
 
 export const ShortWargearSection = ({ unit }: { unit: IWarrior }) => {
-    return <React.Fragment>
-        {unit.wargear && unit.wargear.length > 0 ?
+    return unit.wargear && unit.wargear.length > 0 ?
             <tr>
                 <td className="unit-card-header">WARGEAR</td>
                 <td className="unit-card-text">{unit.wargear.join(", ")}</td>
-            </tr> : undefined
-        }
-    </React.Fragment>
+            </tr> : null
 };
 
 export const SkillListsSection = ({ unit }: { unit: IWarrior }) => {
     return <React.Fragment>
         {unit.skills && unit.skills.length > 0 ?
             <tr>
-                <td className="unit-card-header">SKILL LISTS</td>
+                <td className="unit-card-header">SKILLS</td>
                 <td className="unit-card-text">{unit.skills.join(", ")}</td>
             </tr>
             : undefined

@@ -1,14 +1,31 @@
-import { IDatabaseRules, IDatabaseUnit, IDatabaseWeapon } from "../types/database";
+import { IDatabaseRules, IDatabaseSpell, IDatabaseUnit, IDatabaseWarband, IDatabaseWeapon, IDatabaseWizard } from "../types/database";
 import { IWarrior } from "../types/warrior";
-
+const warbandsCsv = require('../static/data/Warbands.csv');
 const unitsCsv = require('../static/data/Units.csv');
 const rulesCsv = require('../static/data/Rules.csv');
 const weaponsCsv = require('../static/data/Weapons.csv');
+const spellsCsv = require('../static/data/Spells.csv');
+const wizardsCsv = require('../static/data/Wizards.csv');
 const parsedWeaponsCsv: IDatabaseWeapon[] = JSON.parse(weaponsCsv.slice(17));
 const parsedRulesCsv: IDatabaseRules[] = JSON.parse(rulesCsv.slice(17));
+const parsedWarbandsCsv: IDatabaseWarband[] = JSON.parse(warbandsCsv.slice(17));
+const parsedSpellsCsv: IDatabaseSpell[] = JSON.parse(spellsCsv.slice(17));
+const parsedWizardsCsv: IDatabaseWizard[] = JSON.parse(wizardsCsv.slice(17));
 const structuredRules = parsedRulesCsv.map((csvRule: IDatabaseRules) => ({ rule: csvRule.rule, effect: csvRule.effect }));
 // const equipmentCsv = require('../static/data/EquipmentLists.csv');
 // const parsedEquipmentCsv = JSON.parse(equipmentCsv.slice(17));
+
+export const getWarbands = () => {
+    return parsedWarbandsCsv;
+}
+
+export const getWarbandMetadata = (faction: string) => {
+    const warband = parsedWarbandsCsv.find((warband) => warband.faction === faction);
+    if (!warband) {
+        throw new Error(`Warband ${warband} not found. Please add metadata to the Warband.csv file.`);
+    }
+    return warband;
+}
 
 export const getWeaponProfile = (weaponName: string): IDatabaseWeapon => {
     const weapon = parsedWeaponsCsv.find((weapon: any) => weapon.weapon === weaponName);
@@ -51,3 +68,16 @@ export const getWarriorsListForWarband = (faction: string | undefined): IWarrior
         return transformedUnit;
     })
 };
+
+
+export const getSpellOptions = (faction: string, warriorType: string) => {
+    const foundWizard = parsedWizardsCsv.find((wizard) => wizard.warband === faction && wizard.name);
+    if (!foundWizard) {
+        throw new Error(`Wizard ${warriorType} not found. Please add metadata to the Wizard.csv file.`);
+    }
+    const spells = parsedSpellsCsv.filter((spell) => spell.school === foundWizard.school);
+    if (spells.length < 1) {
+        throw new Error(`Magic school ${foundWizard.school} not found. Please add metadata to the Spells.csv file.`);
+    }   
+    return spells;
+}

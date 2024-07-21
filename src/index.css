@@ -11,7 +11,7 @@ body {
 .container {
     margin: 0 1em;
     max-width: var(--ifm-container-width);
-    height: 49em;
+    height: 100%;
 }
 
 :root {
@@ -24,6 +24,11 @@ h2 {
     text-transform: uppercase;
     text-shadow: 1px 1px #000;
 }
+h4 {
+    color: #e3a453;
+    font-size: 1.4em;
+    text-shadow: 1x 1px #000;
+} 
 
 h3 {
     color: #000;
@@ -35,9 +40,10 @@ h3 {
     background-size: cover;
     display: block;
     width: 100%;
-    height: 100%;
-    padding-top: 1em;
-    padding-bottom: 4em;
+    height: calc(100% - 2em);
+    padding: 1em 0em;
+    overflow: scroll;
+    position: absolute;
 }
 
 .warband-tile-xhBb {
@@ -108,12 +114,10 @@ h3 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 100%;
+    justify-content: space-between;
 }
 
-h2,
-h4 {
-    color: #e3a453;
-}
 
 h5 {
     color: #e3a453;
@@ -126,19 +130,23 @@ h5 {
 }
 
 .warband-control {
-    margin-bottom: 0.5em;
-    font-size: 0.8em;
+    padding: 0.7em 0em;
+    font-size: 1.1em;
+}
+
+.warband-control-icon {
+    width: 1.5em
 }
 
 .content-container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0.5em 1em;
+    padding: 0.5em;
 }
 
 .table-striped {
-    font-size: 0.8em;
+    font-size: 1em;
     border-collapse: collapse;
 }
 
@@ -161,16 +169,17 @@ h5 {
     text-overflow: ellipsis;
 }
 
-td:first-child {
-    font-weight: 600;
-    width: 25%;
-    min-width: 10em;
-}
 
 .table-striped>thead>tr>td {
     font-size: 1em;
     font-weight: 700;
 }
+
+/*.table-striped td:first-child {
+    font-weight: 600;
+    width: 50%;
+    min-width: 10em;
+}*/
 
 .modal {
     position: absolute;
@@ -228,12 +237,36 @@ td:first-child {
     border-radius: .25em;
 }
 
+.number-input {
+    display: block;
+    width: calc(30% - 2.5rem);
+    height: 2.5em;
+    padding: .375em .75em;
+    margin: 0.5em;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25em;
+}
+
+.headcount-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-ends;
+}
+
 .wrong {
-    border: 2px solid #a05236;
+    border-bottom: 3px solid #a05236 !important;
+    border-left: 1em solid #a05236 !important;
 }
 
 .correct {
-    border: 2px solid #33925d;
+    border-bottom: 3px solid #40826D !important;
+    border-left: 1em solid #40826D !important;
 }
 
 option:disabled {
@@ -258,10 +291,6 @@ option:disabled {
 .dialog-header-icon {
     padding: 0 1em 0 1em;
     height: 3em;
-}
-
-.disabled {
-    opacity: 0.5;
 }
 
 .dialog-ok {
@@ -290,7 +319,7 @@ option:disabled {
 .unit-card-edit {
     top: 1.4em;
     position: absolute;
-    right: 3.5em;
+    right: 4.5em;
     height: 1.2em;
     color: #d6d6d6;
 }
@@ -319,19 +348,19 @@ option:disabled {
     background-color: #d6d6d6;
     border-radius: 50%;
     border: 5px solid #302429;
-    height: 2.5em;
-    width: 2.5em;
-    margin-top: 0.5em;
+    height: 3.5em;
+    width: 3.5em;
+    margin-top: 0.15em;
 }
 
 .unit-cost {
-    padding-top: 7px;
+    padding-top: 0.3em;
     text-align: center;
     vertical-align: middle;
     color: #000;
-    font-size: 1em;
-    line-height: 1.1;
-    font-weight: 600;
+    font-size: 1.3em;
+
+    font-weight: 700;
 }
 
 
@@ -554,11 +583,6 @@ option:disabled {
     min-height: 35em;
 }
 
-.warrior-dropdown {
-    width: calc(100% - 0.85em);
-    height: 3.5em;
-}
-
 .funds-header {
     font-size: 1.2em;
     font-weight: 700;
@@ -567,7 +591,7 @@ option:disabled {
 }
 
 .funds-header-item {
-    padding: 0.5em;
+    padding: 0.1em 0.5em;
 }
 
 .pdf-button {
@@ -587,4 +611,283 @@ option:disabled {
 
 .tooltip {
     font-size: 0.7em;
+}
+
+
+
+
+.dialog-warrior-sheet {
+    margin-bottom: 2em;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.1em;
+}
+
+.warrior-name-background {
+    height: 4em;
+    background-image: url(/src/static/pictures/bg-menu-sm.png);
+    background-repeat: repeat-x;
+    background-size: cover;
+    position: relative;
+    color: #e3a453;
+    margin: 1em 0em;
+    display: flex;
+}
+
+.warrior-name {
+    padding-left: 1em;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1.2em;
+}
+.warrior-type {
+    font-size: 0.8em;
+}
+
+.funds-section-container{
+    display:flex;
+}
+
+
+.warrior-list-section {
+    width: 100%;
+    margin-bottom: 0.1em;
+    background-color: transparent;
+    display: table;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-size: 0.9em;
+}
+
+.warrior-list-section>tbody>tr>td {
+    padding: .3rem;
+    vertical-align: top;
+}
+.warrior-list-section tbody tr:nth-of-type(odd) {
+    /* background-color: rgba(0, 0, 0, .05); */
+}
+
+.warrior-list-section td:first-child {
+    width: 25%;
+    
+    border-right: 2px solid #a05236;
+}
+
+.warrior-list-section td:nth-child(2) {
+    padding-left: 1em;
+}
+
+.warrior-list-section tr:last-child {
+    margin-bottom: 2em;
+}
+
+.check-icon {
+    color: #40826D;
+    font-size: 2.5em;
+}
+
+.info-table-striped {
+    font-size: 1em;
+    border-collapse: collapse;
+}
+.info-table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, .05);
+}
+
+.info-table-striped>tbody {
+    font-size: 0.95em;
+
+}
+
+.close-icon {
+    padding-left: 1em;
+    height: 1.5em;
+}
+
+.dialog-headerer {
+    color: #e3a453;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.name-input-container {
+    display: flex;
+    font-size: 1rem;
+    color: #495057;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 2em;
+}
+
+.message-toast {
+    position: absolute;
+    bottom: 4em;
+    width: calc(100% - 5.5em) !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background: #dee2e6;
+    height: 3em;
+    border-left: 1em solid #a05236;
+    border-bottom: 3px solid #a05236;
+    font-weight: bold;
+}
+
+.name-info-text {
+    padding: .0em .75em;
+    margin: 0.5em;
+    font-size: 0.75em;
+    color: #d8dfed;
+}
+
+.warrior-name-info-text {
+    padding: .0em .75em;
+    margin: 0.5em;
+    font-size: 0.75em;
+    color: #324a5f;
+}
+
+.input-dropdown {
+    width: 100%;
+    height: 3.5em;
+    border-left: solid 1em #40826D;
+    border-bottom: solid 3px #40826D;
+}
+
+.input {
+    padding: .375em .75em;
+    font-size: 1rem;
+    border-radius: .25em;
+    font-weight: bold;
+    color: #495057;
+    border-top: 1px solid #ced4da;
+    border-right: 1px solid #ced4da;
+}
+
+.input-dimensions {
+    /* width: calc(100% - 3.5rem); */
+    height: calc(2.25em + 2px);
+}
+
+.submit-button {
+    background-color: #e3a453;
+    color: #324a5f;
+    width: calc(100% - 1em);
+    height: calc(4.25em + 2px);
+    padding: .375em .75em;
+    margin: 0.5em;
+    font-weight: 700;
+    border-radius: .25em;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 1.25em;
+}
+
+.disabled {
+    opacity: 0.3;
+}
+
+.enabled {
+
+    /* border-left: solid 1em #40826D; */
+}
+
+.warrior-table {
+    width: 100%;
+    margin-bottom: 0.1em;
+    margin-left: 0.5em;
+    margin: 0.3em 0em;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-size: 0.8em;
+}
+
+.warrior-stats-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin-bottom: 1em;
+}
+
+
+.warrior-stats-table td,
+.warrior-stats-table th {
+    padding: .5rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+    text-align: center;
+    font-size: 0.85em;
+}
+
+.warrior-stats-table th {
+    border-bottom: 2px solid #a05236;
+}
+
+
+.create-button {
+    background-color: #e3a453;
+    color: #324a5f;
+    height: 2em;
+    width: 50%;
+    margin-left: 40%;
+    padding: .5em 1em;
+    margin-top: 1em;
+    font-weight: 700;
+    border-radius: .25em;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.25em;
+    position: relative;
+}
+
+.modern-container {
+    background: white;
+}
+
+.modern-table {
+    border-collapse: collapse;
+    width: 100%;
+    display: table-column-group;
+}
+
+.modern-table thead {
+    font-weight: bold;
+}
+.modern-table tbody tr:first-child td {
+    border-top: 1px solid #d8dfed;
+}
+
+.modern-table td {
+    padding: 0.7em;
+}
+
+.tabstrip {
+    font-size: 1.1em;
+    font-weight: bold;
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid #d8dfed;
+}
+.tab {
+    padding:0.7em
+}
+
+.focused {
+    background: #d8dfed;
+}
+
+.warrior-card {
+    background: white;
+    border-radius: 10px;
+    padding: 0.3em;
+    margin-bottom: 0.2em;
 }

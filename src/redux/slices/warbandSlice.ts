@@ -9,7 +9,8 @@ export const initialWarband: IWarband = {
     stash: [],
     warriors: [],
     treasure: 0,
-    campaignLink: ""
+    campaignLink: "",
+    limit: 0
 }
 
 const warbandSlice = createSlice({
@@ -18,6 +19,9 @@ const warbandSlice = createSlice({
     reducers: {
         setWarbandName(state, action: PayloadAction<string>) {
             state.name = action.payload;
+        },
+        setWarbandFaction(state, action: PayloadAction<string>) {
+            state.faction = action.payload;
         },
         loadWarband(_state, action: PayloadAction<IWarband>) {
             return action.payload;
@@ -44,6 +48,6 @@ const warbandSlice = createSlice({
     },
 });
 
-export const { addFunds, addWarrior, loadWarband, removeFunds, setWarbandName, updateWarrior, addWeaponToStash } = warbandSlice.actions
+export const { addFunds, addWarrior, loadWarband, removeFunds, setWarbandFaction, setWarbandName, updateWarrior, addWeaponToStash } = warbandSlice.actions
 
 export default warbandSlice.reducer;

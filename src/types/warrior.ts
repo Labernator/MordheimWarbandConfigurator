@@ -1,3 +1,5 @@
+import { IDatabaseSpell } from "./database";
+
 export interface IWarrior {
     name: string;
     type: string;
@@ -23,6 +25,7 @@ export interface IWarrior {
     equipment: string;
     hero: boolean;
     position: number;
+    spells?:IDatabaseSpell[];
 };
 
 export interface IRules {

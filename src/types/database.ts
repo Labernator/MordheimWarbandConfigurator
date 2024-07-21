@@ -39,3 +39,22 @@ export interface IDatabaseRules {
     rule: string;
     effect: string;
 }
+
+export interface IDatabaseWarband {
+    faction: string;
+    limit: number;
+    abbreviaton: string;
+}
+
+export interface IDatabaseSpell {
+    school: string;
+    name: string;
+    effect: string;
+    difficulty: number;
+}
+
+export interface IDatabaseWizard {
+    warband: string;
+    name: string;
+    school: string;
+}

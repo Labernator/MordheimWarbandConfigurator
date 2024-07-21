@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IFullEquipment, IWarrior } from "../../types/warrior";
+import { IDatabaseSpell } from "../../types/database";
 
 export const initialWarrior: IWarrior = {
     name: "",
@@ -58,9 +59,16 @@ const warriorSlice = createSlice({
             }
             state.totalCost = (state.cost + (state.weapons?.reduce((acc, item) => acc + item.price, 0) || 0)) * state.headCount;
         },
+        addWizardSpell(state, action: PayloadAction<IDatabaseSpell>) {
+            if (state.spells) {
+                state.spells.push(action.payload);
+            } else {
+                state.spells = [action.payload];
+            }
+        }
     },
 });
 
-export const { addWeapon, setHeadCount, setWarriorName, loadWarrior, removeWeapon } = warriorSlice.actions
+export const { addWeapon, addWizardSpell, setHeadCount, setWarriorName, loadWarrior, removeWeapon } = warriorSlice.actions
 
 export default warriorSlice.reducer;

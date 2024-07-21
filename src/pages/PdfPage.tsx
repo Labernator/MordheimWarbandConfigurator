@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faPrint } from "@fortawesome/free-solid-svg-icons";
 
 import { exportPdf } from "../utilities/pdfProvider";
 import { useAppSelector } from "../redux/store";
-import { getWarbandRating, WarbandInfo, WarriorSummary } from "../utilities/warbandProvider";
+import { getWarbandRating } from "../utilities/warbandProvider";
 import { useNavigate } from "react-router-dom";
 import { HeaderSection, RulesSection, ShortWargearSection, SkillListsSection, StatsSection, WeaponsSection } from "../components/render/UnitCard";
 import { IWarrior } from "../types/warrior";
+import { WarbandInfo, WarriorSummary } from "../components/overview/metaSection";
 
 
 export const PdfControls = () => {
@@ -26,7 +27,7 @@ export const PdfControls = () => {
                 <input
                     onChange={(e: any) => onChangeHandler(e.target.value)}
                     placeholder={`${warband.name} - ${warband.faction} (${getWarbandRating(warband.warriors)})`}
-                    className={"modal-input"} />
+                    className={"input input-dimensions correct"} />
                 {isIncorrect ? <div className="tooltip">Enter a file name (min. 3 characters)</div> : null}
                 <button className={isIncorrect ? "pdf-button pdf-button-wrong" : "pdf-button pdf-button-correct"} onClick={() => exportPdf(warband, pdfName)}><FontAwesomeIcon icon={faPrint} style={{ width: "1.5em", marginRight: "0.5em" }} />Create Pdf</button>
             </div>
@@ -37,6 +38,9 @@ export const PdfControls = () => {
 export const PdfPage = () => {
     const navigate = useNavigate();
     const warband = useAppSelector((state) => state.warband);
+    useEffect(() => { if (!warband.name) {
+        navigate("/");
+    }}, [navigate, warband]);
     return <React.Fragment>
         <h2>
             {warband.name}
