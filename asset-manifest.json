@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/MordheimWarbandConfigurator/static/css/main.0eade429.css",
-    "main.js": "/MordheimWarbandConfigurator/static/js/main.0ee7f23a.js",
+    "main.js": "/MordheimWarbandConfigurator/static/js/main.7821eec9.js",
     "static/js/213.623e1b63.chunk.js": "/MordheimWarbandConfigurator/static/js/213.623e1b63.chunk.js",
     "static/js/455.b0b1c9a6.chunk.js": "/MordheimWarbandConfigurator/static/js/455.b0b1c9a6.chunk.js",
     "static/media/dark-texture-bg.jpg": "/MordheimWarbandConfigurator/static/media/dark-texture-bg.ede8dd70bd87764be2b5.jpg",
@@ -13,12 +13,12 @@
     "static/media/bg-menu-sm.png": "/MordheimWarbandConfigurator/static/media/bg-menu-sm.5cdfa55048f6280f375e.png",
     "index.html": "/MordheimWarbandConfigurator/index.html",
     "main.0eade429.css.map": "/MordheimWarbandConfigurator/static/css/main.0eade429.css.map",
-    "main.0ee7f23a.js.map": "/MordheimWarbandConfigurator/static/js/main.0ee7f23a.js.map",
+    "main.7821eec9.js.map": "/MordheimWarbandConfigurator/static/js/main.7821eec9.js.map",
     "213.623e1b63.chunk.js.map": "/MordheimWarbandConfigurator/static/js/213.623e1b63.chunk.js.map",
     "455.b0b1c9a6.chunk.js.map": "/MordheimWarbandConfigurator/static/js/455.b0b1c9a6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0eade429.css",
-    "static/js/main.0ee7f23a.js"
+    "static/js/main.7821eec9.js"
   ]
 }
