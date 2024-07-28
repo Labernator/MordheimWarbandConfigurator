@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IFullEquipment, IWarrior } from "../../types/warrior";
+import { IFullEquipment, IRules, IWarrior, Stats } from "../../types/warrior";
 import { IDatabaseSpell } from "../../types/database";
 
 export const initialWarrior: IWarrior = {
@@ -23,6 +23,7 @@ export const initialWarrior: IWarrior = {
     equipment: "",
     hero: false,
     position: 0,
+    ethnicity: ""
 };
 
 const warriorSlice = createSlice({
@@ -65,10 +66,57 @@ const warriorSlice = createSlice({
             } else {
                 state.spells = [action.payload];
             }
+        },
+        addInjury(state, action: PayloadAction<string>) {
+            if (state.injuries) {
+            state.injuries?.push(action.payload);
+            } else {
+                state.injuries = [action.payload];
+            }
+        },
+        addSkill(state, action: PayloadAction<IRules>) {
+            if (state.rules) {
+                state.rules?.push(action.payload);
+            } else {
+                state.rules = [action.payload];
+            }
+        },
+        increaseStat(state, action: PayloadAction<string>) {
+            switch (action.payload) {
+                case Stats.M:
+                    state.M++;
+                    break;
+                case Stats.WS:
+                    state.WS++;
+                    break;
+                case Stats.BS:
+                    state.BS++;
+                    break;
+                case Stats.S:
+                    state.S++;
+                    break;
+                case Stats.T:
+                    state.T++;
+                    break;
+                case Stats.W:
+                    state.W++;
+                    break;
+                case Stats.I:
+                    state.I++;
+                    break;
+                case Stats.A:
+                    state.A++;
+                    break;
+                case Stats.Ld:
+                    state.Ld++;
+                    break;
+                default:
+                    throw new Error(`Stat ${action.payload} not found.`);
+            }
         }
     },
 });
 
-export const { addWeapon, addWizardSpell, setHeadCount, setWarriorName, loadWarrior, removeWeapon } = warriorSlice.actions
+export const { addInjury, addWeapon, addWizardSpell, addSkill, increaseStat, setHeadCount, setWarriorName, loadWarrior, removeWeapon } = warriorSlice.actions
 
 export default warriorSlice.reducer;

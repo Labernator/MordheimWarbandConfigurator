@@ -1,7 +1,7 @@
 import React from "react";
-import { IUnit } from "../staticData";
+import { IWarrior } from "../types/warrior";
 import { WeaponsSection } from "./render/UnitCard";
-export const UnitCard = ({ unit }: { unit: IUnit | undefined }) => {
+export const UnitCard = ({ unit }: { unit: IWarrior | undefined }) => {
     if (!unit) {
         return <React.Fragment></React.Fragment>;
     }

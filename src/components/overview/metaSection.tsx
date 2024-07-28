@@ -38,12 +38,6 @@ export const StashList = () => {
 export const WarbandInfo = () => {
     const warband = useAppSelector((state) => state.warband);
     return <table className="modern-table">
-        {/* <thead>
-            <tr>
-                <td colSpan={1}>Metadata</td>
-                <td colSpan={2}>Fighters</td>
-            </tr>
-        </thead> */}
         <tbody>
             <tr>
                 <td>Warband Type</td>

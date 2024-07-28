@@ -4,22 +4,9 @@ import React from "react";
 import { addFunds, addWeaponToStash } from "../../redux/slices/warbandSlice";
 import { removeWeapon } from "../../redux/slices/warriorSlice";
 import { useAppDispatch } from "../../redux/store";
-import { DialogType } from "../../staticData";
+
 import { IFullEquipment, IWarrior } from "../../types/warrior";
 import { EditIcon } from "./Icons";
-
-export const HeaderSectionWithEdit = ({ unit, callback }: { unit: IWarrior; callback: any }) => {
-    return <div className="unit-name-bg">
-        <div className="unit-name">{unit.name} - <small>{unit.type}</small></div>
-        <EditIcon onClickHandler={() => {
-            console.log("clickhandler edit icon");
-            callback(DialogType.Maintain);
-        }} />
-        <div className="unit-cost-bg">
-            <div className="unit-cost">{unit.cost}<br /><div style={{ fontSize: "0.7em" }}>gc</div></div>
-        </div>
-    </div>
-};
 
 export const HeaderSection = ({ unit, isPdf }: { unit: IWarrior; isPdf?: boolean }) => {
     return <div className="unit-name-bg">

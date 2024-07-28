@@ -1,0 +1,49 @@
+skilllist;skill;effect;condition
+Combat;Strike to Injure;The warrior adds +1 to all injury rolls caused in hand-to-hand combat.
+Combat;Combat Master;If the warrior fights against more than one enemy at a time, he gains an extra Attack in each hand-to-hand combat phase as long as he is fighting two or more enemy models. In addition, the warrior is immune to ‘All Alone’ tests.
+Combat;Weapons Training;A warrior with this skill may use any hand-to-hand combat weapon he comes across, not just those in his equipment options.
+Combat;Web of Steel;The warrior gains +1 to all his rolls on Critical Hit tables in hand-to-hand combat.
+Combat;Expert Swordsman;This warrior may re-roll all missed attacks if he is using a sword in the hand-to-hand phase of the turn that he charges. Note that this only applies when they are armed with normal swords or weeping blades, and not with double-handed swords or any other weapons
+Combat;Step Aside;Each time the warrior suffers a wound in close combat he may make an additional saving throw of 5+. This save is never modified and is taken after all other armour saves.
+Combat;Whip Master;The hero may re-roll all to-hit rolls when using a whip.
+Shooting;Quick Shot;The warrior may shoot twice per turn with a bow or crossbow (but not a crossbow pistol).
+Shooting;Pistolier;If the warrior is equipped with a brace of pistols of any type (including crossbow pistols), he may fire twice in the Shooting phase (though note that normal reloading rules apply). If he has a single pistol then he may fire it in the same turn it was reloaded.
+Shooting;Eagle Eyes;The warrior adds +6" to the range of any missile weapon he is using.
+Shooting;Weapons Expert;The warrior has been trained to use some of the more unusual weapons of the known world. He may use any missile weapon he comes across, not just the weapons available from his warband’s list.
+Shooting;Nimble;The warrior may move and fire with weapons that are normally only used if the firer has not moved. Note that this skill cannot be combined with the Quick Shot skill.
+Shooting;Trick Shooter;The warrior ignores all modifiers for cover when using missile weapons.
+Shooting;Hunter;The warrior may fire each turn with a handgun or Hochland long rifle.
+Shooting;Knife-Fighter;The warrior can throw a maximum of three of throwing knives and throwing stars in his shooting phase and may divide his shots between any targets within range as he wishes. Note that this skill cannot be combined with the Quick Shot skill.
+Strength;Mighty Blow;The warrior has a +1 Strength bonus in close combat (excluding pistols). As his Strength is used for close combat weapons, the bonus applies to all such weapons.
+Strength;Pit Fighter;The warrior adds +1 to his WS and +1 to his Attacks if he is fighting inside buildings or ruins. It’s a good idea to define which bits of your terrain collection count as ‘buildings or ruins’ at the start of a battle to avoid confusion later.
+Strength;Resilient;Deduct -1 Strength from all hits against him in close combat. This does not affect armour save modifiers.
+Strength;Fearsome;The warrior causes Fear in opposing models.
+Strength;Strongman;The warrior may use a double-handed weapon without the usual penalty of always striking last. Work out order of battle as you would with other weapons.
+Strength;Unstoppable Charge;The warrior adds +1 to his Weapon Skill when charging.
+Speed;Leap;The warrior may leap D6" in the movement phase in addition to his normal movement. He may move and leap, run and leap, or charge and leap, but he can only leap once per turn. A leaping warrior may jump over opposing man-sized models, including enemies, and obstacles 1" high, without penalty. The leap may also be used to leap over gaps, but in this case you must commit the warrior to making the leap before rolling the dice to see how far he jumps. If he fails to make it all the way across, he falls through the gap.
+Speed;Sprint;The warrior may triple his Movement rate when he runs or charges, rather than doubling it as normal.
+Speed;Acrobat;The warrior may fall or jump from a height of up to 12" without taking any damage if he passes a single Initiative test, and can re-roll failed Diving Charge rolls. He can still only make a diving charge from a height of up to 6".
+Speed;Lightning Reflexes;If the warrior is charged he will ‘strike first’ against those that charged that turn. As the charger(s) will also normally ‘strike first’ (for charging), the order of attack between the charger(s) and the warrior with this skill will be determined by comparing Initiative values.
+Speed;Jump Up;The warrior may ignore knocked down results when rolling for injuries, unless he is knocked down because of a successful save from wearing a helmet or because he has the No Pain special rule.
+Speed;Dodge;A warrior can avoid any hits from a missile weapon on a D6 roll of 5+. Note that this roll is taken against missiles as soon as a hit is scored to see whether the warrior dodges it or not, before rolling to wound, and before any effects from other skills or equipment (such as lucky charms).
+Speed;Scale Sheer Surfaces;A warrior can climb up or down a height equal to twice his normal Movement, and does not need to make Initiative tests when doing so.
+Academic;Battle Tongue;This increases the range of his Leader ability by 6". Note that Undead leaders may not use this skill.;Leader
+Academic;Sorcery;A warrior with this skill gains +1 to his rolls to see whether he can cast spells successfully or not. Note that Sisters of Sigmar and Warrior-Priests may not use this skill.;Wizard
+Academic;Streetwise;The may add +2 to the roll that determines his chances of finding rare items (see the Trading section).
+Academic;Haggle;The warrior may deduct 2D6 gold crowns from the price of any single item (to a minimum cost of 1gc) once per post battle sequence.
+Academic;Arcane Lore;Witch Hunters, Sisters of Sigmar and Warrior-Priests may not have this skill. Any warrior with this skill may learn Lesser Magic if he owns a Tome of Magic.
+Academic;Wyrdstone Hunter;If a Hero with this skill is searching the ruins in the exploration phase you may re-roll one dice when rolling on the Exploration chart.
+Academic;Warrior Wizard;The wizard may wear armour and cast spells.;Wizard
+Academic;Scribe;The warrior may inscribe a spell or prayer on a scroll before the battle. The scroll may be used just before they are about to cast the spell or prayer and allows the caster +2 to his difficulty roll. The scroll can only be used once. Scrolls may not be saved up from battle to battle if they are not used.;Wizard,Pray User
+Academic;Mind Focus;When using a spell or prayer the warrior with this skill may re-roll one dice roll used in the difficulty roll.;Wizard,Pray User
+Academic;Tactican;In any scenario the warband leader may reposition his warriors after his opponent has set up and may even advance them up to 12 inch onto the board instead of 8 inch.;Leader
+Academic;Hunch;In any scenario the warband leader may position up to 3 of his men capable of earning experience in any ruined building on the board that is at least 12 inch away from an enemy model and not in the enemy deployment zone.;Leader
+Academic;Magical Aptitude;The warrior may attempt to cast two spells each turn as long as he is not in hand-to-hand combat. After attempting the first spell, he must take a toughness test. If he passes he may attempt a second spell that turn or even cast the same spell twice. If he fails he must roll on the injury table immediately with no saves treating Out Of Action results as stunned instead.;Wizard
+Academic;Trap Expert;This Hero is able to detect traps in the tombs with relative ease. A character who possesses this skill will never set off traps himself (but may be subject to their effects if he is too close to one if it goes off). He can attempt to disarm any traps he comes across. He must stop at the trap during his Movement phase, and may do nothing else that turn. To disarm a Simple trap, he must roll 6+ on 2D6. To disarm a Complex trap, he must roll 8+ on 2D6. If unsuccessful, he must test against his Initiative. A failed test means he has inadvertently set off the trap himself!He is also able to restore dud traps or previously de-activated traps back into active traps. To determine what a Dud trap becomes, roll a D6: 1-4: Simple, 5-6: Complex. Obviously a previously disarmed trap will revert back to what it was. If restoring a Simple trap, he must roll a 6+ on 2D6. If restoring a Complex trap, he must roll an 8+. Failure will mean that the trap has failed to activate.
+Skaven;Black Hunger;The Skaven Hero may declare at the beginning of his turn that he is using this skill. The Hero may add +1 attack and +D3" to the total move to his profile for the duration of his own turn but will suffer D3 S3 hits with no armour save possible at the end of the turn.
+Skaven;Art of Silent Death;In hand-to-hand combat the Skaven can fight with his bare paws without any penalties and counts as having two weapons (i.e. +1 attack). In addition a Skaven Hero with this skill will cause a critical hit on a To Wound roll of 5-6 instead of just 6. This skill may be used in conjunction with Fighting Claws (+2 Attacks instead of +1).
+Skaven;Infiltration;A Skaven with this skill is always placed on the battlefield after the opposing warband and can be placed anywhere on the table as long as it is out of sight of the opposing warband and more than 12" away from any enemy model. If both players have models which infiltrate roll a D6 for each and the lowest roll sets up first.
+Skaven;Tail Fighting;The Skaven may wield a shield, knife or a sword with its tail. The model gains an extra attack with the appropriate weapon or a +1 bonus to its armour save.
+Skaven;Wall Runner;The Skaven does not need to take an Initiative test when climbing up walls and other sheer surfaces.
+
+

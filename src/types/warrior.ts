@@ -1,5 +1,32 @@
 import { IDatabaseSpell } from "./database";
 
+export enum Stats {
+    A = "Attacks",
+    M = "Movement",
+    WS = "Weapon Skill",
+    BS = "Ballistic Skill",
+    Ld = "Leadership",
+    W = "Wounds",
+    T = "Toughness",
+    S = "Strength",
+    I = "Initiative"
+};
+
+export function isStatProperty(input: any): input is Stats {
+    return input === Stats.M || input === Stats.WS || input === Stats.BS || input === Stats.S || input === Stats.T || input === Stats.W || input === Stats.I || input === Stats.A || input === Stats.Ld;
+}
+
+export interface IEthnicMaximums {
+    M: number;
+    WS: number;
+    BS: number;
+    S: number;
+    T: number;
+    W: number;
+    I: number;
+    A: number;
+    Ld: number;
+}
 export interface IWarrior {
     name: string;
     type: string;
@@ -26,6 +53,8 @@ export interface IWarrior {
     hero: boolean;
     position: number;
     spells?:IDatabaseSpell[];
+    injuries?: string[];
+    ethnicity: string;
 };
 
 export interface IRules {

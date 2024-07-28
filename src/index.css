@@ -28,7 +28,7 @@ h4 {
     color: #e3a453;
     font-size: 1.4em;
     text-shadow: 1x 1px #000;
-} 
+}
 
 h3 {
     color: #000;
@@ -671,7 +671,7 @@ option:disabled {
 
 .warrior-list-section td:first-child {
     width: 25%;
-    
+
     border-right: 2px solid #a05236;
 }
 
@@ -890,4 +890,16 @@ option:disabled {
     border-radius: 10px;
     padding: 0.3em;
     margin-bottom: 0.2em;
+}
+
+.stats-maintain-table {
+    margin: 0em 0.5em;
+
+}
+.stats-maintain-table td {
+    padding: 0.3em 0.75em;
+}
+.stats-icon {
+        height: 2em;
+        color: #e3a453;
 }

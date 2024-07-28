@@ -1,2 +1,2 @@
-trait	effect
-Enemy armour save	An enemy wounded by this gains a +1 bonus to his armour save and a 6+ armour save if he normally has none
+trait;effect
+Enemy armour save;An enemy wounded by this gains a +1 bonus to his armour save and a 6+ armour save if he normally has none

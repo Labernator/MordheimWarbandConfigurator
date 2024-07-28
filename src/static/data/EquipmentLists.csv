@@ -1,77 +1,92 @@
-list	equipment	price
-Possessed	Dagger	2
-Possessed	Mace	3
-Possessed	Axe	5
-Possessed	Sword	10
-Possessed	Spear	10
-Possessed	Double-handed Weapon	15
-Possessed	Bow	15
-Possessed	Short Bow	10
-Possessed	Light Armour	20
-Possessed	Heavy Armour	50
-Possessed	Shield	5
-Possessed	Helmet	10
-Darksouls	Dagger	2
-Darksouls	Mace	3
-Darksouls	Axe	5
-Darksouls	Sword	10
-Darksouls	Double-handed Weapon	15
-Darksouls	Flail	15
-Darksouls	Light Armour	20
-Darksouls	Heavy Armour	50
-Darksouls	Shield	5
-Darksouls	Helmet	10
-SkavenHeroes	Dagger	2
-SkavenHeroes	Sword	10
-SkavenHeroes	Flail	15
-SkavenHeroes	Spear	10
-SkavenHeroes	Halberd	10
-SkavenHeroes	Weeping Blades	50
-SkavenHeroes	Fighting Claws	35
-SkavenHeroes	Sling	2
-SkavenHeroes	Throwing Stars	15
-SkavenHeroes	Blowpipe	25
-SkavenHeroes	Warplock Pistol	35
-SkavenHeroes	Light Armour	20
-SkavenHeroes	Buckler	5
-SkavenHeroes	Helmet	10
-SkavenHenchmen	Dagger	2
-SkavenHenchmen	Club	3
-SkavenHenchmen	Sword	10
-SkavenHenchmen	Spear	10
-SkavenHenchmen	Sling	2
-SkavenHenchmen	Light Armour	20
-SkavenHenchmen	Shield	5
-SkavenHenchmen	Helmet	10
-MercenaryWarrior	Dagger	2
-MercenaryWarrior	Mace	3
-MercenaryWarrior	Axe	5
-MercenaryWarrior	Sword	10
-MercenaryWarrior	Spear	10
-MercenaryWarrior	Double-handed Weapon	15
-MercenaryWarrior	Halberd	10
-MercenaryWarrior	Morning Star	15
-MercenaryWarrior	Duelling Pistol	25
-MercenaryWarrior	Pistol	15
-MercenaryWarrior	Crossbow	25
-MercenaryWarrior	Bow	10
-MercenaryWarrior	Shield	5
-MercenaryWarrior	Buckler	5
-MercenaryWarrior	Heavy Armour	50
-MercenaryWarrior	Light Armour	20
-MercenaryWarrior	Helmet	10
-MercenaryMarksman	Dagger	2
-MercenaryMarksman	Mace	3
-MercenaryMarksman	Axe	5
-MercenaryMarksman	Sword	10
-MercenaryMarksman	Bow	10
-MercenaryMarksman	Longbow	15
-MercenaryMarksman	Crossbow	25
-MercenaryMarksman	Pistol	15
-MercenaryMarksman	Duelling Pistol	25
-MercenaryMarksman	Blunderbuss	30
-MercenaryMarksman	Handgun	35
-MercenaryMarksman	Hunting Rifle	200
-MercenaryMarksman	Light Armour	20
-MercenaryMarksman	Shield	5
-MercenaryMarksman	Helmet	10
+list;equipment;price
+Possessed;Dagger;2
+Possessed;Mace;3
+Possessed;Axe;5
+Possessed;Sword;10
+Possessed;Spear;10
+Possessed;Double-handed Weapon;15
+Possessed;Bow;15
+Possessed;Short Bow;10
+Possessed;Light Armour;20
+Possessed;Heavy Armour;50
+Possessed;Shield;5
+Possessed;Helmet;10
+Darksouls;Dagger;2
+Darksouls;Mace;3
+Darksouls;Axe;5
+Darksouls;Sword;10
+Darksouls;Double-handed Weapon;15
+Darksouls;Flail;15
+Darksouls;Light Armour;20
+Darksouls;Heavy Armour;50
+Darksouls;Shield;5
+Darksouls;Helmet;10
+SkavenHeroes;Dagger;2
+SkavenHeroes;Sword;10
+SkavenHeroes;Flail;15
+SkavenHeroes;Spear;10
+SkavenHeroes;Halberd;10
+SkavenHeroes;Weeping Blades;50
+SkavenHeroes;Fighting Claws;35
+SkavenHeroes;Sling;2
+SkavenHeroes;Throwing Stars;15
+SkavenHeroes;Blowpipe;25
+SkavenHeroes;Warplock Pistol;35
+SkavenHeroes;Light Armour;20
+SkavenHeroes;Buckler;5
+SkavenHeroes;Helmet;10
+SkavenHenchmen;Dagger;2
+SkavenHenchmen;Club;3
+SkavenHenchmen;Sword;10
+SkavenHenchmen;Spear;10
+SkavenHenchmen;Sling;2
+SkavenHenchmen;Light Armour;20
+SkavenHenchmen;Shield;5
+SkavenHenchmen;Helmet;10
+MercenaryWarrior;Dagger;2
+MercenaryWarrior;Mace;3
+MercenaryWarrior;Axe;5
+MercenaryWarrior;Sword;10
+MercenaryWarrior;Spear;10
+MercenaryWarrior;Double-handed Weapon;15
+MercenaryWarrior;Halberd;10
+MercenaryWarrior;Morning Star;15
+MercenaryWarrior;Duelling Pistol;25
+MercenaryWarrior;Pistol;15
+MercenaryWarrior;Crossbow;25
+MercenaryWarrior;Bow;10
+MercenaryWarrior;Shield;5
+MercenaryWarrior;Buckler;5
+MercenaryWarrior;Heavy Armour;50
+MercenaryWarrior;Light Armour;20
+MercenaryWarrior;Helmet;10
+MercenaryMarksman;Dagger;2
+MercenaryMarksman;Mace;3
+MercenaryMarksman;Axe;5
+MercenaryMarksman;Sword;10
+MercenaryMarksman;Bow;10
+MercenaryMarksman;Longbow;15
+MercenaryMarksman;Crossbow;25
+MercenaryMarksman;Pistol;15
+MercenaryMarksman;Duelling Pistol;25
+MercenaryMarksman;Blunderbuss;30
+MercenaryMarksman;Handgun;35
+MercenaryMarksman;Hunting Rifle;200
+MercenaryMarksman;Light Armour;20
+MercenaryMarksman;Shield;5
+MercenaryMarksman;Helmet;10
+Sisters of Sigmar;Dagger;2
+Sisters of Sigmar;Mace;3
+Sisters of Sigmar;Steel Whip;10
+Sisters of Sigmar;Sigmarite Warhammer;15
+Sisters of Sigmar;Flail;15
+Sisters of Sigmar;Double-handed Weapon;15
+Sisters of Sigmar;Sling;2
+Sisters of Sigmar;Holy Tome;120
+Sisters of Sigmar;Holy Relic;15
+Sisters of Sigmar;Blessed Water;10
+Sisters of Sigmar;Shield;5
+Sisters of Sigmar;Buckler;5
+Sisters of Sigmar;Heavy Armour;50
+Sisters of Sigmar;Light Armour;20
+Sisters of Sigmar;Helmet;10

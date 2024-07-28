@@ -1,4 +1,4 @@
-import { IIncompleteUnit, IUnit } from "../staticData";
+
 import { IDatabaseEquipment, IDatabaseRules, IDatabaseUnit, IDatabaseWeapon } from "../types/database";
 import { IFullEquipment, IWarrior } from "../types/warrior";
 
@@ -20,24 +20,6 @@ const getRules = (plainRules: string[]): IDatabaseRules[] => {
     });
 };
 
-export const getWarbandUnits = (faction: string | undefined): IIncompleteUnit[] => {
-    if (faction === undefined) {
-        throw new Error("Warband faction is undefined. Please provide a warband faction.");
-    }
-    const parsedCSV: IDatabaseUnit[] = JSON.parse(unitsCsv.slice(17));
-    const filteredCSV = parsedCSV.filter((unit: IDatabaseUnit) => unit.warband === faction);
-    return filteredCSV.map((unit: IDatabaseUnit) => {
-        const plainRules: string[] = (unit.rules && unit.rules.split(",")) || [];
-        const transformedUnit: IIncompleteUnit = {
-            ...unit,
-            skills: (unit.skills && unit.skills.split(",")) || [],
-            weapons: unit.equipment ? [{ ...getWeaponProfile("Dagger"), price: 2, quantity: 1 }] : [],
-            rules: getRules(plainRules)
-        }
-        // transform skills
-        return transformedUnit;
-    })
-};
 
 export const getWeaponProfile = (weaponName: string): IDatabaseWeapon => {
     const weapon = parsedWeaponsCsv.find((weapon: any) => weapon.weapon === weaponName);
@@ -45,11 +27,6 @@ export const getWeaponProfile = (weaponName: string): IDatabaseWeapon => {
         throw new Error(`Weapon ${weaponName} not found. Please add metadata to the Weapons.csv file.`);
     }
     return weapon;
-};
-
-export const getWeaponsForUnit = (unit: IUnit): IDatabaseEquipment[] => {
-    const filteredEquipment: IDatabaseEquipment[] = parsedEquipmentCsv.filter((equipment: IDatabaseEquipment) => equipment.list === unit.equipment);
-    return filteredEquipment;
 };
 
 const filterFunction = (eq: IDatabaseEquipment) : IFullEquipment => {

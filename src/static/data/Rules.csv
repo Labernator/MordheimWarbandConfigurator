@@ -1,12 +1,14 @@
-rule	effect
-Leader	See the respective rule in the Leadership & Psychology section.
-Wizard	Please select a spell at random from your spell list.
-Perfect Killer	Always apply an extra -1 modifier to any armour save the enemy has to take against wounds inflicted (both with shooting and close combat weapons).
-Fearsome	See the respective Strength skill.
-Mutations	The Possessed may start the game with one or more mutations each.
-Mutated	Mutants must start the game with one or more mutations each.
-Immune to Psychology	Automatically passes any Leadership-based test required to take.
-Expert Swordsmen	See the respective Combat skill.
-Animal	Cannot gain experience.
-Stupid Giant	Subject to Stupidity unless a Skaven Hero is within 6” of it.
-Large Target	Any model may shoot at this fighter, even if it is not the closest target.
+rule;effect
+Leader;See the respective rule in the Leadership & Psychology section.
+Wizard;Please select a spell at random from your spell list.
+Pray User;Please select a prayer at random from your prayer list.
+Perfect Killer;Always apply an extra -1 modifier to any armour save the enemy has to take against wounds inflicted (both with shooting and close combat weapons).
+Fearsome;See the respective Strength skill.
+Mutations;The Possessed may start the game with one or more mutations each.
+Mutated;Mutants must start the game with one or more mutations each.
+Immune to Psychology;Automatically passes any Leadership-based test required to take.
+Expert Swordsmen;See the respective Combat skill.
+Animal;Cannot gain experience.
+Stupid Giant;Subject to Stupidity unless a Skaven Hero is within 6” of it.
+Large Target;Any model may shoot at this fighter, even if it is not the closest target.
+Blessed Sight;An Augur can re-roll any failed characteristic tests (climbing, resisting spells or any other reason), and any rolls to hit in close combat or shooting. You must accept the second result. In addition, an Augur can use her Blessed Sight to help the Sisterhood when they are searching the city for wyrdstone. If the Augur is not put out of action in the battle, you may roll two dice for her in the exploration phase and pick either dice as the result.

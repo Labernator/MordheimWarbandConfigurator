@@ -1,3 +1,11 @@
+import { Stats } from "./warrior";
+
+export interface IDatabaseSkillLists {
+    skilllist: string;
+    skill: string;
+    effect: string;
+    condition: string;
+}
 export interface IDatabaseUnit {
     warband: string;
     type: string;
@@ -20,8 +28,26 @@ export interface IDatabaseUnit {
     max: number;
     equipment: string;
     hero: string;
+    ethnicity: string;
 }
 
+export interface IDatabaseEthnicMaximums {
+    profile: string;
+    M: number;
+    WS: number;
+    BS: number;
+    S: number;
+    T: number;
+    W: number;
+    I: number;
+    A: number;
+    Ld: number;
+}
+
+export interface IDatabaseInjury {
+    injury: string;
+    effect: string;
+}
 export interface IDatabaseEquipment {
     list: string;
     equipment: string;

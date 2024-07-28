@@ -1,21 +1,26 @@
-warband;type;cost;M;WS;BS;S;T;W;I;A;Ld;rating;xp;rules;skills;animal;large;max;equipment;hero
-Skaven;Assassin Adept;60;6;4;4;4;3;1;5;1;7;5;20;Leader,Perfect Killer;Combat,Shooting,Academic,Strength,Speed,Skaven;;;1;SkavenHeroes;x
-Skaven;Eshin Sorcerer;45;5;3;3;3;3;1;4;1;6;5;8;Wizard;Academic,Speed,Skaven;;;1;SkavenHeroes;x
-Skaven;Black Skaven;40;6;4;3;4;3;1;5;1;6;5;8;;Combat,Shooting,Strength,Speed,Skaven;;;2;SkavenHeroes;x
-Skaven;Night Runner;20;6;2;3;3;3;1;4;1;4;5;0;;Combat,Shooting,Skaven;;;2;SkavenHenchmen;x
-Skaven;Verminkin;20;5;3;3;3;3;1;4;1;5;5;0;;;;;99;SkavenHenchmen;
-Skaven;Giant Rats;15;6;2;0;3;3;1;4;1;4;5;0;Animal;;x;;99;;
-Skaven;Rat Ogre;210;6;3;3;5;5;3;4;3;4;20;0;Fearsome,Stupid Giant,Animal,Large Target;;x;x;1;;
-Middenheimers;Captain;60;4;4;4;4;3;1;4;1;8;5;20;Leader;Combat,Shooting,Academic,Strength,Speed;;;1;MercenaryWarrior;x
-Middenheimers;Champion;35;4;4;3;4;3;1;3;1;7;5;8;;Combat,Shooting,Speed;;;1;MercenaryWarrior;x
-Middenheimers;Wulf Priest of Ulrich;60;4;4;3;4;3;1;3;1;7;5;8;;Combat,Shooting,Speed;;;1;MercenaryWarrior;x
-Middenheimers;Youngblood;15;4;2;2;3;3;1;3;1;6;5;0;;Combat,Shooting,Speed;;;2;MercenaryWarrior;x
-Middenheimers;Warriors;25;4;3;3;3;3;1;3;1;7;5;0;;;;;99;MercenaryWarrior;
-Middenheimers;Marksmen;25;4;3;3;3;3;1;3;1;7;5;0;;;;;7;MercenaryMarksman;
-Middenheimers;Swordsmen;35;4;4;3;3;3;1;3;1;7;5;0;Expert Swordsmen;;;;5;MercenaryWarrior;
-Cult of the Possessed;Magister;70;4;4;4;3;3;1;3;1;8;5;20;Leader,Wizard;Combat,Academic,Speed;;;1;Possessed;x
-Cult of the Possessed;Possessed;90;5;4;0;4;4;2;4;2;7;5;8;Fearsome,Mutations;Combat,Strength,Speed;;;2;;x
-Cult of the Possessed;Mutant;25;4;3;3;3;3;1;3;1;7;5;0;Mutations;Combat,Speed;;;2;Possessed;x
-Cult of the Possessed;Dark Souls;35;4;2;2;4;3;1;3;1;6;5;0;Immune to Psychology;;;;5;Darksouls;
-Cult of the Possessed;Brethren;25;4;3;3;3;3;1;3;1;7;5;0;;;;;99;Possessed;
-Cult of the Possessed;Beastmen;45;4;4;3;3;4;2;3;1;7;5;0;;;;;3;Possessed;
+warband;type;cost;M;WS;BS;S;T;W;I;A;Ld;rating;xp;rules;skills;animal;large;max;equipment;hero;ethnicity
+Skaven;Assassin Adept;60;6;4;4;4;3;1;5;1;7;5;20;Leader,Perfect Killer;Combat,Shooting,Academic,Strength,Speed,Skaven;;;1;SkavenHeroes;x;Skaven
+Skaven;Eshin Sorcerer;45;5;3;3;3;3;1;4;1;6;5;8;Wizard;Academic,Speed,Skaven;;;1;SkavenHeroes;x;Skaven
+Skaven;Black Skaven;40;6;4;3;4;3;1;5;1;6;5;8;;Combat,Shooting,Strength,Speed,Skaven;;;2;SkavenHeroes;x;Skaven
+Skaven;Night Runner;20;6;2;3;3;3;1;4;1;4;5;0;;Combat,Shooting,Skaven;;;2;SkavenHenchmen;x;Skaven
+Skaven;Verminkin;20;5;3;3;3;3;1;4;1;5;5;0;;;;;99;SkavenHenchmen;;Skaven
+Skaven;Giant Rats;15;6;2;0;3;3;1;4;1;4;5;0;Animal;;x;;99;;;Skaven
+Skaven;Rat Ogre;210;6;3;3;5;5;3;4;3;4;20;0;Fearsome,Stupid Giant,Animal,Large Target;;x;x;1;;;Skaven
+Middenheimers;Captain;60;4;4;4;4;3;1;4;1;8;5;20;Leader;Combat,Shooting,Academic,Strength,Speed;;;1;MercenaryWarrior;x;Human
+Middenheimers;Champion;35;4;4;3;4;3;1;3;1;7;5;8;;Combat,Shooting,Speed;;;1;MercenaryWarrior;x;Human
+Middenheimers;Wulf Priest of Ulrich;60;4;4;3;4;3;1;3;1;7;5;8;;Combat,Shooting,Speed;;;1;MercenaryWarrior;x;Human
+Middenheimers;Youngblood;15;4;2;2;3;3;1;3;1;6;5;0;;Combat,Shooting,Speed;;;2;MercenaryWarrior;x;Human
+Middenheimers;Warriors;25;4;3;3;3;3;1;3;1;7;5;0;;;;;99;MercenaryWarrior;;Human
+Middenheimers;Marksmen;25;4;3;3;3;3;1;3;1;7;5;0;;;;;7;MercenaryMarksman;;Human
+Middenheimers;Swordsmen;35;4;4;3;3;3;1;3;1;7;5;0;Expert Swordsmen;;;;5;MercenaryWarrior;;Human
+Cult of the Possessed;Magister;70;4;4;4;3;3;1;3;1;8;5;20;Leader,Wizard;Combat,Academic,Speed;;;1;Possessed;x;Human
+Cult of the Possessed;Possessed;90;5;4;0;4;4;2;4;2;7;5;8;Fearsome,Mutations;Combat,Strength,Speed;;;2;;x;Possessed
+Cult of the Possessed;Mutant;25;4;3;3;3;3;1;3;1;7;5;0;Mutations;Combat,Speed;;;2;Possessed;x;Human
+Cult of the Possessed;Dark Souls;35;4;2;2;4;3;1;3;1;6;5;0;Immune to Psychology;;;;5;Darksouls;;Human
+Cult of the Possessed;Brethren;25;4;3;3;3;3;1;3;1;7;5;0;;;;;99;Possessed;;Human
+Cult of the Possessed;Beastmen;45;4;4;3;3;4;2;3;1;7;5;0;;;;;3;Possessed;;Gor
+Sisters of Sigmar;Sigmarite Matriarch;70;4;4;4;3;3;1;4;1;8;5;20;Leader,Pray User;Combat,Academic,Strength,Speed,Sigmar;;;1;Sisters of Sigmar;x;Human
+Sisters of Sigmar;Sister Superior;35;4;4;3;3;3;1;3;1;7;5;8;;Combat,Academic,Strength,Speed,Sigmar;;;3;Sisters of Sigmar;x;Human
+Sisters of Sigmar;Augur;25;4;2;2;3;3;1;3;1;7;5;0;Blessed Sight, No Armour;Academic,Speed,Sigmar;;;1;Sisters of Sigmar;x;Human
+Sisters of Sigmar;Sigmarite Sisters;35;4;3;3;3;3;1;3;1;7;5;0;;;;;99;Sisters of Sigmar;;Human
+Sisters of Sigmar;Novices;15;4;2;2;3;3;1;3;1;6;5;0;;;;;10;Sisters of Sigmar;;Human
