@@ -119,7 +119,7 @@ export const WarriorTableEntry = ({ list, title }: { list: string[]; title: stri
     </tr> : null
 }
 const getEquipment = (warrior: IWarrior) : string[]=> {
-    const weapons = warrior.weapons?.map((weapon) => weapon.weapon) || [];
+    const weapons = warrior.weapons?.map((weapon) => weapon.quantity > 1 ? `${weapon.quantity}x ${weapon.weapon}` : weapon.weapon) || [];
     const wargear = warrior.wargear || [];
     return weapons.concat(wargear);
 }

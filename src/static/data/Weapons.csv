@@ -2,6 +2,7 @@ weapon;type;range;strength;traits
 Dagger;Melee;;as User;Enemy armour save
 Sword;Melee;;as User;Parry
 Club;Melee;;as User;Concussion
+Mace;Melee;;as User;Concussion
 Flail;Melee;;+2;Heavy,Two-handed
 Spear;Melee;;as User;Strike first,Unwieldy
 Halberd;Melee;;+1;Two-handed
@@ -20,3 +21,5 @@ Sigmarite Warhammer;Melee;;+1;Concussion,Holy Weapon
 Holy Relic;Wargear;;;Holy Relic
 Blessed Water;Wargear;;;Holy Relic
 Holy Tome;Wargear;;;Holy Relic
+Steel Whip;Melee;;as User;Cannot be parried,Whipcrack
+Double-handed Weapon;Melee;;+2;Two-handed,Strike last

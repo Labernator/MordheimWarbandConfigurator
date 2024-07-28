@@ -26,7 +26,7 @@ export const AddWarriorPage = () => {
                     <WarriorDropdown />
                     <WarriorSheet warrior={warrior} />
                     <WarriorHeadCount />
-                    {warrior.rules?.find((rule) => rule.rule === "Wizard") ? <SpellSelectionDropdown/> : null}
+                    {warrior.rules?.find((rule) => rule.rule === "Wizard" || rule.rule === "Pray User") ? <SpellSelectionDropdown/> : null}
                 </div>
             </div>
             <AddWarriorButton />

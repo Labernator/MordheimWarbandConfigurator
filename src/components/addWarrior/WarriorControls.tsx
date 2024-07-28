@@ -16,7 +16,7 @@ export const AddWarriorButton = () => {
     const warband = useAppSelector((state) => state.warband);
     const warrior = useAppSelector((state) => state.warrior);
     const delta = useAppSelector((state) => state.funds);
-    const enabled = warrior.name && warrior.name.length >= 3 && (!warrior.rules?.find((rule) => rule.rule === "Wizard") || warrior.spells?.length);
+    const enabled = warrior.name && warrior.name.length >= 3 && (!warrior.rules?.find((rule) => rule.rule === "Wizard" || rule.rule === "Pray User") || warrior.spells?.length);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const submit = () => {
@@ -40,7 +40,7 @@ export const AddWarriorButton = () => {
 };
 export const AddWarriorCloseButton = () => {
     const dispatch = useAppDispatch();
-    const navigate = useNavigate();  
+    const navigate = useNavigate();
     const navigateBack = () => {
         dispatch(loadWarrior(initialWarrior));
         dispatch(resetDelta())

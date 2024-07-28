@@ -20,6 +20,7 @@ export const MessageToast = () => {
     return message ? <div className="message-toast">
         <FontAwesomeIcon  className="message-icon"
             icon={faX}
+            onClick={() => dispatch(setMessage(""))}
         /> <div>{message}</div>
     </div> : null;
 };
