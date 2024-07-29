@@ -74,13 +74,11 @@ export const WarbandInfo = () => {
 
 export const WarriorSummary = () => {
     const warband = useAppSelector((state) => state.warband);
-    return <React.Fragment>
-        {warband.warriors.length > 0 ?
-            <table className="modern-table">
-                <tbody>
-                    {groupByFighterType(warband.warriors)}
-                </tbody>
-            </table> :
-            null}
-    </React.Fragment>
+    return <table className="modern-table">
+        <tbody>
+            {warband.warriors.length > 0 ?
+                groupByFighterType(warband.warriors) :
+                <tr><td>You have no warriors in your warband</td></tr>}
+        </tbody>
+    </table>
 };

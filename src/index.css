@@ -381,6 +381,10 @@ option:disabled {
     text-align: center;
 }
 
+.unit-stats {
+    /* font-size: 1em; */
+}
+
 .unit-card-header {
     font-weight: 700 !important;
 }
@@ -565,6 +569,12 @@ option:disabled {
 
 .pdf-unit-card>.unit-table>tbody>tr>.unit-card-header {
     padding: 0.7em 0 0.7em 0;
+    width: 15%;
+}
+
+.pdf-unit-card>.unit-table>tbody>tr>.unit-card-text>.warband-rules-section {
+    padding-bottom: 0.7em;
+
 }
 
 .pdf-unit-card>.unit-table>tbody>tr>.unit-card-text {

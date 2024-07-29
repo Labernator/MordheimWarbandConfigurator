@@ -25,26 +25,6 @@ export const HeaderSectionWithEdit = ({ warrior, editEnabled }: { warrior: IWarr
     </div>
 };
 
-export const WeaponsSection = ({ warrior }: { warrior: IWarrior }) => {
-    return warrior.weapons && warrior.weapons.length > 0 ?
-            <table className="weapon-table">
-                <thead>
-                    <tr>
-                        <th rowSpan={2} className="text-left">Weapon</th>
-                        <th className="text-center">Strength</th>
-                        <th colSpan={2} className="text-center">Traits</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {warrior.weapons.map((weapon) => <tr>
-                        <td className="text-left">{weapon.quantity > 1 ? `${weapon.quantity}x `: ''} {weapon.weapon}</td>
-                        <td>{weapon.strength}</td>
-                        <td colSpan={2} className="text-left">{weapon.traits}</td>
-                    </tr>)}
-                </tbody>
-            </table> : null
-};
-
 export const StatsSection = ({ unit }: { unit:  IWarrior }) => {
     return <React.Fragment>
         <table className="warrior-stats-table">
@@ -131,7 +111,13 @@ export const WarriorSheet = ({ warrior, isEditable }: { warrior: IWarrior; isEdi
             <table className="warrior-list-section">
                 <tbody>
                     <WarriorTableEntry list={warrior.skills || []} title="Skills" />
-                    <WarriorTableEntry list={(warrior.rules?.map((rule) => rule.rule) || []).concat(warrior.spells?.map((spell) => spell.name) || [])} title="Rules" />
+                    <WarriorTableEntry list={(warrior.rules?.map((rule) => {
+                        if (rule.rule === "Wizard" || rule.rule === "Priest") {
+                            return `${rule.rule} [${warrior.spells?.map((spell) => `${spell.name} (${spell.difficulty})`)}]`
+                        } else {
+                            return rule.rule
+                        }
+                    }) || [])} title="Rules" />
                     <WarriorTableEntry list={getEquipment(warrior)} title="Equipment" />
                 </tbody>
             </table>

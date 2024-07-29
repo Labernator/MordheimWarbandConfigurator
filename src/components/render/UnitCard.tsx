@@ -4,9 +4,7 @@ import React from "react";
 import { addFunds, addWeaponToStash } from "../../redux/slices/warbandSlice";
 import { removeWeapon } from "../../redux/slices/warriorSlice";
 import { useAppDispatch } from "../../redux/store";
-
 import { IFullEquipment, IWarrior } from "../../types/warrior";
-import { EditIcon } from "./Icons";
 
 export const HeaderSection = ({ unit, isPdf }: { unit: IWarrior; isPdf?: boolean }) => {
     return <div className="unit-name-bg">
@@ -18,8 +16,9 @@ export const HeaderSection = ({ unit, isPdf }: { unit: IWarrior; isPdf?: boolean
 };
 
 export const WeaponsSection = ({ warrior }: { warrior: IWarrior }) => {
+    const weapons = warrior.weapons?.filter((weapon) => weapon.type !== "Wargear");
     return <React.Fragment>
-        {warrior.weapons && warrior.weapons.length > 0 ?
+        {weapons && weapons.length > 0 ?
             <table className="unit-table unit-table-striped unit-weapons">
                 <thead>
                     <tr>
@@ -30,7 +29,7 @@ export const WeaponsSection = ({ warrior }: { warrior: IWarrior }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {warrior.weapons.map((weapon) => <tr>
+                    {weapons.map((weapon) => <tr>
                         <td className="text-left">{weapon.quantity > 1 ? `${weapon.quantity}x `: ''} {weapon.weapon}</td>
                         <td>{weapon.range || "Melee"}</td>
                         <td>{weapon.strength}</td>
@@ -113,10 +112,11 @@ export const StatsSection = ({ unit }: { unit:  IWarrior }) => {
 };
 
 export const ShortWargearSection = ({ unit }: { unit: IWarrior }) => {
-    return unit.wargear && unit.wargear.length > 0 ?
+    const wargear = unit.weapons?.filter((weapon) => weapon.type === "Wargear");
+    return wargear && wargear?.length > 0 ?
             <tr>
                 <td className="unit-card-header">WARGEAR</td>
-                <td className="unit-card-text">{unit.wargear.join(", ")}</td>
+                <td className="unit-card-text">{wargear.map((gear) => gear.weapon).join(", ")}</td>
             </tr> : null
 };
 
@@ -159,7 +159,8 @@ export const RulesSection = ({ unit }: { unit: IWarrior }) => {
         {unit.rules && unit.rules.length > 0 ?
             <tr>
                 <td className="unit-card-header">RULES</td>
-                <td className="unit-card-text">{unit.rules.map((rule) => <div className="warband-rules-section"><strong>{rule.rule}</strong>: {rule.effect}</div>)}</td>
+                <td className="unit-card-text">{unit.rules.map((rule) => <div className="warband-rules-section">
+                    <strong>{rule.rule}</strong>: {rule.rule === "Wizard" || rule.rule === "Priest" ? `${unit.spells?.map((spell) => `${spell.name} (Difficulty ${spell.difficulty}) - ${spell.effect}`)}` : rule.effect}</div>)}</td>
             </tr> :
             undefined}
     </React.Fragment>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faPrint } from "@fortawesome/free-solid-svg-icons";
+import { faBackward, faHome, faPrint } from "@fortawesome/free-solid-svg-icons";
 
 import { exportPdf } from "../utilities/pdfProvider";
 import { useAppSelector } from "../redux/store";
@@ -44,14 +44,16 @@ export const PdfPage = () => {
     return <React.Fragment>
         <h2>
             {warband.name}
+
             <FontAwesomeIcon icon={faHome} style={{ width: "2em", float:"right", paddingTop: "0.25em" }} onClick={() => navigate("/")} />
+            <FontAwesomeIcon icon={faBackward} style={{ width: "2em", float:"right", paddingTop: "0.25em" }} onClick={() => navigate("/warband-overview")} />
             </h2>
-        <div className="warband-overview">
+        {/* <div className="warband-overview">
             <div className="content-container">
                 <WarbandInfo />
                 <WarriorSummary />
             </div>
-        </div>
+        </div> */}
         <PdfControls />
         <PrintPage/>
     </React.Fragment>;
@@ -89,7 +91,7 @@ export const PdfUnitCard = ({ warrior }: { warrior: IWarrior }) => {
             <table className="unit-table">
                 <tbody>
                     <ShortWargearSection unit={warrior} />
-                    <SkillListsSection unit={warrior} />
+                    {/* <SkillListsSection unit={warrior} /> */}
                     <RulesSection unit={warrior} />
                 </tbody>
             </table>

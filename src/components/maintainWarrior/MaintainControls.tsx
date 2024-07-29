@@ -197,6 +197,7 @@ export const EquipmentDropdown = ({ type }: { type: IEquipmentType }) => {
         }
         const weaponOnWarrior = warrior.weapons?.find((equi) => equi.weapon === weapon.weapon);
         if (weaponOnWarrior) {
+            // TODO: make traits an array
             if (weapon.traits.includes("Two-handed") || weapon.traits.includes("Unwieldy") || weapon.traits.includes("Pair")) {
                 return true;
             }
