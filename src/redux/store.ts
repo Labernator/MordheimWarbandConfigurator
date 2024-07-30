@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import messageReducer from './slices/messageSlice';
 import warriorReducer from './slices/warriorSlice';
 import warbandReducer from './slices/warbandSlice';
-import fundsReducer from './slices/fundsSlice';
+import deltaReducer from './slices/deltaSlice';
 
 const reducer = {
     message: messageReducer,
     warrior: warriorReducer,
     warband: warbandReducer,
-    funds: fundsReducer,
+    delta: deltaReducer,
 };
 
 export const store = configureStore({reducer});

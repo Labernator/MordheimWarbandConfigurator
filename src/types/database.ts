@@ -23,7 +23,6 @@ export interface IDatabaseUnit {
     xp: number;
     rules: string;
     skills: string;
-    animal: string | null;
     large: string | null;
     max: number;
     equipment: string;

@@ -81,6 +81,9 @@ const warriorSlice = createSlice({
                 state.rules = [action.payload];
             }
         },
+        increaseXP(state) {
+            state.xp += 1;
+        },
         increaseStat(state, action: PayloadAction<string>) {
             switch (action.payload) {
                 case Stats.M:
@@ -117,6 +120,6 @@ const warriorSlice = createSlice({
     },
 });
 
-export const { addInjury, addWeapon, addWizardSpell, addSkill, increaseStat, setHeadCount, setWarriorName, loadWarrior, removeWeapon } = warriorSlice.actions
+export const { addInjury, addWeapon, addWizardSpell, addSkill, increaseStat, increaseXP,setHeadCount, setWarriorName, loadWarrior, removeWeapon } = warriorSlice.actions
 
 export default warriorSlice.reducer;

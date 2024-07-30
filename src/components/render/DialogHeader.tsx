@@ -2,14 +2,15 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faSquareCheck, faSquareXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
-import { resetDelta } from "../../redux/slices/fundsSlice";
+import { resetDelta } from "../../redux/slices/deltaSlice";
 import { addWarrior, removeFunds, updateWarrior } from "../../redux/slices/warbandSlice";
 import { initialWarrior, loadWarrior, setWarriorName } from "../../redux/slices/warriorSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
 
 export const DialogHeader = () => {
     const warrior = useAppSelector((state) => state.warrior);
-    const delta = useAppSelector((state) => state.funds);
+    const delta = useAppSelector((state) => state.delta);
+    const deltaFunds = delta.reduce((acc, curr) => acc + (curr.value || 0), 0);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const navigateBack = () => {
@@ -20,7 +21,7 @@ export const DialogHeader = () => {
     const submit = () => {
         dispatch(addWarrior(warrior));
         dispatch(setWarriorName(""))
-        dispatch(removeFunds(delta))
+        dispatch(removeFunds(deltaFunds))
         dispatch(resetDelta())
         navigate("/warband-overview");
     };
@@ -35,7 +36,8 @@ export const DialogHeader = () => {
 
 export const MaintainWarriorControls = () => {
     const warrior = useAppSelector((state) => state.warrior);
-    const delta = useAppSelector((state) => state.funds);
+    const delta = useAppSelector((state) => state.delta);
+    const deltaFunds = delta.reduce((acc, curr) => acc + (curr.value || 0), 0);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const navigateBack = () => {
@@ -45,7 +47,7 @@ export const MaintainWarriorControls = () => {
     };
     const submit = () => {
         dispatch(updateWarrior(warrior))
-        dispatch(removeFunds(delta))
+        dispatch(removeFunds(deltaFunds))
         dispatch(resetDelta())
         navigate("/warband-overview");
     };

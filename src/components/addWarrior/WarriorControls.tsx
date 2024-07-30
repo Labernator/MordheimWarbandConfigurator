@@ -1,6 +1,6 @@
 import { faAngleRight, faX } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { addDelta, resetDelta, setDelta } from "../../redux/slices/fundsSlice";
+import { addDelta, resetDelta } from "../../redux/slices/deltaSlice";
 import { addWarrior, removeFunds } from "../../redux/slices/warbandSlice";
 import { loadWarrior, initialWarrior, setWarriorName, setHeadCount, addWizardSpell } from "../../redux/slices/warriorSlice";
 import { useAppSelector, useAppDispatch } from "../../redux/store";
@@ -9,13 +9,12 @@ import { setMessage } from "../../redux/slices/messageSlice";
 import { useState, useEffect } from "react";
 import { IWarrior } from "../../types/warrior";
 import { getSpellOptions, getWarriorsListForWarband } from "../../utilities/dataBaseProvider";
-import { IDatabaseSpell } from "../../types/database";
-
 
 export const AddWarriorButton = () => {
     const warband = useAppSelector((state) => state.warband);
     const warrior = useAppSelector((state) => state.warrior);
-    const delta = useAppSelector((state) => state.funds);
+    const delta = useAppSelector((state) => state.delta);
+    const deltaFunds = delta.reduce((acc, curr) => acc + (curr.value || 0), 0);
     const enabled = warrior.name && warrior.name.length >= 3 && (!warrior.rules?.find((rule) => rule.rule === "Wizard" || rule.rule === "Priest") || warrior.spells?.length);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
@@ -26,14 +25,14 @@ export const AddWarriorButton = () => {
         dispatch(setMessage(`${warrior.type} purchased for ${delta} gc`))
         dispatch(addWarrior(warrior));
         dispatch(setWarriorName(""))
-        dispatch(removeFunds(delta))
+        dispatch(removeFunds(deltaFunds))
         dispatch(resetDelta())
         navigate("/warband-overview");
     };
     return <div className={`submit-button ${enabled ? "enabled" : "disabled"}`} onClick={submit}>
         <div>
             <div>Purchase {warrior.type} ({warrior.cost})</div>
-            <div style={{ fontSize: "0.7em" }}>new Bank account: ${warband.cash - delta}</div>
+            <div style={{ fontSize: "0.7em" }}>new Bank account: ${warband.cash - deltaFunds}</div>
         </div>
         <FontAwesomeIcon icon={faAngleRight}/>
     </div>
@@ -88,7 +87,8 @@ export const WarriorDropdown = () => {
         setSelectedWarrior(input);
         const warriorProfile = getWarriorFromOptions(input);
         dispatch(loadWarrior({ ...warriorProfile, name: warrior.name }));
-        dispatch(setDelta(warriorProfile.cost * warrior.headCount))
+        dispatch(resetDelta());
+        dispatch(addDelta({command:"loadWarrior", value: warriorProfile.cost * warrior.headCount}));
     };
     let nextAvailableUnit = warriorOptions.filter((listItem) => !isDisabled(listItem))[0];
     if (nextAvailableUnit === undefined) {
@@ -96,7 +96,9 @@ export const WarriorDropdown = () => {
     }
     useEffect(() => {
         dispatch(loadWarrior({ ...nextAvailableUnit, name: warrior.name }));
-        dispatch(setDelta(nextAvailableUnit.cost))
+        dispatch(resetDelta());
+        dispatch(addDelta({command:"loadWarrior", value: nextAvailableUnit.cost}));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     const [selectedWarrior, setSelectedWarrior] = useState<string>(nextAvailableUnit.type);
     return <select
@@ -115,7 +117,7 @@ export const WarriorHeadCount = () => {
         const oldHeadCount = warrior.headCount;
         setSelectedHeadCount(input);
         dispatch(setHeadCount(input));
-        dispatch(addDelta(warrior.cost * (input - oldHeadCount)))
+        dispatch(addDelta({command: "addHeadcount", value: warrior.cost * (input - oldHeadCount)}))
     };
     const [selectedHeadCount, setSelectedHeadCount] = useState<number>(headCountOptions[0]);
     return headCountOptions.length > 1 && !warrior.hero ? <div className="headcount-container"> <div># of warriors to add</div> <select

@@ -82,20 +82,26 @@ export const LocalStorageContainer = () => {
         dispatch(loadWarband(state));
         navigate("/warband-overview");
     }
+
     return <div className="modern-container" style={{ width: "100%" }}>
         <div className="content-container">
             <table className="modern-table">
                 <thead>
-                    <tr><td>Warband</td><td>Faction</td><td>Rating</td></tr>
+                    <tr>
+                        <td>Warband</td>
+                        <td>Faction</td>
+                        <td>Rating</td>
+                    </tr>
                 </thead>
                 <tbody>
                     {actualMordheimStorage.length > 0 ?
                         actualMordheimStorage.map((stateString) => {
                             const state: IWarband = JSON.parse(stateString);
-                            return <tr onClick={() => handleOnClick(state)}>
+                            const rating = getWarbandRating(state.warriors);
+                            return <tr onClick={() => handleOnClick(state)} key={`${state.name}${rating}`}>
                                 <td>{state.name}</td>
                                 <td>{state.faction || ""}</td>
-                                <td>{getWarbandRating(state.warriors)}</td>
+                                <td>{rating}</td>
                             </tr>;
                         }) :
                         <tr><td colSpan={3}>Nothing has been stored yet or you have cleared your cache</td></tr>

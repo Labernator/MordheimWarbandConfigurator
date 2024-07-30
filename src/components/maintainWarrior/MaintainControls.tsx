@@ -1,10 +1,10 @@
 import { faAngleRight, faAward, faChartBar, faHammer, faKitMedical, faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
-import { addDelta, resetDelta } from "../../redux/slices/fundsSlice";
+import { addDelta, resetDelta } from "../../redux/slices/deltaSlice";
 import { setMessage } from "../../redux/slices/messageSlice";
 import { removeFunds, updateWarrior } from "../../redux/slices/warbandSlice";
-import { addInjury, addSkill, addWeapon, increaseStat, initialWarrior, loadWarrior } from "../../redux/slices/warriorSlice";
+import { addInjury, addSkill, addWeapon, increaseStat, increaseXP, initialWarrior, loadWarrior } from "../../redux/slices/warriorSlice";
 import { useAppSelector, useAppDispatch } from "../../redux/store";
 import React, { useEffect, useState } from "react";
 import { IEquipmentType, IFullEquipment, IWarrior, Stats } from "../../types/warrior";
@@ -17,7 +17,8 @@ import { SpellSelectionDropdown } from "../addWarrior/WarriorControls";
 export const UpdateWarriorButton = () => {
     const warband = useAppSelector((state) => state.warband);
     const warrior = useAppSelector((state) => state.warrior);
-    const delta = useAppSelector((state) => state.funds);
+    const delta = useAppSelector((state) => state.delta);
+    const deltaFunds = delta.reduce((acc, curr) => acc + (curr.value || 0), 0);
     const enabled = warrior.name && warrior.name.length >= 3 && (!warrior.rules?.find((rule) => rule.rule === "Wizard") || warrior.spells?.length);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
@@ -28,14 +29,38 @@ export const UpdateWarriorButton = () => {
         dispatch(setMessage(`Items in cart purchased for ${delta} gc`))
         dispatch(updateWarrior(warrior));
         dispatch(loadWarrior(initialWarrior))
-        dispatch(removeFunds(delta))
+        dispatch(removeFunds(deltaFunds))
         dispatch(resetDelta())
         navigate("/warband-overview");
     };
     return <div className={`submit-button ${enabled ? "enabled" : "disabled"}`} onClick={submit}>
         <div>
-            <div>Purchase selected equipment (${delta})</div>
-            <div style={{ fontSize: "0.7em" }}>new Bank account: ${warband.cash - delta}</div>
+            <div>Purchase selected equipment</div>
+            <div style={{ fontSize: "0.7em" }}>new Bank account: ${warband.cash - deltaFunds}</div>
+        </div>
+        <FontAwesomeIcon icon={faAngleRight} />
+    </div>
+};
+
+export const DeleteWarriorButton = () => {
+    const warband = useAppSelector((state) => state.warband);
+    const warrior = useAppSelector((state) => state.warrior);
+    const delta = useAppSelector((state) => state.delta);
+    const deltaFunds = delta.reduce((acc, curr) => acc + (curr.value || 0), 0);
+    const enabled = warrior.name && warrior.name.length >= 3 && (!warrior.rules?.find((rule) => rule.rule === "Wizard") || warrior.spells?.length);
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+    const submit = () => {
+        if (!enabled) {
+            return;
+        }
+        dispatch(setMessage(`Warrior deleted`));
+        dispatch(loadWarrior(initialWarrior));
+    };
+    return <div className={`submit-button ${enabled ? "enabled" : "disabled"}`} onClick={submit}>
+        <div>
+            <div>Purchase selected equipment</div>
+            <div style={{ fontSize: "0.7em" }}>new Bank account: ${warband.cash - deltaFunds}</div>
         </div>
         <FontAwesomeIcon icon={faAngleRight} />
     </div>
@@ -93,6 +118,25 @@ export const StatsMaintenanceSection = () => {
         }
     };
     return <React.Fragment>
+        <div className="warband-control" style={{ paddingLeft: "0.5em" }}>
+            <FontAwesomeIcon icon={faChartBar} style={{ width: "1.5em" }} /> {`Change XP`}</div>
+        <table className="stats-maintain-table">
+            <tbody>
+<tr>
+                        <td>Experience</td>
+                        <td style={{ fontWeight: "bold" }}>{warrior.xp}</td>
+                        <td><FontAwesomeIcon
+                            icon={faPlusSquare}
+                            className={"stats-icon"}
+                            onClick={() => {
+                                    dispatch(addDelta({command: "addXP"}))
+                                    dispatch(increaseXP())
+                            }
+                            } /></td>
+                        <td style={{ fontSize: "0.8em" }}>{warrior.xp ? `max. ` : "maximized"}</td>
+                    </tr>
+            </tbody>
+        </table>
         <div className="warband-control" style={{ paddingLeft: "0.5em" }}>
             <FontAwesomeIcon icon={faChartBar} style={{ width: "1.5em" }} /> {`Change Stats`}</div>
         <table className="stats-maintain-table">
@@ -190,9 +234,9 @@ export const EquipmentDropdown = ({ type }: { type: IEquipmentType }) => {
     const dispatch = useAppDispatch();
     const warrior = useAppSelector((state) => state.warrior);
     const warband = useAppSelector((state) => state.warband);
-    const delta = useAppSelector((state) => state.funds);
+    const delta = useAppSelector((state) => state.delta);
     const isDisabledEntry = (weapon: IFullEquipment) => {
-        if (weapon.price > (warband.cash - delta)) {
+        if (weapon.price > (warband.cash - delta.reduce((acc, curr) => acc + (curr.value || 0), 0))) {
             return true;
         }
         const weaponOnWarrior = warrior.weapons?.find((equi) => equi.weapon === weapon.weapon);
@@ -227,7 +271,7 @@ export const EquipmentDropdown = ({ type }: { type: IEquipmentType }) => {
         if (foundweapon) {
             // setSelectedEquipment(foundweapon);
             dispatch(addWeapon(foundweapon));
-            dispatch(addDelta(foundweapon.price * warrior.headCount))
+            dispatch(addDelta({command: "addWeapon", value: foundweapon.price * warrior.headCount}))
             dispatch(setMessage(`${foundweapon.weapon} was added to cart.`))
         }
     };
