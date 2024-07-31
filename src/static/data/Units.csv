@@ -44,3 +44,30 @@ Kislevites;Warriors;25;4;3;3;3;3;1;3;1;7;5;0;;;;;KislevWarrior;;Human
 Kislevites;Cossacks;30;4;3;3;3;3;1;3;1;7;5;0;Hate Chaos;;;;KislevWarrior;;Human
 Kislevites;Streltsi;25;4;3;3;3;3;1;3;1;7;5;0;Gun Rest;;;3;KislevWarrior;;Human
 Kislevites;Trained Bear;125;6;3;0;5;5;2;2;2;6;20;0;Trained,Fearsome,Bear Hug,Fiecely Loyal,Animal,Large Target;;x;1;;;Animal
+Avelanders;Captain;60;4;4;4;3;3;1;4;1;8;5;20;Leader;Combat, Shooting, Academic, Strengh, Speed;;;1;AveMountainguard;x;Human
+Avelanders;Sergeant;35;4;4;3;3;3;1;3;1;7;5;8;;Combat, Strength, Speed;;;1;AveMountainguard;x;Human
+Avelanders;Bergjaegers;35;4;2;4;3;3;1;3;1;7;5;4;Set Traps;Shooting, Speed;;;2;AveScoutList;x;Human
+Avelanders;Youngblood;15;4;2;2;3;3;1;3;1;6;5;0;;Combat, Shooting, Speed;;;1;AveMountainguard;x;Human
+Avelanders;Mountainguards;30;4;4;3;3;3;1;3;1;7;5;0;;;;;;AveMountainguard;;Human
+Avelanders;Marksman;25;4;3;3;3;3;1;3;1;7;5;0;;;;;;AveMarksmen;;Human
+Avelanders;Halfling Scouts;20;4;2;4;2;2;1;4;1;8;5;0;Promotion;;;;;AveScoutList;;Human
+Beastmen;Beastman Chief;65;5;4;3;4;4;1;4;1;7;5;20;Leader;Combat, Strength, Speed, Beastmen;;;1;Beastmen;x;Beastmen
+Beastmen;Beastman Shaman;45;5;4;3;3;4;1;3;1;6;5;11;Wizard;Combat, Speed, Beastmen;;;1;Beastmen;x;Beastmen
+Beastmen;Bestigors ;45;5;4;3;4;4;1;3;1;7;5;8;;Combat, Strength, Beastmen;;;2;Beastmen;x;Beastmen
+Beastmen;Centigors ;80;8;4;3;4;4;1;2;1(2);7;5;8;Drunken, Woodland Dwelling, Trample;Combat, Strength, Beastmen;;;1;Beastmen;x;Centigors
+Beastmen;Ungor;25;5;3;3;3;3;1;3;1;6;5;0;Lowest of the Low;;;;;Ungor;;Ungor
+Beastmen;Gor;35;5;4;3;3;4;1;3;1;6;5;0;;;;;;Beastmen;;Beastmen
+Beastmen;Warhounds of Chaos;15;7;4;0;4;3;1;3;1;5;5;0;Animal;;x;;;;;Animal
+Beastmen;Minotaur;200;6;4;3;4;4;3;4;3;8;20;0;Fear, Bloodgreed, Large, Animal;;x;x;1;Beastmen;;Minotaur
+Undead;Vampire;110;6;4;4;4;4;2;5;2;8;5;20;Leader, Fear, Immune to Psychology, Immune to Poison;Combat, Academic, Strength, Speed;;;1;Undead;x;Vampire
+Undead;Necromancer;35;4;3;3;3;3;1;3;1;7;5;8;Wizard;Academic, Speed;;;1;Undead;x;Human
+Undead;Dregs;20;4;2;2;3;3;1;3;1;7;5;0;;Combat, Strength;;;3;Undead;x;Ghoul
+Undead;Zombies;15;4;2;0;3;3;1;1;1;5;5;0;Fear, May not run, Immune To Psychology, Immune to Posion, No Pain, No Brain;;x;;;;;Animal
+Undead;Ghouls;40;4;2;2;3;4;1;3;2;5;5;0;Fear;;;;;;;Ghoul
+Undead;Dire Wolves;50;9;3;0;4;3;1;2;1;4;5;0;May not run, Fear, Immune to Psychology, Immune to Posion, Unliving, No Pain;;x;;5;;;Animal
+Witch Hunter;Witch Hunter Captain;60;4;4;4;3;3;1;4;1;8;5;20;Leader, Hatred (All Spellcasters);Combat, Shooting, Academic, Strengh, Speed;;;1;WitchHunter;x;Human
+Witch Hunter;Warrior-Priest;40;4;3;3;3;3;1;3;1;8;5;12;Prayers; Academic, Strength , Speed;;;1;WitchHunter;x;Human
+Witch Hunter;Witch Hunters;25;4;3;3;3;3;1;3;1;7;5;8;Hatred (All Spellcasters);Combat, Shooting, Academic, Speed;;;3;WitchHunter;x;Human
+Witch Hunter;Zealots;20;4;2;2;3;3;1;3;1;7;5;0;;;;;;Zealots;;Human
+Witch Hunter;Flagellants;40;4;3;3;4;4;1;3;1;10;5;0;Fanatical;;;;5;Flagellants;;Human
+Witch Hunter;Warhound;15;6;4;0;4;3;1;4;1;5;5;0;;;x;;5;;;Animal
