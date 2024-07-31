@@ -127,3 +127,107 @@ KislevStreletsi;Handgun;35
 KislevStreletsi;Light Armour;20
 KislevStreletsi;Shield;5
 KislevStreletsi;Helmet;10
+AveScoutList;Dagger;2
+AveScoutList;Mace;3
+AveScoutList;Hammer;3
+AveScoutList;Axe;5
+AveScoutList;Sword;10
+AveScoutList;Bow;10
+AveScoutList;Long bow;15
+AveScoutList;Light Armour;20
+AveScoutList;Buckler;5
+AveScoutList;Helmet;10
+AveScoutList;Hunting Arrows;35
+AveMarksmen;Dagger;2
+AveMarksmen;Mace;3
+AveMarksmen;Hammer;3
+AveMarksmen;Axe;5
+AveMarksmen;Sword;10
+AveMarksmen;Crossbow;25
+AveMarksmen;Pistol;15
+AveMarksmen;Bow;10
+AveMarksmen;Long Bow;15
+AveMarksmen;Blunderpuss;30
+AveMarksmen;Handgun;35
+AveMarksmen;Hunting Rifle;200
+AveMarksmen;Light Armour;20
+AveMarksmen;Buckler;5
+AveMarksmen;Helmet;10
+AveMountainguard;Dagger;2
+AveMountainguard;Mace;3
+AveMountainguard;Hammer;3
+AveMountainguard;Axe;5
+AveMountainguard;Sword;10
+AveMountainguard;Spear;10
+AveMountainguard;Halberd;10
+AveMountainguard;Morning Star ;15
+AveMountainguard;Double-handed weapon;15
+AveMountainguard;Pistol;15
+AveMountainguard;Duelling Pistol;25
+AveMountainguard;Crossbow;25
+AveMountainguard;Bow;10
+AveMountainguard;Light Armour;20
+AveMountainguard;Heavy armour;50
+AveMountainguard;Shield;5
+AveMountainguard;Buckler;5
+AveMountainguard;Helmet;10
+Beastmen;Dagger;2
+Beastmen;Mace;3
+Beastmen;Hammer;3
+Beastmen;Axe;5
+Beastmen;Sword;10
+Beastmen;Halberd;10
+Beastmen;Double-handed weapon;15
+Beastmen;Light Armour;20
+Beastmen;Heavy armour;50
+Beastmen;Shield;5
+Beastmen;Helmet;10
+Ungor;Dagger;2
+Ungor;Mace;3
+Ungor;Hammer;3
+Ungor;Axe;5
+Ungor;Spear;10
+Ungor;Shield;5
+Undead;Dagger;2
+Undead;Mace;3
+Undead;Hammer;3
+Undead;Axe;5
+Undead;Sword;10
+Undead;Double-handed weapon;15
+Undead;Spear;10
+Undead;Halberd;10
+Undead;Bow;10
+Undead;Short Bow;5
+Undead;Light Armour;20
+Undead;Heavy armour;50
+Undead;Shield;5
+Undead;Helmet;10
+WitchHunter;Dagger;2
+WitchHunter;Mace;3
+WitchHunter;Hammer;3
+WitchHunter;Axe;5
+WitchHunter;Sword;10
+WitchHunter;Double-handed weapon;15
+WitchHunter;Crossbow;25
+WitchHunter;Pistol;15
+WitchHunter;Crossbow Pistol;35
+WitchHunter;Light Armour;20
+WitchHunter;Heavy armour;50
+WitchHunter;Shield;5
+WitchHunter;Buckler;5
+WitchHunter;Helmet;10
+Flagellants;Flail;15
+Flagellants;Morning Star ;15
+Flagellants;Double-handed weapon;15
+Zealots;Dagger;2
+Zealots;Mace;3
+Zealots;Hammer;3
+Zealots;Axe;5
+Zealots;Sword;10
+Zealots;Double-handed weapon;15
+Zealots;Spear;10
+Zealots;Bow;10
+Zealots;Short Bow;5
+Zealots;Light Armour;20
+Zealots;Shield;5
+Zealots;Helmet;10
