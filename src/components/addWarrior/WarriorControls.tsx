@@ -95,7 +95,7 @@ export const WarriorDropdown = () => {
         nextAvailableUnit = warriorOptions[0];
     }
     useEffect(() => {
-        dispatch(loadWarrior({ ...nextAvailableUnit, name: warrior.name }));
+        dispatch(loadWarrior({ ...nextAvailableUnit, name: `${nextAvailableUnit.type}_1` }));
         dispatch(resetDelta());
         dispatch(addDelta({command:"loadWarrior", value: nextAvailableUnit.cost}));
     // eslint-disable-next-line react-hooks/exhaustive-deps

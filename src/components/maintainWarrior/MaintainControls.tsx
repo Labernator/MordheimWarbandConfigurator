@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import { addDelta, resetDelta } from "../../redux/slices/deltaSlice";
 import { setMessage } from "../../redux/slices/messageSlice";
-import { removeFunds, updateWarrior } from "../../redux/slices/warbandSlice";
+import { removeFunds, removeWarrior, updateWarrior } from "../../redux/slices/warbandSlice";
 import { addInjury, addSkill, addWeapon, increaseStat, increaseXP, initialWarrior, loadWarrior } from "../../redux/slices/warriorSlice";
 import { useAppSelector, useAppDispatch } from "../../redux/store";
 import React, { useEffect, useState } from "react";
@@ -43,10 +43,7 @@ export const UpdateWarriorButton = () => {
 };
 
 export const DeleteWarriorButton = () => {
-    const warband = useAppSelector((state) => state.warband);
     const warrior = useAppSelector((state) => state.warrior);
-    const delta = useAppSelector((state) => state.delta);
-    const deltaFunds = delta.reduce((acc, curr) => acc + (curr.value || 0), 0);
     const enabled = warrior.name && warrior.name.length >= 3 && (!warrior.rules?.find((rule) => rule.rule === "Wizard") || warrior.spells?.length);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
@@ -55,12 +52,14 @@ export const DeleteWarriorButton = () => {
             return;
         }
         dispatch(setMessage(`Warrior deleted`));
-        dispatch(loadWarrior(initialWarrior));
+        dispatch(removeWarrior(warrior));
+        dispatch(loadWarrior(initialWarrior))
+        navigate("/warband-overview");
     };
-    return <div className={`submit-button ${enabled ? "enabled" : "disabled"}`} onClick={submit}>
+    return <div className={`delete-button ${enabled ? "enabled" : "disabled"}`} onClick={submit}>
         <div>
-            <div>Purchase selected equipment</div>
-            <div style={{ fontSize: "0.7em" }}>new Bank account: ${warband.cash - deltaFunds}</div>
+            <div>{warrior.headCount > 1 ? "Delete one member of this group" : "Delete Warrior from Roster"}</div>
+            <div style={{ fontSize: "0.7em" }}>This action cannot be undone.</div>
         </div>
         <FontAwesomeIcon icon={faAngleRight} />
     </div>

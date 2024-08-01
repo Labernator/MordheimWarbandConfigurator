@@ -3,7 +3,7 @@ import { useAppSelector } from "../redux/store";
 import { useNavigate } from "react-router-dom";
 import { MessageToast } from "../components/MessageToast";
 import { AddWarriorCloseButton } from "../components/addWarrior/WarriorControls";
-import { MaintainWarriorSheet, MetaSection, UpdateWarriorButton } from "../components/maintainWarrior/MaintainControls";
+import { DeleteWarriorButton, MaintainWarriorSheet, MetaSection, UpdateWarriorButton } from "../components/maintainWarrior/MaintainControls";
 export const MaintainWarriorPage = () => {
     const navigate = useNavigate();
     const warband = useAppSelector((state) => state.warband);
@@ -23,7 +23,9 @@ export const MaintainWarriorPage = () => {
                 <div className="modern-container">
                 <MaintainWarriorSheet warrior={warrior} />
                 <MetaSection />
+                <DeleteWarriorButton />
                 </div>
+
             </div>
             <UpdateWarriorButton />
 

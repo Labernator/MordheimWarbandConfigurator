@@ -31,6 +31,16 @@ const warbandSlice = createSlice({
             state.warriors.push({...warrior, position: state.warriors.length || 0});
             // state.cash -= state.payload.delta || 0;
         },
+        removeWarrior(state, action: PayloadAction<IWarrior>) {
+            const idx = state.warriors?.findIndex((item) => item.name === action.payload.name);
+            if (idx !== undefined) {
+                if (action.payload.headCount <= 1) {
+                    state.warriors?.splice(idx,1);
+                } else {
+                    state.warriors[idx].headCount--;
+                }
+            }
+        },
         updateWarrior(state, action: PayloadAction<IWarrior>) {
             state.warriors = state.warriors.filter((unit) => unit.name !== action.payload.name);
             state.warriors.push(action.payload);
@@ -48,6 +58,6 @@ const warbandSlice = createSlice({
     },
 });
 
-export const { addFunds, addWarrior, loadWarband, removeFunds, setWarbandFaction, setWarbandName, updateWarrior, addWeaponToStash } = warbandSlice.actions
+export const { addFunds, addWarrior, loadWarband, removeFunds, removeWarrior, setWarbandFaction, setWarbandName, updateWarrior, addWeaponToStash } = warbandSlice.actions
 
 export default warbandSlice.reducer;
