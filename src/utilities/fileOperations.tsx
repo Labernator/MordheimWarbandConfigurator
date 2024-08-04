@@ -1,6 +1,3 @@
-import { useNavigate } from "react-router-dom";
-import { loadWarband } from "../redux/slices/warbandSlice";
-import { useAppDispatch } from "../redux/store";
 import { IWarband } from "../types/warband";
 import { getWarbandRating } from "./warbandProvider";
 

@@ -1,13 +1,11 @@
 import { faAngleRight, faAward, faChartBar, faHammer, faKitMedical, faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
-import { addDelta, resetDelta } from "../../redux/slices/deltaSlice";
 import { setMessage } from "../../redux/slices/messageSlice";
-import { removeFunds, removeWarrior, updateWarrior } from "../../redux/slices/warbandSlice";
-import { addInjury, addSkill, addWeapon, increaseStat, increaseXP, initialWarrior, loadWarrior } from "../../redux/slices/warriorSlice";
+import { addInjury, addSkill, addWeapon, increaseStat, increaseXP, loadWarrior, addDelta, resetDelta, removeFunds, removeWarrior, updateWarrior } from "../../redux/slices";
 import { useAppSelector, useAppDispatch } from "../../redux/store";
 import React, { useEffect, useState } from "react";
-import { IEquipmentType, IFullEquipment, IWarrior, Stats } from "../../types/warrior";
+import { IEquipmentType, IFullEquipment, initialWarrior, IWarrior, Stats } from "../../types/warrior";
 import { getWarriorMeleeWeaponOptions, getWarriorRangedWeaponOptions, getWarriorWargearOptions } from "../../utilities/unitProvider";
 import { StatsSection, MaintainWeaponsSection, ShortWargearSection, SkillListsSection, ShortRulesSection } from "../render/UnitCard";
 import { HeaderSectionWithEdit } from "../addWarrior/WarriorSheet";
@@ -31,7 +29,7 @@ export const UpdateWarriorButton = () => {
         dispatch(loadWarrior(initialWarrior))
         dispatch(removeFunds(deltaFunds))
         dispatch(resetDelta())
-        navigate("/warband-overview");
+        navigate("/overview");
     };
     return <div className={`submit-button ${enabled ? "enabled" : "disabled"}`} onClick={submit}>
         <div>
@@ -54,7 +52,7 @@ export const DeleteWarriorButton = () => {
         dispatch(setMessage(`Warrior deleted`));
         dispatch(removeWarrior(warrior));
         dispatch(loadWarrior(initialWarrior))
-        navigate("/warband-overview");
+        navigate("/overview");
     };
     return <div className={`delete-button ${enabled ? "enabled" : "disabled"}`} onClick={submit}>
         <div>

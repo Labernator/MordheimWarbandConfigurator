@@ -1,8 +1,7 @@
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
-import { IWarband } from "../types/warband";
 
-export const exportPdf = async (warband: IWarband, pdfName: string) => {
+export const exportPdf = async (pdfName: string) => {
     const jsPdf = new jsPDF("landscape", "mm", "a4", true);
     let canvas: HTMLCanvasElement;
     const container = Array.from(document.querySelectorAll(".pdf-container"));

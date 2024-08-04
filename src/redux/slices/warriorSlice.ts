@@ -1,30 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IFullEquipment, IRules, IWarrior, Stats } from "../../types/warrior";
+import { IFullEquipment, initialWarrior, IRules, IWarrior, Stats } from "../../types/warrior";
 import { IDatabaseSpell } from "../../types/database";
-
-export const initialWarrior: IWarrior = {
-    name: "",
-    type: "",
-    cost: 0,
-    xp: 0,
-    A: 0,
-    M: 0,
-    WS: 0,
-    BS: 0,
-    Ld: 0,
-    W: 0,
-    T: 0,
-    S: 0,
-    I: 0,
-    rating: 5,
-    max: 99,
-    totalCost: 0,
-    headCount: 1,
-    equipment: "",
-    hero: false,
-    position: 0,
-    ethnicity: ""
-};
 
 const warriorSlice = createSlice({
     name: 'warrior',
@@ -66,6 +42,9 @@ const warriorSlice = createSlice({
             } else {
                 state.spells = [action.payload];
             }
+        },
+        setSpell(state, action: PayloadAction<IDatabaseSpell>) {
+            state.spells = [action.payload];
         },
         addInjury(state, action: PayloadAction<string>) {
             if (state.injuries) {
@@ -120,6 +99,6 @@ const warriorSlice = createSlice({
     },
 });
 
-export const { addInjury, addWeapon, addWizardSpell, addSkill, increaseStat, increaseXP,setHeadCount, setWarriorName, loadWarrior, removeWeapon } = warriorSlice.actions
+export const { addInjury, addWeapon, addWizardSpell, addSkill, increaseStat, increaseXP,setHeadCount, setWarriorName, loadWarrior, removeWeapon, setSpell } = warriorSlice.actions
 
 export default warriorSlice.reducer;

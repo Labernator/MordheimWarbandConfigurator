@@ -23,3 +23,14 @@ Blessed Water;Wargear;;;Holy Relic
 Holy Tome;Wargear;;;Holy Relic
 Steel Whip;Melee;;as User;Cannot be parried,Whipcrack
 Double-handed Weapon;Melee;;+2;Two-handed,Strike last
+Axe;Melee;;as User;Cutting edge
+Morning Star;Melee;;+1;Heavy,Difficult to use
+Duelling Pistol;Ranged;10;4;Accuracy,Prepare Shot,Cutting edge,Hand-to-Hand
+Pistol;Ranged;6;4;Prepare Shot,Cutting edge,Hand-to-Hand
+Crossbow;Ranged;30;4;Move or fire
+Bow;Ranged;24;3;
+Longbow;Ranged;30;3;
+Short Bow;Ranged;16;3;
+Blunderbuss;Ranged;16;3;Shot,Fire Once
+Handgun;Ranged;24;4;Prepare Shot,Cutting edge
+Hunting Rifle;Ranged;48;4;Move or fire,Prepare Shot,Cutting edge,Pick Target

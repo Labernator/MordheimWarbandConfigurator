@@ -12,18 +12,202 @@ body {
 .container {
     margin: 0 1em;
     max-width: var(--ifm-container-width);
-    height: 100%;
+    height: calc(100% - 4em);
+    overflow: scroll;
+}
+
+.inner-container {
+    width: calc(100% - 2px);
 }
 
 :root {
+    --color-emphasis: #0969da;
+    --color-not-ok: #d84f2a;
+    --color-light: #f6f8fa;
+    --color-ok: #1f883d;
+    --color-ok-font: #ffffff;
+    --color-darker: #d0d7de;
     --ifm-container-width: 800px;
-    --background-color: #d8e2e2da;
-    --font-color: #454a50;
-    --ok-color: #C6D0C2;
-    --not-ok-color: #e97f7f;
-    --focus-color: #4DC2ED;
+    --font-color: #495057;
+    --ok-color: #9496a5;
+    --not-ok-color: #d84f2a;
+    --focus-color: #d8dfed;
+    --emphasize-color: #9496a5;
+}
+.input-container {
+    width: 100%;
+    position: relative;
+    padding-bottom: 1em;
 }
 
+.input-field {
+    width: calc(100% - 1.5rem);
+    height: 2.25em;
+    padding: .375em .75em;
+    font-size: 1rem;
+    border-radius: .25em;
+    font-weight: bold;
+    border: 1px solid var(--color-darker)
+}
+
+.input-label {
+    position: absolute;
+    top: -0.6em;
+    left: 1em;
+    background: white;
+    font-size: 0.7em;
+}
+
+.input-icon {
+    position: absolute;
+    z-index: 1;
+    right: 1em;
+    top: 1.15em;
+}
+
+.input-icon-ok {
+    color: var(--color-emphasis)
+}
+.input-icon-not-ok {
+    color: var(--color-not-ok)
+}
+.selected {
+    background-color: color-mix(in srgb, var(--color-emphasis) 70%, white);
+    color: var(--color-ok-font);
+}
+.emphasis-button {
+    background-color: var(--color-emphasis) !important;
+    color: var(--color-ok-font) !important;
+}
+
+.dropdown-box {
+    width: calc(100% + 1px);
+    height: 3.5em;
+    padding: .375em .75em;
+    font-size: 1rem;
+    border-radius: .25em;
+    font-weight: bold;
+    color: var(--font-color);
+    background: var(--color-light);
+    border: 1px solid var(--color-emphasis);
+    appearance: none;
+}
+
+.button {
+    height: 3.5em;
+    padding: .375em .75em;
+    border-radius: .25em;
+    font-weight: bold;
+    background: var(--color-darker);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.stats-table {
+    text-align: center;
+    table-layout: fixed;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.table td {
+    padding: 0.7em 0em;
+    border-bottom: 0.1em solid var(--color-light);
+}
+
+.table thead {
+    font-weight: bold;
+}
+
+.table>thead>tr>td{
+    border-bottom: 0.1em solid var(--color-emphasis);
+}
+
+.table-sumline {
+    border-top: 0.15em solid color-mix(in srgb, var(--color-emphasis) 70%, white);
+}
+
+.section-container {
+    border-radius: 0.15em;
+    box-shadow: 0px 0px 0px 1px var(--color-darker), 0px 2px 0px 0px var(--color-darker);
+    border-top: 0.2em solid var(--color-emphasis);
+    padding: 1em;
+    width: calc(100% - 2.1em);
+    margin-left: 1px;
+    margin-bottom: 1em;
+}
+
+.header-1 {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-bottom: 0.5em;
+}
+
+.list-item {
+    padding: 0.7em 0em;
+    font-size: 1.1em;
+    padding: 0.7em 0.7em;
+    font-size: 1.1em;
+    box-shadow: 0px 0px 0px 1px var(--color-darker), 0px 2px 0px 0px var(--color-darker);
+    border-bottom: 0.15em solid;
+    border-radius: 0.25em;
+    margin-bottom: 0.5em;
+}
+
+.list-item-icon {
+    width: 1.5em;
+    padding-right: 0.5em;
+    color: color-mix(in srgb, var(--color-emphasis) 70%, white);
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    font-size: 0.85em;
+    justify-content: space-evenly;
+    height: 6em;
+    background-color: var(--color-light);
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+    border-radius: 0.25em;
+    color: color-mix(in srgb, var(--color-emphasis) 70%, white);
+}
+
+.footer-icon {
+    color: var(--color-ok-font);
+    background-color: color-mix(in srgb, var(--color-emphasis) 70%, white);
+    height: 2em;
+    padding: 0.5em 1em;
+    border-radius: 0.25em;
+}
+
+.number-selection-container {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0.5em;
+}
+
+.number-selection {
+    padding: 0.7em 1.2em;
+    font-size: 1.2em;
+    background-color: var(--color-light);
+    border: 1px solid var(--color-emphasis);
+    border-radius: 0.25em;
+}
 h2 {
     /* color: #e3a453; */
     color: var(--font-color);
@@ -31,7 +215,7 @@ h2 {
     /* text-shadow: 1px 1px #000; */
 }
 h4 {
-    color: #e3a453;
+    color: var(--font-color);
     font-size: 1.4em;
     text-shadow: 1x 1px #000;
 }
@@ -42,80 +226,15 @@ h3 {
 }
 
 .main-content {
-    /* background: url(static/pictures/dark-texture-bg.jpg) repeat-y center center fixed;
-    background-size: cover; */
-    background-color: var(--background-color);
     display: block;
     width: 100%;
     height: calc(100% - 2em);
     padding: 1em 0em;
-    overflow: scroll;
     position: absolute;
 }
 
-.warband-tile-xhBb {
-    background: url(static/pictures/tile-blank.jpg) top/cover no-repeat;
-    border-radius: 0.5em;
-    display: flex;
-    flex-direction: column;
-    margin: 0.5em;
-    transition: .2s;
-    height: 10em;
-    width: 10em;
-    text-align: center;
-}
 
-.warbandTile_xHBb {
-    background: url(static/pictures/tile-blank.jpg) top/cover no-repeat;
-    border-radius: 0.5em;
-    display: flex;
-    flex-direction: column;
-    margin: 0.5em;
-    transition: .2s;
-    height: 10em;
-    width: 10em;
-    text-align: center;
-}
 
-.warband-tile-xhBb>h3 {
-    margin: 0;
-
-}
-
-.skaven {
-    background-image: url(static/pictures/skaven-logo-1091215167.png);
-    margin-left: 2em;
-    max-width: 65%;
-}
-
-.possessed {
-    background-image: url(static/pictures/symbol-of-chaos.png);
-    margin-left: 1.5em;
-    max-width: 65%;
-}
-
-.middenheim {
-    background-image: url(static/pictures/middenheim.png);
-    margin-left: 1.5em;
-    max-width: 65%;
-}
-
-.warband-input {
-    -webkit-appearance: none;
-    appearance: none;
-    /* background: var(--ifm-navbar-search-input-background-color) no-repeat .75rem center/1rem 1rem; */
-    background-image: url(static/pictures/light-texture-bg-sm.jpg);
-    border: none;
-    /* border-radius: 2rem; */
-    color: var(--ifm-navbar-search-input-color);
-    cursor: text;
-    display: inline-block;
-    font-size: .9em;
-    height: 2em;
-    padding: 0 .5em 0 1em;
-    width: 20em;
-    margin: 0.5em;
-}
 
 .new-warbands {
     display: flex;
@@ -131,7 +250,7 @@ h5 {
     font-weight: 600;
 }
 
-.warband-overview {
+.overview {
     background-image: url(static/pictures/light-texture-bg-sm.jpg);
 
 }
@@ -139,6 +258,11 @@ h5 {
 .warband-control {
     padding: 0.7em 0em;
     font-size: 1.1em;
+    padding: 0.7em 0.7em;
+    font-size: 1.1em;
+    box-shadow: 0px 0px 0px 1px var(--color-darker), 0px 2px 0px 0px var(--color-darker);
+    border-radius: 0.25em;
+    margin-bottom: 0.5em;
 }
 
 .warband-control-icon {
@@ -269,15 +393,15 @@ h5 {
 .wrong {
     /* border-bottom: 3px solid #a05236 !important;
     border-left: 1em solid #a05236 !important; */
-    border-bottom: 3px solid var(--not-ok-color) !important;
-    border-left: 1em solid var(--not-ok-color) !important;
+    /* border-bottom: 3px solid var(--not-ok-color) !important;
+    border-left: 1em solid var(--not-ok-color) !important; */
 }
 
 .correct {
     /* border-bottom: 3px solid #40826D !important;
     border-left: 1em solid #40826D !important; */
-    border-bottom: 3px solid var(--ok-color) !important;
-    border-left: 1em solid var(--ok-color)  !important;
+    /* border-bottom: 3px solid var(--ok-color) !important;
+    border-left: 1em solid var(--ok-color)  !important; */
 }
 
 option:disabled {
@@ -392,17 +516,8 @@ option:disabled {
     text-align: center;
 }
 
-.unit-stats {
-    /* font-size: 1em; */
-}
 
-.unit-card-header {
-    font-weight: 700 !important;
-}
 
-.unit-card-text {
-    /* font-size: 0.8em; */
-}
 
 .unit-weapons>tbody>tr>td {
     text-align: left;
@@ -415,19 +530,6 @@ option:disabled {
 
 }
 
-.unit-weapons {
-    /* border-bottom: 2px solid #a05236; */
-}
-
-.bg-underhive-dark {
-    background-color: #9496a5;
-    color: white;
-}
-
-.bg-underhive-light {
-    background-color: #d8dfed;
-    color: black;
-}
 
 .unit-stats thead tr th {
     border-bottom: 2px solid #324a5f;
@@ -631,38 +733,46 @@ option:disabled {
 }
 
 .tooltip {
-    font-size: 0.7em;
+    font-size: 0.9em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    color: var(--color-emphasis)
 }
 
-
-
-
 .dialog-warrior-sheet {
-    margin-bottom: 2em;
+    padding-bottom: 2em;
     display: flex;
     flex-direction: column;
     font-size: 1.1em;
+    border-bottom: 0.15em solid color-mix(in srgb, var(--color-emphasis) 70%, white);;
 }
 
-.warrior-name-background {
-    height: 4em;
-    background-image: url(/src/static/pictures/bg-menu-sm.png);
-    background-repeat: repeat-x;
-    background-size: cover;
-    position: relative;
-    color: #e3a453;
-    margin: 1em 0em;
+.warrior-name-container {
+    color: color-mix(in srgb, var(--color-emphasis) 70%, white);
+    margin-bottom: 1em;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .warrior-name {
-    padding-left: 1em;
     font-weight: 700;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     font-size: 1.2em;
 }
+
+.warrior-card-edit {
+    height: 1.2em;
+}
+.warrior-cost {
+    border-radius: 0.25em;
+    display: flex;
+    align-items: center;
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
 .warrior-type {
     font-size: 0.8em;
 }
@@ -686,14 +796,11 @@ option:disabled {
     padding: .3rem;
     vertical-align: top;
 }
-.warrior-list-section tbody tr:nth-of-type(odd) {
-    /* background-color: rgba(0, 0, 0, .05); */
-}
 
 .warrior-list-section td:first-child {
     width: 25%;
-
-    border-right: 2px solid #a05236;
+    font-weight: bold;
+    border-right: 2px solid color-mix(in srgb, var(--color-emphasis) 70%, white);;
 }
 
 .warrior-list-section td:nth-child(2) {
@@ -779,8 +886,8 @@ option:disabled {
     height: 3.5em;
     /* border-left: solid 1em #40826D;
     border-bottom: solid 3px #40826D; */
-    border-left: solid 1em var(--ok-color);
-    border-bottom: solid 3px var(--ok-color);
+    /* border-left: solid 1em var(--ok-color);
+    border-bottom: solid 3px var(--ok-color); */
 }
 
 .input {
@@ -791,10 +898,11 @@ option:disabled {
     color: #495057;
     border-top: 1px solid #ced4da;
     border-right: 1px solid #ced4da;
+    border-left: 1px solid #ced4da;
 }
 
 .input-dimensions {
-    /* width: calc(100% - 3.5rem); */
+    width: calc(100% - 1.5rem);
     height: calc(2.25em + 2px);
 }
 
@@ -850,7 +958,6 @@ option:disabled {
 }
 
 .warrior-stats-table {
-    width: 100%;
     table-layout: fixed;
     border-collapse: collapse;
     margin-bottom: 1em;
@@ -914,25 +1021,39 @@ option:disabled {
 }
 
 .tabstrip {
-    font-size: 1.1em;
+    font-size: 1.2em;
     font-weight: bold;
     display: flex;
     width: 100%;
-    border-bottom: 1px solid #d8dfed;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-emphasis) 70%, white);
 }
 .tab {
     padding:0.7em
 }
 
 .focused {
-    background: #d8dfed;
+    background: color-mix(in srgb, var(--color-emphasis) 70%, white);
+    color: var(--color-ok-font);
+    border-radius: 0.25em;
+}
+
+.warrior-hero-icon {
+    position: absolute;
+    right: 0.7em;
+    bottom: 0.7em;
+    height: 1.5em;
+    color: color-mix(in srgb, var(--color-emphasis) 70%, white);
 }
 
 .warrior-card {
     background: white;
-    border-radius: 10px;
-    padding: 0.3em;
-    margin-bottom: 0.2em;
+    padding: 0.7em;
+    padding-bottom: 2em;
+    border-bottom: 0.15em solid;
+    box-shadow: 0px 0px 0px 1px var(--color-darker), 0px 2px 0px 0px var(--color-darker);
+    border-radius: 0.25em;
+    margin-bottom: 1em;
+    position: relative;
 }
 
 .stats-maintain-table {
@@ -946,3 +1067,4 @@ option:disabled {
         height: 2em;
         color: #e3a453;
 }
+

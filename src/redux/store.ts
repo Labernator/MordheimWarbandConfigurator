@@ -4,12 +4,14 @@ import messageReducer from './slices/messageSlice';
 import warriorReducer from './slices/warriorSlice';
 import warbandReducer from './slices/warbandSlice';
 import deltaReducer from './slices/deltaSlice';
+import pdfReducer from './slices/pdfSlice';
 
 const reducer = {
     message: messageReducer,
     warrior: warriorReducer,
     warband: warbandReducer,
     delta: deltaReducer,
+    pdf: pdfReducer
 };
 
 export const store = configureStore({reducer});

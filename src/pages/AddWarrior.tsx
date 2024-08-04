@@ -1,9 +1,17 @@
 import React, { useEffect } from "react";
-import { useAppSelector } from "../redux/store";
+import { useAppDispatch, useAppSelector } from "../redux/store";
 import { useNavigate } from "react-router-dom";
-import { AddWarriorButton, AddWarriorCloseButton, SpellSelectionDropdown, WarriorDropdown, WarriorHeadCount, WarriorNameInput } from "../components/addWarrior/WarriorControls";
 import { WarriorSheet } from "../components/addWarrior/WarriorSheet";
+import { WarriorNameInput } from "../components/Input";
+import { MaintainFooter } from "../components/Footer";
+import { loadWarrior, resetDelta, addWarrior, removeFunds } from "../redux/slices";
+import { WarriorSelection } from "../components/Dropdown";
+import { SpellSelection } from "../components/List";
+import { PurchaseWeapons } from "../components/Tabstrip";
+import { WarriorHeadCountSelection } from "../components/NumberSelector";
+import { initialWarrior } from "../types/warrior";
 export const AddWarriorPage = () => {
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const warband = useAppSelector((state) => state.warband);
     useEffect(() => {
@@ -12,26 +20,38 @@ export const AddWarriorPage = () => {
         }
     }, [navigate, warband]);
     const warrior = useAppSelector((state) => state.warrior);
-    console.log(warrior.rules)
+    const delta = useAppSelector((state) => state.delta);
+    const deltaFunds = delta.reduce((acc, curr) => acc + (curr.value || 0), 0);
+    const enabled = !!warrior.name &&
+        warrior.name.length >= 3 &&
+        !!(!warrior.rules?.find((rule) => rule.rule === "Wizard" || rule.rule === "Priest") || warrior.spells?.length) &&
+        deltaFunds < warband.cash;
+    const addWarriorSaga = () => {
+        dispatch(addWarrior(warrior));
+        dispatch(loadWarrior(initialWarrior))
+        dispatch(removeFunds(deltaFunds))
+        dispatch(resetDelta())
+        navigate("/overview");
+    }
     return <React.Fragment>
-        <div id="new-warbands" className="new-warbands">
-            <div>
-                <div className="dialog-headerer">
-                    <h2>Add Warrior</h2>
-                    <AddWarriorCloseButton />
-                </div>
+        <div>
+            <h2>Add Warrior</h2>
 
-                <div className="content-container warband-overview">
-                    <WarriorNameInput />
-                    <WarriorDropdown />
-                    <WarriorSheet warrior={warrior} />
-                    <WarriorHeadCount />
-                    {warrior.rules?.find((rule) => rule.rule === "Wizard" || rule.rule === "Priest") ? <SpellSelectionDropdown/> : null}
-                </div>
+            <div className="section-container">
+                <WarriorNameInput />
+                <WarriorSelection />
+                {!!warrior.type ?
+                    <React.Fragment>
+                        {warrior.hero ? null : <WarriorHeadCountSelection />}
+                        <WarriorSheet warrior={warrior} />
+                        {warrior.equipment ? <PurchaseWeapons /> : null}
+                    </React.Fragment> :
+                    null}
+
+                {warrior.rules?.find((rule) => rule.rule === "Wizard" || rule.rule === "Priest") ? <SpellSelection /> : null}
             </div>
-            <AddWarriorButton />
-
         </div>
+        <MaintainFooter submitAction={addWarriorSaga} isEnabled={enabled} />
 
     </React.Fragment>;
 };

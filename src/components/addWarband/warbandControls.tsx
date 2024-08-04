@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { isMordheimConfigWarband, IWarband } from "../../types/warband";
 import { getWarbandRating } from "../../utilities/warbandProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleRight, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faAngleRight, faArrowRight, faCircle, faCircleXmark, faX } from "@fortawesome/free-solid-svg-icons";
 
 export const WarbandNameInput = () => {
     const dispatch = useAppDispatch();
@@ -21,10 +21,10 @@ export const WarbandNameInput = () => {
             dispatch(setWarbandName(txt));
         }
     };
-    return <div style={{paddingTop: "1em"}}className="name-input-container"><input
+    return <div style={{paddingTop: "1em"}}className="name-input-container"><div style={{width: "100%"}}><input
         onChange={(e: any) => onChangeHandler(e.target.value)}
         placeholder="Warband Name *"
-        className={`input input-dimensions ${isIncorrect ? "wrong" : "correct"}`} />
+        className={`input input-dimensions ${isIncorrect ? "wrong" : "correct"}`} ></input><FontAwesomeIcon icon={faCircleXmark} className="input-icon" style={{color: "red"}}/></div>
         <div className="name-info-text">* required (min. 3 Characters)</div></div>
 };
 
@@ -56,7 +56,7 @@ export const SelectWarbandButton = () => {
     const navigate = useNavigate();
     const submit = () => {
         dispatch(loadWarband({...initialWarband, faction, name, limit: getWarbandMetadata(faction || "").limit}));
-        navigate("/warband-overview");
+        navigate("/overview");
     };
     return <div className={`create-button ${enabled ? "enabled" : "disabled"}`} onClick={submit}>
         <div>
@@ -80,7 +80,7 @@ export const LocalStorageContainer = () => {
     });
     const handleOnClick = (state: IWarband) => {
         dispatch(loadWarband(state));
-        navigate("/warband-overview");
+        navigate("/overview");
     }
 
     return <div className="modern-container" style={{ width: "100%" }}>
@@ -127,9 +127,7 @@ export const WarbandLoader = () => {
                 dispatch(loadWarband(warband));
                 const myStorage = localStorage;
                 myStorage.setItem(`${warband.name} - ${warband.faction} (${getWarbandRating(warband.warriors)})`, JSON.stringify(warband));
-                navigate("/warband-overview")
-                // e.preventDefault();
-                // e.stopPropagation();
+                navigate("/overview")
             };
             reader.readAsText((document.querySelector("#file-uploader") as HTMLInputElement)?.files?.item(0) as File);
         }}

@@ -38,7 +38,7 @@ export const groupByFighterType = (warriors: IWarrior[]): JSX.Element[] => {
             <td>{value}x</td>
         </tr>);
     }
-    rows.push(<tr style={{ backgroundColor: "rgba(0, 0, 0, .00)", borderTop: "2px solid #a05236" }}>
+    rows.push(<tr className="table-sumline">
         <td>
             <strong>Total:</strong>
         </td>

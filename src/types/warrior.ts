@@ -1,5 +1,29 @@
 import { IDatabaseSpell } from "./database";
 
+export const initialWarrior: IWarrior = {
+    name: "",
+    type: "",
+    cost: 0,
+    xp: 0,
+    A: 0,
+    M: 0,
+    WS: 0,
+    BS: 0,
+    Ld: 0,
+    W: 0,
+    T: 0,
+    S: 0,
+    I: 0,
+    rating: 5,
+    max: 99,
+    totalCost: 0,
+    headCount: 1,
+    equipment: "",
+    hero: false,
+    position: 0,
+    ethnicity: ""
+};
+
 export enum Stats {
     A = "Attacks",
     M = "Movement",

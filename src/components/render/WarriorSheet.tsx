@@ -8,8 +8,9 @@ import { WarriorSheet } from "../addWarrior/WarriorSheet";
 export const OverviewWarriorSheets = () => {
     const warriors = useAppSelector((state) => state.warband.warriors);
     const sortedWarriors = [...warriors].sort((a: IWarrior, b: IWarrior) => a.position - b.position);
-    return <div className="warrior-sheets">
-        {sortedWarriors.map((warrior, index) => <div className="warrior-card"><WarriorSheet warrior={warrior} isEditable={true}/></div>)}
+    return <div className="section-container">
+        <div className="header-1">Fighter List</div>
+        {sortedWarriors.map((warrior, index) => <WarriorSheet warrior={warrior} isEditable={true}/>)}
     </div>;
 }
 

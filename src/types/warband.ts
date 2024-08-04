@@ -20,3 +20,8 @@ export interface IDelta {
     command: string;
     value?: number;
 }
+
+export interface IPdf {
+    name: string;
+    // value?: number;
+}

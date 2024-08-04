@@ -16,10 +16,10 @@ const root = ReactDOM.createRoot(
 
 const App = () =>
   <BrowserRouter basename={`/${process.env.PUBLIC_URL}`}>
-    <div className="app-body main-content main-wrapper mainWrapper_z2l0 docMainContainer_TBSr">
-      <div className='container padding-top--md padding-bottom--lg'>
+    <div className="main-content">
+      <div className='container'>
       <Routes>
-      <Route path="/warband-overview" Component={WarbandOverviewPage} />
+      <Route path="/overview" Component={WarbandOverviewPage} />
         <Route path="/" Component={LandingPage} />
         <Route path="/add-warrior" Component={AddWarriorPage} />
         <Route path="/maintain-warrior" Component={MaintainWarriorPage} />

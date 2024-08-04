@@ -17,5 +17,5 @@ export const CloseIcon = ({ onClickHandler }: { onClickHandler: () => void }) =>
 };
 
 export const EditIcon = ({ onClickHandler }: { onClickHandler: any }) => {
-    return <FontAwesomeIcon icon={faPencil} onClick={onClickHandler} className="unit-card-edit" />;
+    return <FontAwesomeIcon icon={faPencil} onClick={onClickHandler} className="warrior-card-edit" />;
 };

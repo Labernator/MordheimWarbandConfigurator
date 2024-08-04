@@ -2,10 +2,9 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faSquareCheck, faSquareXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
-import { resetDelta } from "../../redux/slices/deltaSlice";
-import { addWarrior, removeFunds, updateWarrior } from "../../redux/slices/warbandSlice";
-import { initialWarrior, loadWarrior, setWarriorName } from "../../redux/slices/warriorSlice";
+import { loadWarrior, setWarriorName, addWarrior, removeFunds, updateWarrior, resetDelta } from "../../redux/slices";
 import { useAppDispatch, useAppSelector } from "../../redux/store";
+import { initialWarrior } from "../../types/warrior";
 
 export const DialogHeader = () => {
     const warrior = useAppSelector((state) => state.warrior);
@@ -16,14 +15,14 @@ export const DialogHeader = () => {
     const navigateBack = () => {
         dispatch(loadWarrior(initialWarrior));
         dispatch(resetDelta())
-        navigate("/warband-overview");
+        navigate("/overview");
     };
     const submit = () => {
         dispatch(addWarrior(warrior));
         dispatch(setWarriorName(""))
         dispatch(removeFunds(deltaFunds))
         dispatch(resetDelta())
-        navigate("/warband-overview");
+        navigate("/overview");
     };
     const SubmitIcon = ({ onClickHandler }: { onClickHandler: any }) => {
         return <Icon icon={faSquareCheck} onClickHandler={onClickHandler} disabled={!warrior.name || !(warrior.name.length > 3)}/>
@@ -43,13 +42,13 @@ export const MaintainWarriorControls = () => {
     const navigateBack = () => {
         dispatch(loadWarrior(initialWarrior));
         dispatch(resetDelta())
-        navigate("/warband-overview");
+        navigate("/overview");
     };
     const submit = () => {
         dispatch(updateWarrior(warrior))
         dispatch(removeFunds(deltaFunds))
         dispatch(resetDelta())
-        navigate("/warband-overview");
+        navigate("/overview");
     };
     const SubmitIcon = ({ onClickHandler }: { onClickHandler: any }) => {
         return <Icon icon={faSquareCheck} onClickHandler={onClickHandler} disabled={!warrior.name || !(warrior.name.length > 3)}/>
