@@ -70,7 +70,7 @@ export const getWarriorsListForWarband = (faction: string | undefined): IWarrior
             ...unit,
             name: "",
             skills: (unit.skills && unit.skills.split(",")) || [],
-            weapons: unit.equipment && listContainsDagger(unit.equipment) ? [{ weapon: "Dagger", type: "Melee", strength:"as User", range: "", price: 0, quantity: 1, traits:["Enemy armour save"] }] : [],
+            weapons: unit.equipment && listContainsDagger(unit.equipment) ? [{ weapon: "Dagger", type: "Melee", strength: "as User", range: "", price: 0, quantity: 1, traits: ["Enemy armour save"] }] : [],
             rules: getRules(plainRules),
             totalCost: unit.cost,
             headCount: 1,
@@ -96,30 +96,30 @@ export const getSpellOptions = (faction: string, warriorType: string) => {
     return spells;
 }
 
-const filterFunction = (eq: IDatabaseEquipment) : IFullEquipment => {
+const filterFunction = (eq: IDatabaseEquipment): IFullEquipment => {
     const foundItem = parsedWeaponsCsv.find((weapon: IDatabaseWeapon) => weapon.weapon === eq.equipment)
     if (!foundItem) {
         throw new Error(`Weapon ${eq.equipment} not found. Please add metadata to the Weapons.csv file.`);
     }
-    return {...foundItem, price: eq.price, quantity: 1};
+    return { ...foundItem, price: eq.price, quantity: 1 };
 }
 export const getWarriorMeleeWeaponOptions = (warrior: IWarrior): IEquipment[] => {
     const filteredEquipment: IDatabaseEquipment[] = parsedEquipmentListCsv.filter((equipment: IDatabaseEquipment) => equipment.list === warrior.equipment);
     const filteredWeapons: IFullEquipment[] = filteredEquipment.map((equi) => filterFunction(equi));
-    const meleeWeapons = filteredWeapons.filter((weapon: IFullEquipment) => weapon.type === "Melee").map((weapon) => ({...weapon, traits: weapon.traits.split(",").map((entry) => entry.trim())}));
+    const meleeWeapons = filteredWeapons.filter((weapon: IFullEquipment) => weapon.type === "Melee").map((weapon) => ({ ...weapon, traits: (weapon.traits && weapon.traits.split(",").map((entry) => entry.trim())) || [] }));
     return meleeWeapons;
 }
 
 export const getWarriorRangedWeaponOptions = (warrior: IWarrior): IEquipment[] => {
     const filteredEquipment: IDatabaseEquipment[] = parsedEquipmentListCsv.filter((equipment: IDatabaseEquipment) => equipment.list === warrior.equipment);
     const filteredWeapons: IFullEquipment[] = filteredEquipment.map((equi) => filterFunction(equi));
-    const rangedWeapons = filteredWeapons.filter((weapon: IFullEquipment) => weapon.type === "Ranged").map((weapon) => ({...weapon, traits: weapon.traits.split(",").map((entry) => entry.trim())}));
+    const rangedWeapons = filteredWeapons.filter((weapon: IFullEquipment) => weapon.type === "Ranged").map((weapon) => ({ ...weapon, traits: (weapon.traits && weapon.traits.split(",").map((entry) => entry.trim())) || [] }));
     return rangedWeapons;
 }
 
 export const getWarriorWargearOptions = (warrior: IWarrior): IEquipment[] => {
     const filteredEquipment: IDatabaseEquipment[] = parsedEquipmentListCsv.filter((equipment: IDatabaseEquipment) => equipment.list === warrior.equipment);
     const filteredWeapons: IFullEquipment[] = filteredEquipment.map((equi) => filterFunction(equi));
-    const wargear = filteredWeapons.filter((weapon: IFullEquipment) => weapon.type === "Wargear").map((weapon) => ({...weapon, traits: weapon.traits.split(",").map((entry) => entry.trim())}));
+    const wargear = filteredWeapons.filter((weapon: IFullEquipment) => weapon.type === "Wargear").map((weapon) => ({ ...weapon, traits: (weapon.traits && weapon.traits.split(",").map((entry) => entry.trim())) || [] }));
     return wargear;
 }

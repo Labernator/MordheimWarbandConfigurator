@@ -11,30 +11,24 @@ export const LandingPage = () => {
     return <React.Fragment>
         <div id="inner-container" className="inner-container">
             <div>
-                <div className="dialog-headerer">
-                    <h2>Create new Warband</h2>
-                </div>
+                <h2>Create new Warband</h2>
                 <WarbandNameInput />
-                <WarbandSelection/>
-                <CreateWarbandButton/>
+                <WarbandSelection />
+                <CreateWarbandButton />
             </div>
             <div>
-                <div className="dialog-headerer">
-                    <h2>Load existing Warband</h2>
-                </div>
-                    <label htmlFor="file-uploader">
-                        <WarbandLoader />
-                        <LoadFileButton />
-                    </label>
+                <h2>Load existing Warband</h2>
+                <label htmlFor="file-uploader">
+                    <WarbandLoader />
+                    <LoadFileButton />
+                </label>
             </div>
             <div>
-                <div className="dialog-headerer">
-                    <h2>Load from local storage</h2>
-                </div>
+                <h2>Load from local storage</h2>
                 <LocalStorageControl />
             </div>
         </div>
-        <Footer/>
+        <Footer />
 
     </React.Fragment>;
 };

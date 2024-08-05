@@ -368,42 +368,6 @@ h5 {
     border-radius: .25em;
 }
 
-.number-input {
-    display: block;
-    width: calc(30% - 2.5rem);
-    height: 2.5em;
-    padding: .375em .75em;
-    margin: 0.5em;
-    font-size: 1rem;
-    font-weight: 400;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25em;
-}
-
-.headcount-container {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-ends;
-}
-
-.wrong {
-    /* border-bottom: 3px solid #a05236 !important;
-    border-left: 1em solid #a05236 !important; */
-    /* border-bottom: 3px solid var(--not-ok-color) !important;
-    border-left: 1em solid var(--not-ok-color) !important; */
-}
-
-.correct {
-    /* border-bottom: 3px solid #40826D !important;
-    border-left: 1em solid #40826D !important; */
-    /* border-bottom: 3px solid var(--ok-color) !important;
-    border-left: 1em solid var(--ok-color)  !important; */
-}
-
 option:disabled {
     color: lightgrey;
 }
@@ -562,10 +526,6 @@ option:disabled {
     margin: 0 0 1em 0;
 }
 
-/* .equipment-section-table>tbody>tr {
-    line-height: 2em
-} */
-
 .equipment-section-table>tbody>tr>td {
     text-align: center;
 }
@@ -591,16 +551,6 @@ option:disabled {
     height: 1.3em;
 }
 
-.file-uploader-icon {
-    height: 6em;
-    color: #e3a453;
-}
-
-.warband-selections {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
 
 .pdf-container {
     width: 29.7cm;
@@ -834,23 +784,6 @@ option:disabled {
     height: 1.5em;
 }
 
-.dialog-headerer {
-    color: #e3a453;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: space-between;
-}
-
-.name-input-container {
-    display: flex;
-    font-size: 1rem;
-    color: #383e44;
-    flex-direction: column;
-    width: 100%;
-    padding-top: 2em;
-}
-
 .message-toast {
     position: absolute;
     bottom: 4em;
@@ -940,11 +873,6 @@ option:disabled {
 
 .disabled {
     opacity: 0.3;
-}
-
-.enabled {
-
-    /* border-left: solid 1em #40826D; */
 }
 
 .warrior-table {

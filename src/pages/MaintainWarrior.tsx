@@ -7,7 +7,7 @@ import { initialWarrior } from "../types/warrior";
 import { WarriorHeadCountSelection } from "../components/NumberSelector";
 import { WarriorSheet } from "../components/addWarrior/WarriorSheet";
 import { PurchaseWeapons } from "../components/Tabstrip";
-import { SpellSelection, WarriorActions } from "../components/List";
+import { InjuriesSelection, SpellSelection, WarriorActions } from "../components/List";
 
 export const MaintainWarriorPage = () => {
     const dispatch = useAppDispatch();
@@ -41,19 +41,16 @@ export const MaintainWarriorPage = () => {
             <h2>Maintain Warrior</h2>
 
             <div className="section-container">
-                {/* <WarriorNameInput />
-                <WarriorSelection /> */}
-                <WarriorActions actionHandler={actionHandler}/>
+                <WarriorActions actionHandler={actionHandler} />
                 {!!warrior.type ?
                     <React.Fragment>
                         {warrior.hero ? null : <WarriorHeadCountSelection />}
                         <WarriorSheet warrior={warrior} />
                         {selectedSection === "Purchase Equipment" ? <PurchaseWeapons /> : null}
                         {selectedSection === "Spell Selection" ? <SpellSelection /> : null}
+                        {selectedSection === "Add Injuries" ? <InjuriesSelection /> : null}
                     </React.Fragment> :
                     null}
-                    
-                {/* {warrior.rules?.find((rule) => rule.rule === "Wizard" || rule.rule === "Priest") ? <SpellSelection /> : null} */}
             </div>
         </div>
         <MaintainFooter submitAction={addWarriorSaga} isEnabled={enabled} />
