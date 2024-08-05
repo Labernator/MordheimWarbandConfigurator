@@ -13,11 +13,3 @@ export const OverviewWarriorSheets = () => {
         {sortedWarriors.map((warrior, index) => <WarriorSheet warrior={warrior} isEditable={true}/>)}
     </div>;
 }
-
-export const WarbandFunds = ({ cash }: { cash: number }) => {
-    return <div className="funds-header">
-        <div className="funds-header-item">Bank account</div>
-        <FontAwesomeIcon className="funds-header-item" icon={faSackDollar} />
-        <div className="funds-header-item">{cash}</div>
-    </div>;
-};

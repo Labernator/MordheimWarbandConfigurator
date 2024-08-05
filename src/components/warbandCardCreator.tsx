@@ -25,7 +25,7 @@ export const WarbandCardCreator = ({ warband }: { warband: IWarband }) => {
                 </thead>
                 <tbody>
                     {warband.stash.map((item) => {
-                        return <tr><td style={{ textAlign: "left"}}>{item}</td></tr>
+                        return <tr><td style={{ textAlign: "left"}}>{item.weapon}</td></tr>
 })}
                 </tbody>
             </table>     : undefined}

@@ -1,5 +1,5 @@
-import { IDatabaseEthnicMaximums, IDatabaseInjury, IDatabaseRules, IDatabaseSkillLists, IDatabaseSpell, IDatabaseUnit, IDatabaseWarband, IDatabaseWeapon, IDatabaseWizard } from "../types/database";
-import { IEthnicMaximums, IWarrior } from "../types/warrior";
+import { IDatabaseEquipment, IDatabaseEthnicMaximums, IDatabaseInjury, IDatabaseRules, IDatabaseSkillLists, IDatabaseSpell, IDatabaseUnit, IDatabaseWarband, IDatabaseWeapon, IDatabaseWizard } from "../types/database";
+import { IEquipment, IEthnicMaximums, IFullEquipment, IWarrior } from "../types/warrior";
 const warbandsCsv = require('../static/data/Warbands.csv');
 const unitsCsv = require('../static/data/Units.csv');
 const rulesCsv = require('../static/data/Rules.csv');
@@ -18,8 +18,8 @@ const parsedSkillsCsv: IDatabaseSkillLists[] = JSON.parse(skillsCsv.slice(17));
 const injuriesCsv = require('../static/data/Injuries.csv');
 const parsedInjuriesCsv: IDatabaseInjury[] = JSON.parse(injuriesCsv.slice(17));
 const structuredRules = parsedRulesCsv.map((csvRule: IDatabaseRules) => ({ rule: csvRule.rule, effect: csvRule.effect }));
-// const equipmentCsv = require('../static/data/EquipmentLists.csv');
-// const parsedEquipmentCsv = JSON.parse(equipmentCsv.slice(17));
+const equipmentListCsv = require('../static/data/EquipmentLists.csv');
+const parsedEquipmentListCsv: IDatabaseEquipment[] = JSON.parse(equipmentListCsv.slice(17));
 
 export const getSkillsPerList = (list: string) => {
     return parsedSkillsCsv.filter((skillList) => skillList.skilllist === list);
@@ -45,14 +45,6 @@ export const getWarbandMetadata = (faction: string) => {
     return warband;
 }
 
-export const getWeaponProfile = (weaponName: string): IDatabaseWeapon => {
-    const weapon = parsedWeaponsCsv.find((weapon: any) => weapon.weapon === weaponName);
-    if (!weapon) {
-        throw new Error(`Weapon ${weaponName} not found. Please add metadata to the Weapons.csv file.`);
-    }
-    return weapon;
-};
-
 const getRules = (plainRules: string[]): IDatabaseRules[] => {
     return plainRules.map((rule: string) => {
         const foundRule = structuredRules.find((csvRule: any) => csvRule.rule === rule)
@@ -62,7 +54,10 @@ const getRules = (plainRules: string[]): IDatabaseRules[] => {
         return foundRule;
     });
 };
-
+export const listContainsDagger = (list: string) => {
+    const foundDagger = parsedEquipmentListCsv.filter((entry) => entry.list === list).find((entry) => entry.equipment === "Dagger");
+    return !!foundDagger;
+}
 export const getWarriorsListForWarband = (faction: string | undefined): IWarrior[] => {
     if (faction === undefined) {
         throw new Error("Warband faction is undefined. Please provide a warband faction.");
@@ -70,12 +65,12 @@ export const getWarriorsListForWarband = (faction: string | undefined): IWarrior
     const parsedCSV: IDatabaseUnit[] = JSON.parse(unitsCsv.slice(17));
     const filteredCSV = parsedCSV.filter((unit: IDatabaseUnit) => unit.warband === faction);
     return filteredCSV.map((unit: IDatabaseUnit) => {
-        const plainRules: string[] = (unit.rules && unit.rules.split(",")) || [];
+        const plainRules: string[] = (unit.rules && unit.rules.split(",").map((entry) => entry.trim())) || [];
         const transformedUnit: IWarrior = {
             ...unit,
             name: "",
             skills: (unit.skills && unit.skills.split(",")) || [],
-            weapons: unit.equipment ? [{ ...getWeaponProfile("Dagger"), price: 2, quantity: 1 }] : [],
+            weapons: unit.equipment && listContainsDagger(unit.equipment) ? [{ weapon: "Dagger", type: "Melee", strength:"as User", range: "", price: 0, quantity: 1, traits:["Enemy armour save"] }] : [],
             rules: getRules(plainRules),
             totalCost: unit.cost,
             headCount: 1,
@@ -99,4 +94,32 @@ export const getSpellOptions = (faction: string, warriorType: string) => {
         throw new Error(`Magic school ${foundWizard.school} not found. Please add metadata to the Spells.csv file.`);
     }
     return spells;
+}
+
+const filterFunction = (eq: IDatabaseEquipment) : IFullEquipment => {
+    const foundItem = parsedWeaponsCsv.find((weapon: IDatabaseWeapon) => weapon.weapon === eq.equipment)
+    if (!foundItem) {
+        throw new Error(`Weapon ${eq.equipment} not found. Please add metadata to the Weapons.csv file.`);
+    }
+    return {...foundItem, price: eq.price, quantity: 1};
+}
+export const getWarriorMeleeWeaponOptions = (warrior: IWarrior): IEquipment[] => {
+    const filteredEquipment: IDatabaseEquipment[] = parsedEquipmentListCsv.filter((equipment: IDatabaseEquipment) => equipment.list === warrior.equipment);
+    const filteredWeapons: IFullEquipment[] = filteredEquipment.map((equi) => filterFunction(equi));
+    const meleeWeapons = filteredWeapons.filter((weapon: IFullEquipment) => weapon.type === "Melee").map((weapon) => ({...weapon, traits: weapon.traits.split(",").map((entry) => entry.trim())}));
+    return meleeWeapons;
+}
+
+export const getWarriorRangedWeaponOptions = (warrior: IWarrior): IEquipment[] => {
+    const filteredEquipment: IDatabaseEquipment[] = parsedEquipmentListCsv.filter((equipment: IDatabaseEquipment) => equipment.list === warrior.equipment);
+    const filteredWeapons: IFullEquipment[] = filteredEquipment.map((equi) => filterFunction(equi));
+    const rangedWeapons = filteredWeapons.filter((weapon: IFullEquipment) => weapon.type === "Ranged").map((weapon) => ({...weapon, traits: weapon.traits.split(",").map((entry) => entry.trim())}));
+    return rangedWeapons;
+}
+
+export const getWarriorWargearOptions = (warrior: IWarrior): IEquipment[] => {
+    const filteredEquipment: IDatabaseEquipment[] = parsedEquipmentListCsv.filter((equipment: IDatabaseEquipment) => equipment.list === warrior.equipment);
+    const filteredWeapons: IFullEquipment[] = filteredEquipment.map((equi) => filterFunction(equi));
+    const wargear = filteredWeapons.filter((weapon: IFullEquipment) => weapon.type === "Wargear").map((weapon) => ({...weapon, traits: weapon.traits.split(",").map((entry) => entry.trim())}));
+    return wargear;
 }

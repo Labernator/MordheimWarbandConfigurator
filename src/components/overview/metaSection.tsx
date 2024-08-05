@@ -7,7 +7,7 @@ export const StashList = () => {
     return <table className="table">
         <tbody>
             {warband.stash.length > 0 ?
-            warband.stash.map((item) => <tr>{item}</tr>) : <tr><td>You have no items in your stash</td></tr>}
+            warband.stash.map((item) => <tr>{item.weapon}</tr>) : <tr><td>You have no items in your stash</td></tr>}
         </tbody>
     </table>
 }

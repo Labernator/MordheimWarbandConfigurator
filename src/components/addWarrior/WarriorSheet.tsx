@@ -3,9 +3,8 @@ import { IWarrior } from "../../types/warrior";
 import { useNavigate } from "react-router-dom";
 import { loadWarrior } from "../../redux/slices/warriorSlice";
 import { useAppDispatch } from "../../redux/store";
-import { EditIcon } from "../render/Icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoins, faMedal } from "@fortawesome/free-solid-svg-icons";
+import { faCoins, faMedal, faPen } from "@fortawesome/free-solid-svg-icons";
 
 export const HeaderSectionWithEdit = ({ warrior, editEnabled }: { warrior: IWarrior; editEnabled?: boolean }) => {
     const dispatch = useAppDispatch();
@@ -17,7 +16,7 @@ export const HeaderSectionWithEdit = ({ warrior, editEnabled }: { warrior: IWarr
         </div>
         <div style={{    display: "flex", alignItems: "center"}}>
         {editEnabled !== undefined ?
-            <EditIcon onClickHandler={() => {
+            <FontAwesomeIcon icon={faPen} onClick={() => {
                 dispatch(loadWarrior(warrior));
                 navigate("/maintain-warrior");
             }} /> :
@@ -28,43 +27,6 @@ export const HeaderSectionWithEdit = ({ warrior, editEnabled }: { warrior: IWarr
         </div>
         </div>
     </div>
-};
-
-export const StatsSection = ({ unit }: { unit: IWarrior }) => {
-    return <React.Fragment>
-        <table className="table">
-            <thead>
-                <tr>
-                    <th>M</th>
-                    <th>WS</th>
-                    <th>BS</th>
-                    <th>S</th>
-                    <th>T</th>
-                    <th>W</th>
-                    <th>I</th>
-                    <th>A</th>
-                    <th className="bg-underhive-light">Ld</th>
-                    <th className="bg-underhive-light">AS</th>
-                    <th className="bg-underhive-dark">XP</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{unit.M}"</td>
-                    <td>{unit.WS}</td>
-                    <td>{unit.BS}</td>
-                    <td>{unit.S}</td>
-                    <td>{unit.T}</td>
-                    <td>{unit.W}</td>
-                    <td>{unit.I}</td>
-                    <td>{unit.A}</td>
-                    <td className="bg-underhive-light">{unit.Ld}</td>
-                    <td className="bg-underhive-light">{/*unit.armour ||*/ "-"}</td>
-                    <td className="bg-underhive-dark" style={{ fontWeight: "bold" }}>{unit.xp}</td>
-                </tr>
-            </tbody>
-        </table>
-    </React.Fragment>
 };
 
 export const NewStatsSection = ({ warrior }: { warrior: IWarrior }) => {
@@ -101,7 +63,6 @@ export const NewStatsSection = ({ warrior }: { warrior: IWarrior }) => {
         </table>
     </React.Fragment>
 };
-
 
 export const ShortWargearSection = ({ unit }: { unit: IWarrior }) => {
     return unit.wargear && unit.wargear.length > 0 ?
@@ -147,11 +108,9 @@ const getEquipment = (warrior: IWarrior): string[] => {
 export const WarriorSheet = ({ warrior, isEditable }: { warrior: IWarrior; isEditable?: boolean }) => {
     return <div className="warrior-card">
             <HeaderSectionWithEdit warrior={warrior} editEnabled={isEditable} />
-            {/* <StatsSection unit={warrior} /> */}
             <NewStatsSection warrior={warrior}/>
             <table className="warrior-list-section">
                 <tbody>
-                    {/* <WarriorTableEntry list={warrior.skills || []} title="Skills" /> */}
                     <WarriorTableEntry list={(warrior.rules?.map((rule) => {
                         if (rule.rule === "Wizard" || rule.rule === "Priest") {
                             return `${rule.rule} [${warrior.spells?.map((spell) => `${spell.name} (${spell.difficulty})`)}]`

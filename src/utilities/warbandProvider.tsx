@@ -1,8 +1,4 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useAppSelector } from "../redux/store";
 import { IWarrior } from "../types/warrior";
-
 
 export const getWarbandSize = (warriors: IWarrior[]): number => {
     return warriors.reduce((acc, warrior) => {

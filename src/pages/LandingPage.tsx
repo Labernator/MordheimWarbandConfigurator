@@ -1,11 +1,11 @@
 import React from "react";
 
-import { WarbandLoader } from "../components/addWarband/warbandControls";
 import { WarbandNameInput } from "../components/Input";
 import { WarbandSelection } from "../components/Dropdown";
 import { CreateWarbandButton, LoadFileButton } from "../components/Button";
 import { LocalStorageControl } from "../components/Table";
 import { Footer } from "../components/Footer";
+import { WarbandLoader } from "../components/Miscellaneous";
 
 export const LandingPage = () => {
     return <React.Fragment>
@@ -32,7 +32,6 @@ export const LandingPage = () => {
                     <h2>Load from local storage</h2>
                 </div>
                 <LocalStorageControl />
-                    {/* <LocalStorageContainer /> */}
             </div>
         </div>
         <Footer/>

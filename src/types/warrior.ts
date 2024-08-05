@@ -1,3 +1,4 @@
+import { Id } from "@reduxjs/toolkit/dist/tsHelpers";
 import { IDatabaseSpell } from "./database";
 
 export const initialWarrior: IWarrior = {
@@ -65,7 +66,7 @@ export interface IWarrior {
     T: number;
     S: number;
     I: number;
-    weapons?: IFullEquipment[];
+    weapons?: IEquipment[];
     skills?: string[];
     wargear?: string[];
     rules?: IRules[];
@@ -102,3 +103,13 @@ export enum IEquipmentType {
     Ranged = "Ranged Weapons",
     Wargear = "Wargear"
 };
+
+export interface IEquipment  {
+    price: number;
+    quantity: number;
+    weapon: string;
+    type: string;
+    range: string;
+    strength: string;
+    traits: string[];
+}

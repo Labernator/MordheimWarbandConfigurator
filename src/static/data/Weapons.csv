@@ -3,6 +3,7 @@ Dagger;Melee;;as User;Enemy armour save
 Sword;Melee;;as User;Parry
 Club;Melee;;as User;Concussion
 Mace;Melee;;as User;Concussion
+Hammer;Melee;;as User;Concussion
 Flail;Melee;;+2;Heavy,Two-handed
 Spear;Melee;;as User;Strike first,Unwieldy
 Halberd;Melee;;+1;Two-handed
@@ -34,3 +35,4 @@ Short Bow;Ranged;16;3;
 Blunderbuss;Ranged;16;3;Shot,Fire Once
 Handgun;Ranged;24;4;Prepare Shot,Cutting edge
 Hunting Rifle;Ranged;48;4;Move or fire,Prepare Shot,Cutting edge,Pick Target
+Crossbow Pistol;Ranged;10;4;Shoot in hand-to-hand combat

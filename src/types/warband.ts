@@ -1,10 +1,10 @@
-import { IWarrior } from "./warrior";
+import { IEquipment, IWarrior } from "./warrior";
 
 export interface IWarband {
     name: string;
     faction: string;
     cash: number;
-    stash: string[];
+    stash: IEquipment[];
     warriors: IWarrior[];
     treasure: number;
     campaignLink?: string;

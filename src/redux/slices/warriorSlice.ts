@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IFullEquipment, initialWarrior, IRules, IWarrior, Stats } from "../../types/warrior";
+import { IEquipment, initialWarrior, IRules, IWarrior, Stats } from "../../types/warrior";
 import { IDatabaseSpell } from "../../types/database";
 
 const warriorSlice = createSlice({
@@ -15,7 +15,7 @@ const warriorSlice = createSlice({
         setHeadCount(state, action: PayloadAction<number>) {
             state.headCount = action.payload;
         },
-        addWeapon(state, action: PayloadAction<IFullEquipment>) {
+        addWeapon(state, action: PayloadAction<IEquipment>) {
             const weapon = state.weapons?.find((item) => item.weapon === action.payload.weapon);
             if (weapon) {
                 weapon.quantity++;
@@ -24,7 +24,7 @@ const warriorSlice = createSlice({
             }
             state.totalCost += action.payload.price;
         },
-        removeWeapon(state, action: PayloadAction<IFullEquipment>) {
+        removeWeapon(state, action: PayloadAction<IEquipment>) {
             const weapon = state.weapons?.find((item) => item.weapon === action.payload.weapon);
             if (weapon && weapon.quantity > 1) {
                 weapon.quantity--;

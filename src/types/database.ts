@@ -1,5 +1,3 @@
-import { Stats } from "./warrior";
-
 export interface IDatabaseSkillLists {
     skilllist: string;
     skill: string;

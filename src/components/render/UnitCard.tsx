@@ -4,7 +4,7 @@ import React from "react";
 import { addFunds, addWeaponToStash } from "../../redux/slices/warbandSlice";
 import { removeWeapon } from "../../redux/slices/warriorSlice";
 import { useAppDispatch } from "../../redux/store";
-import { IFullEquipment, IWarrior } from "../../types/warrior";
+import { IEquipment, IFullEquipment, IWarrior } from "../../types/warrior";
 
 export const HeaderSection = ({ unit, isPdf }: { unit: IWarrior; isPdf?: boolean }) => {
     return <div className="unit-name-bg">
@@ -43,11 +43,11 @@ export const WeaponsSection = ({ warrior }: { warrior: IWarrior }) => {
 
 export const MaintainWeaponsSection = ({ warrior }: { warrior: IWarrior }) => {
     const dispatch = useAppDispatch();
-    const sellWeaponHandler = (weapon: IFullEquipment) => {
+    const sellWeaponHandler = (weapon: IEquipment) => {
         dispatch(removeWeapon(weapon));
         dispatch(addFunds(Math.floor(weapon.price / 2)));
     };
-    const moveWeaponHandler = (weapon: IFullEquipment) => {
+    const moveWeaponHandler = (weapon: IEquipment) => {
         dispatch(removeWeapon(weapon));
         dispatch(addWeaponToStash(weapon));
     };

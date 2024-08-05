@@ -5,12 +5,10 @@ import { setMessage } from "../../redux/slices/messageSlice";
 import { addInjury, addSkill, addWeapon, increaseStat, increaseXP, loadWarrior, addDelta, resetDelta, removeFunds, removeWarrior, updateWarrior } from "../../redux/slices";
 import { useAppSelector, useAppDispatch } from "../../redux/store";
 import React, { useEffect, useState } from "react";
-import { IEquipmentType, IFullEquipment, initialWarrior, IWarrior, Stats } from "../../types/warrior";
-import { getWarriorMeleeWeaponOptions, getWarriorRangedWeaponOptions, getWarriorWargearOptions } from "../../utilities/unitProvider";
+import { IEquipment, IEquipmentType, initialWarrior, IWarrior, Stats } from "../../types/warrior";
 import { StatsSection, MaintainWeaponsSection, ShortWargearSection, SkillListsSection, ShortRulesSection } from "../render/UnitCard";
 import { HeaderSectionWithEdit } from "../addWarrior/WarriorSheet";
-import { getInjuries, getMaximumsForEthnicity, getSkillsPerList } from "../../utilities/dataBaseProvider";
-import { SpellSelectionDropdown } from "../addWarrior/WarriorControls";
+import { getWarriorMeleeWeaponOptions, getWarriorRangedWeaponOptions, getWarriorWargearOptions, getInjuries, getMaximumsForEthnicity, getSkillsPerList } from "../../utilities/dataBaseProvider";
 
 export const UpdateWarriorButton = () => {
     const warband = useAppSelector((state) => state.warband);
@@ -180,7 +178,6 @@ export const SkillsSection = () => {
         <div className="warband-control" style={{ paddingLeft: "0.5em" }}>
             <FontAwesomeIcon icon={faAward} style={{ width: "1.5em" }} /> {`Add Skills`}</div>
         {warrior.rules?.map((rule) => rule.rule).includes("Wizard") ? <React.Fragment>
-            <SpellSelectionDropdown />
             <div className="warrior-name-info-text">Select any skill from the respective dropdown. </div>
         </React.Fragment> :
             null}
@@ -232,14 +229,14 @@ export const EquipmentDropdown = ({ type }: { type: IEquipmentType }) => {
     const warrior = useAppSelector((state) => state.warrior);
     const warband = useAppSelector((state) => state.warband);
     const delta = useAppSelector((state) => state.delta);
-    const isDisabledEntry = (weapon: IFullEquipment) => {
+    const isDisabledEntry = (weapon: IEquipment) => {
         if (weapon.price > (warband.cash - delta.reduce((acc, curr) => acc + (curr.value || 0), 0))) {
             return true;
         }
         const weaponOnWarrior = warrior.weapons?.find((equi) => equi.weapon === weapon.weapon);
         if (weaponOnWarrior) {
             // TODO: make traits an array
-            if (weapon.traits.includes("Two-handed") || weapon.traits.includes("Unwieldy") || weapon.traits.includes("Pair")) {
+            if (weapon.traits && (weapon.traits.includes("Two-handed") || weapon.traits.includes("Unwieldy") || weapon.traits.includes("Pair"))) {
                 return true;
             }
             if (weaponOnWarrior.quantity > 1) {

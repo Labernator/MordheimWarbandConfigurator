@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IWarband } from "../../types/warband";
-import { IFullEquipment, IWarrior } from "../../types/warrior";
+import { IEquipment, IFullEquipment, IWarrior } from "../../types/warrior";
 
 export const initialWarband: IWarband = {
     name: "",
@@ -55,7 +55,7 @@ const warbandSlice = createSlice({
         addFunds(state, action: PayloadAction<number>){
             state.cash += action.payload;
         },
-        addWeaponToStash(state, action: PayloadAction<IFullEquipment>){
+        addWeaponToStash(state, action: PayloadAction<IEquipment>){
             // state.stash.push(action.payload);
         },
     },
