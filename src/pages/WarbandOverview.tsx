@@ -1,26 +1,66 @@
-import { faFilePdf, faFloppyDisk, faHome, faSackDollar, faUserGroup, faUserShield, faUserTag } from "@fortawesome/free-solid-svg-icons";
+import { faSackDollar, faUserGroup, faUserShield, faUserTag, IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Footer } from "../components/Footer";
-import { MessageToast } from "../components/MessageToast";
-import { OverviewWarriorSheets } from "../components/render/WarriorSheet";
-import { WarbandMetadata } from "../components/Tabstrip";
-import { setMessage } from "../redux/slices/messageSlice";
-import { useAppDispatch, useAppSelector } from "../redux/store";
+import { useAppSelector } from "../redux/store";
+import { DataBaseProvider } from "../utilities/DatabaseProvider";
+import { getRoutLimit, getWarbandRating, getWarbandSize } from "../utilities/warbandProvider";
+import { OverviewWarriorSheets } from "../components/WarriorSheet";
 
 export const WarbandControls = () => {
     const navigate = useNavigate();
-    const dispatch = useAppDispatch();
+    const MyDiv = ({ text, icon, clickHandler }: { text: string, icon: IconDefinition, clickHandler?: () => void }) =>
+        <div className="control-group" onClick={clickHandler} >
+            <FontAwesomeIcon
+                icon={icon}
+                style={{ height: "1.5em" }}
+                className="" />
+            <div style={{ width: "60%", fontWeight: "bold" }}>{text}</div>
+        </div>;
     return <div className="section-container">
-        <div className="header-1">Warband Controls</div>
-        <div className="list-item" onClick={() => navigate("/add-warrior")}><FontAwesomeIcon icon={faUserGroup} className="list-item-icon" /> Add Warrior</div>
-        <div className="list-item" onClick={() => dispatch(setMessage("Implementation missing."))}><FontAwesomeIcon icon={faUserShield} className="list-item-icon" /> Add Hired Sword</div>
-        <div className="list-item" onClick={() => dispatch(setMessage("Implementation missing."))}><FontAwesomeIcon icon={faUserTag} className="list-item-icon" /> Add Dramatis Personae</div>
-        <div className="list-item" onClick={() => dispatch(setMessage("Implementation missing."))}><FontAwesomeIcon icon={faSackDollar} className="list-item-icon" /> Trading Post</div>
-        {/* <div className="list-item" onClick={() => navigate("/print-pdf")}><FontAwesomeIcon icon={faPrint} className="list-item-icon" /> Print Roster</div> */}
-    </div>
+        <div className="control-container">
+            <MyDiv text="Enlist Fighters" icon={faUserGroup} clickHandler={() => navigate("/add-warrior")}/>
+            <MyDiv text="Recruit Hired Sword" icon={faUserShield} />
+            <MyDiv text="Add Dramatis Personae" icon={faUserTag} />
+            <MyDiv text="Visit Trading Post" icon={faSackDollar} />
+        </div>
+    </div>;
 };
+
+export const WarbandKPIs = () => {
+    const warband = useAppSelector((state) => state.warband);
+    const [warbandFullName, setWarbandFullName] = useState<string>("");
+    useEffect(() => {
+        async function fetchWarbands() {
+            const DatabaseProviderInstance = await DataBaseProvider.getInstance();
+            setWarbandFullName(DatabaseProviderInstance.getWarbandHumanReadableType(warband.faction));
+        }
+        fetchWarbands();
+    }, []);
+    const MyDiv = ({ title, text }: { title: string, text: string }) => <div className="kpi-entry">
+        <div style={{ width: "60%", fontSize: "0.75em" }}>{title}</div>
+        <div style={{ width: "60%", fontWeight: "bold" }}>{text}</div>
+    </div>;
+    return <div className="section-container">
+        <div style={{ width: "100%", display: "flex", justifyContent: "center", height: "4em", maxWidth: "calc(var(--ifm-container-width) + 1em + 2px)" }} className="">
+            <MyDiv text={warbandFullName} title={"Warband Type"} />
+            <MyDiv text={`${getWarbandRating(warband.warriors)}`} title={"Warband Rating"} />
+        </div>
+
+        <div style={{ width: "100%", display: "flex", justifyContent: "center", height: "4em", maxWidth: "calc(var(--ifm-container-width) + 1em + 2px)" }} className="">
+
+
+            <MyDiv text={`${getWarbandSize(warband.warriors)} / ${warband.limit}`} title={"Figher Limit"} />
+            <MyDiv text={`${getRoutLimit(warband.warriors)}`} title={"Rout Limit"} />
+        </div>
+        <div style={{ width: "100%", display: "flex", justifyContent: "center", height: "4em", maxWidth: "calc(var(--ifm-container-width) + 1em + 2px)" }} className="">
+            <MyDiv text={`${warband.cash} gc`} title={"Warchest"} />
+            <MyDiv text={`${warband.treasure} pcs`} title={"Treasures"} />
+        </div>
+    </div>;
+};
+
 
 export const WarbandOverviewPage = () => {
     const navigate = useNavigate();
@@ -30,12 +70,10 @@ export const WarbandOverviewPage = () => {
     }
     return <React.Fragment>
         <h2>{warband.name}</h2>
+        <WarbandKPIs />
         <WarbandControls />
-        <WarbandMetadata/>
-
         <OverviewWarriorSheets />
-        <MessageToast/>
-        <Footer/>
+        <Footer />
     </React.Fragment>;
 };
 

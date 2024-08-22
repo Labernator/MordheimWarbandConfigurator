@@ -1,29 +1,30 @@
 import { IWarrior } from "../types/warrior";
+import React from "react";
 
 export const getWarbandSize = (warriors: IWarrior[]): number => {
     return warriors.reduce((acc, warrior) => {
-        acc += warrior.headCount;
+        acc += warrior.HeadCount;
         return acc;
     }, 0);
-}
+};
 
 export const getRoutLimit = (warriors: IWarrior[]): number => {
     return Math.floor((getWarbandSize(warriors) - 1) / 4) + 1;
-}
+};
 
 export const getWarbandRating = (warriors: IWarrior[]): number => {
     return warriors.reduce((acc, warrior) => {
-        acc += (warrior.xp + warrior.rating) * warrior.headCount;
+        acc += (warrior.Experience + warrior.Rating) * warrior.HeadCount;
         return acc;
     }, 0);
 };
 
 export const groupByFighterType = (warriors: IWarrior[]): JSX.Element[] => {
     const mappedUnitTypes = warriors.reduce((acc, warrior) => {
-        if (acc.has(warrior.type)) {
-            acc.set(warrior.type, (acc.get(warrior.type) || 0) + warrior.headCount);
+        if (acc.has(warrior.WarriorType)) {
+            acc.set(warrior.WarriorType, (acc.get(warrior.WarriorType) || 0) + warrior.HeadCount);
         } else {
-            acc.set(warrior.type, warrior.headCount);
+            acc.set(warrior.WarriorType, warrior.HeadCount);
         }
         return acc;
     }, new Map<string, number>());
@@ -41,6 +42,6 @@ export const groupByFighterType = (warriors: IWarrior[]): JSX.Element[] => {
         <td>
             <strong>{getWarbandSize(warriors)}</strong>
         </td>
-    </tr>)
+    </tr>);
     return rows;
 };

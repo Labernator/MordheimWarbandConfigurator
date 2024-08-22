@@ -1,67 +1,67 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IEquipment, initialWarrior, IRules, IWarrior, Stats } from "../../types/warrior";
-import { IDatabaseSpell } from "../../types/database";
+import { initialWarrior, IWarrior, Stats } from "../../types/warrior";
+import { ICombinedEquipment, IDatabaseRule, IDatabaseSpell } from "../../types/database";
 
 const warriorSlice = createSlice({
-    name: 'warrior',
+    name: "temp-warrior",
     initialState: initialWarrior,
     reducers: {
         setWarriorName(state, action: PayloadAction<string>) {
-            state.name = action.payload;
+            state.Name = action.payload;
         },
         loadWarrior(_state, action: PayloadAction<IWarrior>) {
             return action.payload;
         },
         setHeadCount(state, action: PayloadAction<number>) {
-            state.headCount = action.payload;
+            state.HeadCount = action.payload;
         },
-        addWeapon(state, action: PayloadAction<IEquipment>) {
-            const weapon = state.weapons?.find((item) => item.weapon === action.payload.weapon);
+        addWeapon(state, action: PayloadAction<ICombinedEquipment>) {
+            const weapon = state.Equipment?.find((item) => item.EquipmentName === action.payload.EquipmentName);
             if (weapon) {
-                weapon.quantity++;
+                weapon.Quantity++;
             } else {
-                state.weapons?.push(action.payload);
+                state.Equipment?.push(action.payload);
             }
-            state.totalCost += action.payload.price;
+            state.TotalCost += action.payload.Price;
         },
-        removeWeapon(state, action: PayloadAction<IEquipment>) {
-            const weapon = state.weapons?.find((item) => item.weapon === action.payload.weapon);
-            if (weapon && weapon.quantity > 1) {
-                weapon.quantity--;
+        removeWeapon(state, action: PayloadAction<ICombinedEquipment>) {
+            const weapon = state.Equipment?.find((item) => item.EquipmentName === action.payload.EquipmentName);
+            if (weapon && weapon.Quantity > 1) {
+                weapon.Quantity--;
             } else {
-                const idx = state.weapons?.findIndex((item) => item.weapon === action.payload.weapon);
+                const idx = state.Equipment?.findIndex((item) => item.EquipmentName === action.payload.EquipmentName);
                 if (idx !== undefined) {
-                    state.weapons?.splice(idx,1);
+                    state.Equipment?.splice(idx,1);
                 }
             }
-            state.totalCost = (state.cost + (state.weapons?.reduce((acc, item) => acc + item.price, 0) || 0)) * state.headCount;
+            state.TotalCost = (state.Cost + (state.Equipment?.reduce((acc, item) => acc + (item.Quantity * item.Price), 0) || 0)) * state.HeadCount;
         },
         addWizardSpell(state, action: PayloadAction<IDatabaseSpell>) {
-            if (state.spells) {
-                state.spells.push(action.payload);
+            if (state.Spells) {
+                state.Spells.push(action.payload);
             } else {
-                state.spells = [action.payload];
+                state.Spells = [action.payload];
             }
         },
-        setSpell(state, action: PayloadAction<IDatabaseSpell>) {
-            state.spells = [action.payload];
+        setSpell(state, action: PayloadAction<IDatabaseSpell[]>) {
+            state.Spells = action.payload;
         },
         addInjury(state, action: PayloadAction<string>) {
-            if (state.injuries) {
-            state.injuries?.push(action.payload);
+            if (state.Injuries) {
+            state.Injuries?.push(action.payload);
             } else {
-                state.injuries = [action.payload];
+                state.Injuries = [action.payload];
             }
         },
-        addSkill(state, action: PayloadAction<IRules>) {
-            if (state.rules) {
-                state.rules?.push(action.payload);
+        addSkill(state, action: PayloadAction<IDatabaseRule>) {
+            if (state.Rules) {
+                state.Rules?.push(action.payload);
             } else {
-                state.rules = [action.payload];
+                state.Rules = [action.payload];
             }
         },
         increaseXP(state) {
-            state.xp += 1;
+            state.Experience += 1;
         },
         increaseStat(state, action: PayloadAction<string>) {
             switch (action.payload) {
@@ -90,7 +90,7 @@ const warriorSlice = createSlice({
                     state.A++;
                     break;
                 case Stats.Ld:
-                    state.Ld++;
+                    state.LD++;
                     break;
                 default:
                     throw new Error(`Stat ${action.payload} not found.`);
@@ -99,6 +99,6 @@ const warriorSlice = createSlice({
     },
 });
 
-export const { addInjury, addWeapon, addWizardSpell, addSkill, increaseStat, increaseXP,setHeadCount, setWarriorName, loadWarrior, removeWeapon, setSpell } = warriorSlice.actions
+export const { addInjury, addWeapon, addWizardSpell, addSkill, increaseStat, increaseXP,setHeadCount, setWarriorName, loadWarrior, removeWeapon, setSpell } = warriorSlice.actions;
 
 export default warriorSlice.reducer;

@@ -1,20 +1,23 @@
 import React, { useEffect } from "react";
-
-import { useAppSelector } from "../redux/store";
 import { useNavigate } from "react-router-dom";
-import { HeaderSection, RulesSection, ShortWargearSection, StatsSection, WeaponsSection } from "../components/render/UnitCard";
-import { IWarrior } from "../types/warrior";
+import { GeneratePdfButton, SaveButton } from "../components/Button";
 import { Footer } from "../components/Footer";
-import { PdfInput } from "../components/Input";
-import { GeneratePdfButton } from "../components/Button";
-
+import { HeaderSection, RulesSection, ShortWargearSection, StatsSection, WeaponsSection } from "../components/render/UnitCard";
+import { useAppSelector } from "../redux/store";
+import { IWarrior } from "../types/warrior";
 
 export const PdfControls = () => {
-    return <div className="section-container">
-        <div className="header-1">Pdf Export</div>
-        <PdfInput/>
-        <GeneratePdfButton/>
-    </div>
+    return <React.Fragment>
+        <div className="section-container">
+            <div className="header-1">Pdf Export</div>
+            <GeneratePdfButton />
+        </div>
+        <div className="section-container">
+            <div className="header-1">Save Warband</div>
+            <SaveButton />
+
+        </div>
+    </React.Fragment>;
 };
 
 export const PdfPage = () => {
@@ -38,7 +41,7 @@ export const PdfPage = () => {
 export const PrintPage = () => {
     const warband = useAppSelector((state) => state.warband);
     const createContainer = (warrior: JSX.Element[]) => <div className="pdf-container">{warrior}</div>;
-    const liste = warband.warriors.map((warrior) => <PdfUnitCard warrior={warrior} />)
+    const liste = warband.warriors.map((warrior) => <PdfUnitCard key="dummy-key" warrior={warrior} />);
     const collectContainers = () => {
         const containers = [];
         for (let i = 0; i < liste.length; i++) {
@@ -50,7 +53,7 @@ export const PrintPage = () => {
             }
         }
         return containers;
-    }
+    };
     return <React.Fragment>
         {/* <div className="pdf-container"><WarbandCard warband={warbandList} /></div> */}
         {collectContainers()}

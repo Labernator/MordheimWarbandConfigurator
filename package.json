@@ -15,13 +15,14 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.96",
+    "@types/node": "^16.18.104",
     "@types/react": "^18.2.79",
     "@types/react-dom": "^18.2.25",
     "@types/react-fontawesome": "^1.6.8",
     "@types/react-redux": "^7.1.33",
     "@types/react-router-dom": "^5.3.3",
     "@types/redux": "^3.6.0",
+    "axios": "^1.7.3",
     "babel-jest": "^27.4.2",
     "babel-loader": "^8.2.3",
     "babel-plugin-named-asset-import": "^0.3.8",
@@ -36,7 +37,7 @@
     "csv-parser": "^3.0.0",
     "dotenv": "^10.0.0",
     "dotenv-expand": "^5.1.0",
-    "eslint": "^8.3.0",
+    "eslint": "^8.57.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-webpack-plugin": "^3.1.1",
     "file-loader": "^6.2.0",
@@ -45,9 +46,6 @@
     "html-webpack-plugin": "^5.5.0",
     "html2canvas": "^1.4.1",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^27.4.3",
-    "jest-resolve": "^27.4.2",
-    "jest-watch-typeahead": "^1.0.0",
     "jspdf": "^2.5.1",
     "mini-css-extract-plugin": "^2.4.5",
     "postcss": "^8.4.4",
@@ -70,7 +68,6 @@
     "sass-loader": "^12.3.0",
     "semver": "^7.3.5",
     "source-map-loader": "^3.0.0",
-    "sqlite3": "^5.1.7",
     "style-loader": "^3.3.1",
     "tailwindcss": "^3.0.2",
     "terser-webpack-plugin": "^5.2.5",
@@ -105,9 +102,10 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^3.1.0"
+    "gh-pages": "^3.1.0",
+    "@babel/plugin-proposal-private-property-in-object": "^7.16.0"
   },
-  "homepage": "https://labernator.github.io/MordheimWarbandConfigurator/",
+  "homepage": "http://mordheim-companion.com/",
   "babel": {
     "presets": [
       "react-app"

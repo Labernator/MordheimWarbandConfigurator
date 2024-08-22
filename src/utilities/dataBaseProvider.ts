@@ -1,125 +1,172 @@
-import { IDatabaseEquipment, IDatabaseEthnicMaximums, IDatabaseInjury, IDatabaseRules, IDatabaseSkillLists, IDatabaseSpell, IDatabaseUnit, IDatabaseWarband, IDatabaseWeapon, IDatabaseWizard } from "../types/database";
-import { IEquipment, IEthnicMaximums, IFullEquipment, IWarrior } from "../types/warrior";
-const warbandsCsv = require('../static/data/Warbands.csv');
-const unitsCsv = require('../static/data/Units.csv');
-const rulesCsv = require('../static/data/Rules.csv');
-const weaponsCsv = require('../static/data/Weapons.csv');
-const spellsCsv = require('../static/data/Spells.csv');
-const wizardsCsv = require('../static/data/Wizards.csv');
-const maximumsCsv = require('../static/data/EthnicMaximums.csv');
-const skillsCsv = require('../static/data/Skills.csv');
-const parsedWeaponsCsv: IDatabaseWeapon[] = JSON.parse(weaponsCsv.slice(17));
-const parsedRulesCsv: IDatabaseRules[] = JSON.parse(rulesCsv.slice(17));
-const parsedWarbandsCsv: IDatabaseWarband[] = JSON.parse(warbandsCsv.slice(17));
-const parsedSpellsCsv: IDatabaseSpell[] = JSON.parse(spellsCsv.slice(17));
-const parsedWizardsCsv: IDatabaseWizard[] = JSON.parse(wizardsCsv.slice(17));
-const parsedMaximumsCsv: IDatabaseEthnicMaximums[] = JSON.parse(maximumsCsv.slice(17));
-const parsedSkillsCsv: IDatabaseSkillLists[] = JSON.parse(skillsCsv.slice(17));
-const injuriesCsv = require('../static/data/Injuries.csv');
-const parsedInjuriesCsv: IDatabaseInjury[] = JSON.parse(injuriesCsv.slice(17));
-const structuredRules = parsedRulesCsv.map((csvRule: IDatabaseRules) => ({ rule: csvRule.rule, effect: csvRule.effect }));
-const equipmentListCsv = require('../static/data/EquipmentLists.csv');
-const parsedEquipmentListCsv: IDatabaseEquipment[] = JSON.parse(equipmentListCsv.slice(17));
+import axios, { AxiosResponse } from "axios";
+import { ICombinedEquipment, IDatabaseEquipment, IDatabaseEthnicMaximums, IDatabaseInjury, IDatabaseProviderInstance, IDatabaseRule, IDatabaseSkill, IDatabaseSpell, IDatabaseSpellcaster, IDatabaseWarband, IDatabaseWarrior, ISpellcaster, IUserWarband } from "../types/database";
+import { IWarrior } from "../types/warrior";
+import { IUser, IWarband } from "../types/warband";
 
-export const getSkillsPerList = (list: string) => {
-    return parsedSkillsCsv.filter((skillList) => skillList.skilllist === list);
-}
-export const getInjuries = () => {
-    return parsedInjuriesCsv;
-}
-export const getWarbands = () => {
-    return parsedWarbandsCsv;
-}
-export const getMaximumsForEthnicity = (ethnicity: string): IEthnicMaximums => {
-    const foundMax = parsedMaximumsCsv.find((max) => max.profile === ethnicity);
-    if (!foundMax) {
-        throw new Error(`Ethnicity ${ethnicity} not found. Please add metadata to the EthnicMaximums.csv file.`);
-    }
-    return foundMax;
-}
-export const getWarbandMetadata = (faction: string) => {
-    const warband = parsedWarbandsCsv.find((warband) => warband.faction === faction);
-    if (!warband) {
-        throw new Error(`Warband ${warband} not found. Please add metadata to the Warband.csv file.`);
-    }
-    return warband;
-}
+export const DataBaseProvider = class {
 
-const getRules = (plainRules: string[]): IDatabaseRules[] => {
-    return plainRules.map((rule: string) => {
-        const foundRule = structuredRules.find((csvRule: any) => csvRule.rule === rule)
-        if (!foundRule) {
-            throw new Error(`Rule ${rule} not found. Please add metadata to the Rules.csv file.`);
+    public warbands: IDatabaseWarband[] = [];
+    public rules: IDatabaseRule[] = [];
+    public injuries: IDatabaseInjury[] = [];
+    public warriors: IWarrior[] = [];
+
+    private skillLists: IDatabaseSkill[] = [];
+    private equipment: ICombinedEquipment[] = [];
+    private maximums: IDatabaseEthnicMaximums[] = [];
+    private static instance: IDatabaseProviderInstance;
+
+    public static getInstance = async () => {
+        if (!this.instance) {
+            this.instance = new DataBaseProvider();
+            await this.instance.init();
         }
-        return foundRule;
-    });
-};
-export const listContainsDagger = (list: string) => {
-    const foundDagger = parsedEquipmentListCsv.filter((entry) => entry.list === list).find((entry) => entry.equipment === "Dagger");
-    return !!foundDagger;
-}
-export const getWarriorsListForWarband = (faction: string | undefined): IWarrior[] => {
-    if (faction === undefined) {
-        throw new Error("Warband faction is undefined. Please provide a warband faction.");
-    }
-    const parsedCSV: IDatabaseUnit[] = JSON.parse(unitsCsv.slice(17));
-    const filteredCSV = parsedCSV.filter((unit: IDatabaseUnit) => unit.warband === faction);
-    return filteredCSV.map((unit: IDatabaseUnit) => {
-        const plainRules: string[] = (unit.rules && unit.rules.split(",").map((entry) => entry.trim())) || [];
-        const transformedUnit: IWarrior = {
-            ...unit,
-            name: "",
-            skills: (unit.skills && unit.skills.split(",")) || [],
-            weapons: unit.equipment && listContainsDagger(unit.equipment) ? [{ weapon: "Dagger", type: "Melee", strength: "as User", range: "", price: 0, quantity: 1, traits: ["Enemy armour save"] }] : [],
-            rules: getRules(plainRules),
-            totalCost: unit.cost,
-            headCount: 1,
-            hero: unit.hero === "x",
-            position: 0,
-            ethnicity: unit.ethnicity
+        return this.instance;
+    };
+
+    public init = async () => {
+        this.warbands = await this.getWarbands();
+        this.rules = await this.getRules();
+        this.injuries = await this.getInjuries();
+        this.maximums = await this.getMaximums();
+    };
+
+    private callGetApi = async (endpoint: string, parameter?: { key: string, value: string }) => {
+        try {
+            const response: AxiosResponse = await axios.get(`https://mordheim-companion.com/index.php/${endpoint}${parameter ? `?${parameter.key}=${parameter.value}` : ""}`);
+            const responseData: any[] = response.data;
+            // Process the response data
+            return responseData;
+        } catch (error) {
+            // Handle the error
+            throw new Error(`Error fetching ${endpoint}: ${error}`);
         }
-        // transform skills
-        return transformedUnit;
-    })
+    };
+
+    private getWarbands = async (): Promise<IDatabaseWarband[]> => {
+        return this.callGetApi("warbands");
+    };
+    private getRules = async (): Promise<IDatabaseRule[]> => {
+        return this.callGetApi("rules");
+    };
+    private getInjuries = async (): Promise<IDatabaseInjury[]> => {
+        return this.callGetApi("injuries");
+    };
+    private getMaximums = async (): Promise<IDatabaseEthnicMaximums[]> => {
+        return this.callGetApi("maximums");
+    };
+    private getSpellcasterFromDatabase = async (warriorType: string): Promise<IDatabaseSpellcaster[]> => {
+        return this.callGetApi("spellcaster", { key: "warriorType", value: warriorType });
+    };
+    private getSpells = async (magicType: string): Promise<IDatabaseSpell[]> => {
+        return this.callGetApi("spells", { key: "magicType", value: magicType });
+    };
+    public getWarriors = async (warbandId: string): Promise<IDatabaseWarrior[]> => {
+        return this.callGetApi("warriors", { key: "warbandId", value: warbandId });
+    };
+    public searchWarbands = async (userId: string): Promise<IUserWarband[]> => {
+        return this.callGetApi("warbandstore", { key: "userId", value: userId });
+    };
+    private getListsEquipment = async (listIds: string[]) => {
+        const parameters = listIds.map((listId) => `listId[]=${listId}`).join("&");
+        try {
+            const response: AxiosResponse = await axios.get(`https://mordheim-companion.com/index.php/equipment?${parameters}`);
+            const responseData: IDatabaseEquipment[] = response.data;
+            // Process the response data
+            return responseData;
+        } catch (error) {
+            // Handle the error
+            throw new Error(`Error fetching warbands: ${error}`);
+        }
+    };
+    public getEquipment = (listId: string) => {
+        return this.equipment.filter((equi) => equi.ListId === listId);
+    };
+    public getSpellcaster = async (warriorType: string): Promise<ISpellcaster> => {
+        const spellcaster = (await this.getSpellcasterFromDatabase(warriorType))[0];
+        const spells = await this.getSpells(spellcaster.MagicType);
+        return { ...spellcaster, SpellOptions: spells };
+    };
+
+    public getSkillOptions = (listId: string) => this.skillLists.filter((entry) => entry.ListId === listId);
+
+    public getWarbandHumanReadableType = (warbandType: string) => this.warbands.find((entry) => entry.Id === warbandType)?.Name || "";
+
+    private getEquipmentOptions = async (listIds: string[]) => {
+        // this looks wrong!
+
+        const filteredIds = listIds.filter((listId) => !this.equipment.some((entry) => entry.ListId === listId));
+        if (filteredIds.length > 0) {
+            const additionalEquipment = await this.getListsEquipment(filteredIds);
+            const mappedEquipment: ICombinedEquipment[] = additionalEquipment.map((equi) => ({ ...equi, Quantity: 1, Price: equi.Cost }));
+            this.equipment = this.equipment.concat(mappedEquipment);
+            return mappedEquipment;
+        }
+        return this.equipment.filter((entry) => entry.ListId in listIds);
+    };
+
+    public getWarbandMetadata = async (faction: string) => {
+
+        const getDataBaseRules = (ruleNames: string[]) => {
+            return ruleNames.map((rule: string) => {
+                const foundRule = this.rules.find((dbRule: IDatabaseRule) => dbRule.RuleName === rule);
+                if (!foundRule) {
+                    throw new Error(`Rule ${rule} not found. Please add metadata to the Rules table.`);
+                }
+                return foundRule;
+            });
+        };
+
+        const warband = this.warbands.find((warband) => warband.Id === faction);
+        if (!warband) {
+            throw new Error(`Warband ${warband} not found. Please add metadata to the Warbands table.`);
+        }
+        const warriors = await this.getWarriors(faction);
+
+        const equipmentSet = new Set<string>(warriors.filter((warrior) => !!warrior.EquipmentList).map((warrior) => warrior.EquipmentList));
+        const listArray = await this.getEquipmentOptions(Array.from(equipmentSet));
+
+        this.warriors = warriors.map((warrior) => {
+            const isWolfPriest = warrior.WarriorType === "Wolf Priest of Ulric";
+            const hasFreeDagger = !!listArray.filter((entry) => entry.ListId === warrior.EquipmentList).find((entry) => entry.EquipmentName === "Dagger");
+            const ruleNames: string[] = (warrior.Rules && warrior.Rules.split(";").map((entry) => entry.trim())) || [];
+            return {
+                ...warrior,
+                Name: "",
+                SkillLists: (warrior.SkillLists && warrior.SkillLists.split(";")) || [],
+                // Equipment: warrior.EquipmentList && listContainsDagger(warrior.EquipmentList) ? [{ weapon: "Dagger", type: "Melee", strength: "as User", range: "", price: 0, quantity: 1, traits: ["Enemy armour save"] }] : [],
+                Equipment: isWolfPriest ? listArray.filter((equi) => equi.ListId === warrior.EquipmentList) : [],
+                Rules: getDataBaseRules(ruleNames),
+                TotalCost: warrior.Cost,
+                HeadCount: 1,
+                Hero: !!warrior.Hero,
+                Position: 0,
+                Ethnicity: warrior.Ethnicity,
+                HasFreeDagger: isWolfPriest ? false : hasFreeDagger,
+                FixedEquipment: isWolfPriest
+            };
+        });
+        return warband;
+    };
+
+    public getEthnicMaximum = (ethnicity: string) => {
+        const foundMax = this.maximums.find((max) => max.Ethnicity === ethnicity);
+        if (!foundMax) {
+            throw new Error(`Ethnicity ${ethnicity} not found. Please add metadata to the EthnicMaximums table.`);
+        }
+        return foundMax;
+    };
+    public saveWarband = async (warband: IWarband, user: IUser) => {
+        const jsonObj = { UserId: user.username, WarbandId: warband.id, WarbandJson: JSON.stringify(warband) };
+        try {
+            const response: AxiosResponse = await axios.post("https://mordheim-companion.com/index.php/warbandstore", jsonObj, {
+                headers: { "Content-Type": "application/json" },
+            });
+            const responseData: boolean = response.data;
+            // Process the response data
+            return responseData;
+        } catch (error) {
+            // Handle the error
+            throw new Error(`Error fetching warbands: ${error}`);
+        }
+    };
 };
-
-
-export const getSpellOptions = (faction: string, warriorType: string) => {
-    const foundWizard = parsedWizardsCsv.find((wizard) => wizard.warband === faction && wizard.name);
-    if (!foundWizard) {
-        throw new Error(`Wizard ${warriorType} not found. Please add metadata to the Wizard.csv file.`);
-    }
-    const spells = parsedSpellsCsv.filter((spell) => spell.school === foundWizard.school);
-    if (spells.length < 1) {
-        throw new Error(`Magic school ${foundWizard.school} not found. Please add metadata to the Spells.csv file.`);
-    }
-    return spells;
-}
-
-const filterFunction = (eq: IDatabaseEquipment): IFullEquipment => {
-    const foundItem = parsedWeaponsCsv.find((weapon: IDatabaseWeapon) => weapon.weapon === eq.equipment)
-    if (!foundItem) {
-        throw new Error(`Weapon ${eq.equipment} not found. Please add metadata to the Weapons.csv file.`);
-    }
-    return { ...foundItem, price: eq.price, quantity: 1 };
-}
-export const getWarriorMeleeWeaponOptions = (warrior: IWarrior): IEquipment[] => {
-    const filteredEquipment: IDatabaseEquipment[] = parsedEquipmentListCsv.filter((equipment: IDatabaseEquipment) => equipment.list === warrior.equipment);
-    const filteredWeapons: IFullEquipment[] = filteredEquipment.map((equi) => filterFunction(equi));
-    const meleeWeapons = filteredWeapons.filter((weapon: IFullEquipment) => weapon.type === "Melee").map((weapon) => ({ ...weapon, traits: (weapon.traits && weapon.traits.split(",").map((entry) => entry.trim())) || [] }));
-    return meleeWeapons;
-}
-
-export const getWarriorRangedWeaponOptions = (warrior: IWarrior): IEquipment[] => {
-    const filteredEquipment: IDatabaseEquipment[] = parsedEquipmentListCsv.filter((equipment: IDatabaseEquipment) => equipment.list === warrior.equipment);
-    const filteredWeapons: IFullEquipment[] = filteredEquipment.map((equi) => filterFunction(equi));
-    const rangedWeapons = filteredWeapons.filter((weapon: IFullEquipment) => weapon.type === "Ranged").map((weapon) => ({ ...weapon, traits: (weapon.traits && weapon.traits.split(",").map((entry) => entry.trim())) || [] }));
-    return rangedWeapons;
-}
-
-export const getWarriorWargearOptions = (warrior: IWarrior): IEquipment[] => {
-    const filteredEquipment: IDatabaseEquipment[] = parsedEquipmentListCsv.filter((equipment: IDatabaseEquipment) => equipment.list === warrior.equipment);
-    const filteredWeapons: IFullEquipment[] = filteredEquipment.map((equi) => filterFunction(equi));
-    const wargear = filteredWeapons.filter((weapon: IFullEquipment) => weapon.type === "Wargear").map((weapon) => ({ ...weapon, traits: (weapon.traits && weapon.traits.split(",").map((entry) => entry.trim())) || [] }));
-    return wargear;
-}

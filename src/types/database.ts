@@ -1,8 +1,29 @@
-export interface IDatabaseSkillLists {
-    skilllist: string;
-    skill: string;
-    effect: string;
-    condition: string;
+import { IUser, IWarband } from "./warband";
+import { IWarrior } from "./warrior";
+
+export interface IDatabaseProviderInstance {
+    init: () => void;
+    getWarbandMetadata: (faction: string) => Promise<IDatabaseWarband>;
+    getEthnicMaximum: (ethnicity: string) => IDatabaseEthnicMaximums;
+    // getEquipmentOptions: (lists: string[]) => Promise<IDatabaseListEquipment[]>;
+    getSkillOptions: (list: string) => IDatabaseSkill[];
+    getSpellcaster: (warriorType: string) => Promise<ISpellcaster>;
+    getWarbandHumanReadableType: (faction: string) => string;
+    getEquipment: (list: string) => ICombinedEquipment[];
+    searchWarbands: (userId: string) => Promise<IUserWarband[]>;
+    saveWarband: (warband: IWarband, user: IUser) => Promise<boolean>;
+    injuries: IDatabaseInjury[];
+    warriors: IWarrior[];
+    warbands: IDatabaseWarband[];
+    rules: IDatabaseRule[];
+    // listEquipment: IDatabaseListEquipment[];
+}
+
+export interface IDatabaseSkill {
+    ListId: string;
+    RuleName: string;
+    Text: string;
+    Prerequisite: string;
 }
 export interface IDatabaseUnit {
     warband: string;
@@ -25,11 +46,11 @@ export interface IDatabaseUnit {
     max: number;
     equipment: string;
     hero: string;
-    ethnicity: string;
+    Ethnicity: string;
 }
 
 export interface IDatabaseEthnicMaximums {
-    profile: string;
+    Ethnicity: string;
     M: number;
     WS: number;
     BS: number;
@@ -42,42 +63,97 @@ export interface IDatabaseEthnicMaximums {
 }
 
 export interface IDatabaseInjury {
-    injury: string;
-    effect: string;
+    Injury: string;
+    Text: string;
+    Characteristic: string;
+    Rule: string;
 }
-export interface IDatabaseEquipment {
-    list: string;
-    equipment: string;
-    price: number;
-}
-
-export interface IDatabaseWeapon {
-    weapon: string;
-    type: string;
-    range: string;
-    strength: string;
-    traits: string;
-}
-export interface IDatabaseRules {
-    rule: string;
-    effect: string;
+export interface IDatabaseListEquipment {
+    ListId: string;
+    EquipmentName: string;
+    Cost: number;
 }
 
 export interface IDatabaseWarband {
-    faction: string;
-    limit: number;
-    abbreviaton: string;
+    Id: string;
+    Name: string;
+    ShortName: string;
+    Maximum: number;
+    Gold: number;
+}
+
+export interface IDatabaseWarrior {
+    WarbandId: string;
+    WarriorType: string;
+    Cost: number;
+    M: number;
+    WS: number;
+    BS: number;
+    S: number;
+    T: number;
+    W: number;
+    I: number;
+    A: number;
+    LD: number;
+    Rating: number;
+    Experience: number;
+    Maximum: number;
+    Rules: string;
+    SkillLists: string;
+    EquipmentList: string;
+    Hero: number;
+    Ethnicity: string;
+}
+
+export interface IDatabaseRule {
+    RuleName: string;
+    Text: string;
 }
 
 export interface IDatabaseSpell {
-    school: string;
-    name: string;
-    effect: string;
-    difficulty: number;
+    MagicType: string;
+    SpellName: string;
+    Text: string;
+    Difficulty: number;
 }
 
-export interface IDatabaseWizard {
-    warband: string;
-    name: string;
-    school: string;
+export interface IDatabaseSpellcaster {
+    WarbandId: string;
+    WarriorType: string;
+    MagicType: string;
+}
+
+
+export interface ISpellcaster {
+    WarbandId: string;
+    WarriorType: string;
+    MagicType: string;
+    SpellOptions: IDatabaseSpell[];
+}
+
+export interface IDatabaseEquipment {
+    ListId: string;
+    EquipmentType: string;
+    Cost: number;
+    EquipmentName: string;
+    Distance: number;
+    Strength: string;
+    Traits: string;
+}
+
+export interface ICombinedEquipment {
+    ListId: string;
+    EquipmentName: string;
+    EquipmentType: string;
+    Distance: number;
+    Strength: string;
+    Traits: string;
+    Price: number;
+    Quantity: number;
+}
+
+export interface IUserWarband {
+    UserId: string;
+    WarbandId: string;
+    WarbandJson: string;
 }

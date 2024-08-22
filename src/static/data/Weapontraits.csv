@@ -1,8 +1,0 @@
-trait;effect
-Enemy armour save;An enemy wounded by this gains a +1 bonus to his armour save and a 6+ armour save if he normally has none
-Cannot be parried;A model attacked by this weapon cannot use the parry rule
-Whipcrack;The wielder of this weapon gains +1A when charging or being charged. When being charged, this attack gains “Strike First”. If the wielder is simultaneously charged by two or more opponents they will still only receive a total of +1A. When using two of these weapons, only the first will get the +1A. The second one will only get the normal +1A from using an additional weapon.
-Parry;See the respective rule in the Close Combat section of this rulebook.
-Strike first;A warrior with this weapon always strikes first in the first turn of hand-to-hand combat.
-Pair;Traditionally used in pairs, one in each hand. A warrior armed with this weapon gets an additional attack.
-Venomous;These weapons count as being permanently coated in black lotus (see the Equipment section). No additional poison may be applied to this weapon.

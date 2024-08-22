@@ -9,7 +9,8 @@ export interface IWarband {
     treasure: number;
     campaignLink?: string;
     limit: number;
-};
+    id: string;
+}
 
 
 export function isMordheimConfigWarband(input: any): input is IWarband {
@@ -24,4 +25,10 @@ export interface IDelta {
 export interface IPdf {
     name: string;
     // value?: number;
+}
+
+export interface IUser {
+    username: string;
+    password: string;
+    filename: string;
 }
