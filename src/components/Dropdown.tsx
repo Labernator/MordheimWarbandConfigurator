@@ -1,6 +1,6 @@
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { addDelta, loadWarrior, resetDelta } from "../redux/slices";
 import { useAppDispatch, useAppSelector } from "../redux/store";
 import { IWarrior } from "../types/warrior";
@@ -11,7 +11,6 @@ export interface ISelectOption {
     value: string;
     disabled?: boolean;
 }
-
 
 export const WarriorSelection = () => {
     const dispatch = useAppDispatch();

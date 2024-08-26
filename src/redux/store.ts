@@ -3,13 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import warriorReducer from "./slices/warriorSlice";
 import warbandReducer from "./slices/warbandSlice";
 import deltaReducer from "./slices/deltaSlice";
-import userReducer from "./slices/userSlice";
-
+import logReducer from "./slices/logSlice";
 const reducer = {
     tempwarrior: warriorReducer,
     warband: warbandReducer,
     delta: deltaReducer,
-    user: userReducer,
+    templog: logReducer,
 };
 
 export const store = configureStore({reducer, devTools: true});

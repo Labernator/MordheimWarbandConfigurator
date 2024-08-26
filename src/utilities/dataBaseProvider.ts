@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { ICombinedEquipment, IDatabaseEquipment, IDatabaseEthnicMaximums, IDatabaseInjury, IDatabaseProviderInstance, IDatabaseRule, IDatabaseSkill, IDatabaseSpell, IDatabaseSpellcaster, IDatabaseWarband, IDatabaseWarrior, ISpellcaster, IUserWarband } from "../types/database";
 import { IWarrior } from "../types/warrior";
-import { IUser, IWarband } from "../types/warband";
+import { IWarband } from "../types/warband";
 
 export const DataBaseProvider = class {
 
@@ -155,18 +155,30 @@ export const DataBaseProvider = class {
         }
         return foundMax;
     };
-    public saveWarband = async (warband: IWarband, user: IUser) => {
-        const jsonObj = { UserId: user.username, WarbandId: warband.id, WarbandJson: JSON.stringify(warband) };
+    public saveWarband = async (warband: IWarband, user: string) => {
+        const jsonObj = { UserId: user, WarbandId: warband.id, WarbandJson: JSON.stringify(warband) };
         try {
             const response: AxiosResponse = await axios.post("https://mordheim-companion.com/index.php/warbandstore", jsonObj, {
                 headers: { "Content-Type": "application/json" },
             });
+            const responseData = response.data;
+            // Process the response data
+            return responseData;
+        } catch (error) {
+            // Handle the error
+            throw new Error(`Error saving warband: ${error}`);
+        }
+    };
+
+    public deleteWarband = async (warbandId: string) => {
+        try {
+            const response: AxiosResponse = await axios.delete(`https://mordheim-companion.com/index.php/deletewarband?warbandId=${warbandId}`);
             const responseData: boolean = response.data;
             // Process the response data
             return responseData;
         } catch (error) {
             // Handle the error
-            throw new Error(`Error fetching warbands: ${error}`);
+            throw new Error(`Error deleting warbands: ${error}`);
         }
     };
 };

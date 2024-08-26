@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { MaintainFooter } from "../components/Footer";
 import { loadWarrior, removeFunds, resetDelta, updateWarrior } from "../redux/slices";
 import { initialWarrior } from "../types/warrior";
-import { WarriorHeadCountSelection } from "../components/NumberSelector";
+import { WarriorHeadCountSelection } from "../components/warrior/WarriorHeadcount";
 import { WarriorSheet } from "../components/WarriorSheet";
 // import { PurchaseWeapons } from "../components/Tabstrip";
 // import { SpellSelection } from "../components/List";

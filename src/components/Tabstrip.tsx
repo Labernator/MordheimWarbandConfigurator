@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { addDelta, addWeapon } from "../redux/slices";
+import { addDelta, addLog, addWeapon } from "../redux/slices";
 import { useAppDispatch, useAppSelector } from "../redux/store";
 import React from "react";
 import { ICombinedEquipment } from "../types/database";
@@ -62,6 +62,7 @@ export const EquipmentList = ({ type }: { type: string }) => {
     const onChangeHandler = (weaponName: string) => {
         const foundweapon = equipmentOptions.find((option) => option.EquipmentName === weaponName);
         if (foundweapon && !isDisabledEntry(foundweapon)) {
+            dispatch(addLog({ command: "Add Equipment", value: weaponName, cost: foundweapon.Price * warrior.HeadCount }));
             dispatch(addWeapon(foundweapon));
             dispatch(addDelta({ command: "addWeapon", value: foundweapon.Price * warrior.HeadCount }));
         }

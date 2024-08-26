@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { GeneratePdfButton, SaveButton } from "../components/Button";
+import { ExportWarbandButton, GeneratePdfButton, SaveButton } from "../components/Button";
 import { Footer } from "../components/Footer";
 import { HeaderSection, RulesSection, ShortWargearSection, StatsSection, WeaponsSection } from "../components/render/UnitCard";
 import { useAppSelector } from "../redux/store";
@@ -15,7 +15,11 @@ export const PdfControls = () => {
         <div className="section-container">
             <div className="header-1">Save Warband</div>
             <SaveButton />
-
+            
+        </div>
+        <div className="section-container">
+            <div className="header-1">Export Warband File</div>
+            <ExportWarbandButton />
         </div>
     </React.Fragment>;
 };

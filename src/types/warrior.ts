@@ -27,15 +27,15 @@ export const initialWarrior: IWarrior = {
 };
 
 export enum Stats {
-    "A" = "Attacks",
     "M" = "Movement",
     "WS" = "Weapon Skill",
     "BS" = "Ballistic Skill",
-    "Ld" = "Leadership",
-    "W" = "Wounds",
-    "T" = "Toughness",
     "S" = "Strength",
-    "I" = "Initiative"
+    "T" = "Toughness",
+    "W" = "Wounds",
+    "I" = "Initiative",
+    "A" = "Attacks",
+    "Ld" = "Leadership",
 }
 
 export function isStatProperty(input: any): input is Stats {

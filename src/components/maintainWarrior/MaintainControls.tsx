@@ -6,9 +6,9 @@ import { useAppSelector, useAppDispatch } from "../../redux/store";
 import React, { useEffect, useState } from "react";
 import { IEquipmentType, initialWarrior, IWarrior, Stats } from "../../types/warrior";
 import { StatsSection, MaintainWeaponsSection, ShortWargearSection, SkillListsSection, ShortRulesSection } from "../render/UnitCard";
-import { HeaderSectionWithEdit } from "../WarriorSheet";
 import { ICombinedEquipment, IDatabaseEthnicMaximums, IDatabaseSkill } from "../../types/database";
 import { DataBaseProvider } from "../../utilities/DatabaseProvider";
+import { WarriorHeaderSection } from "../warrior/WarriorHeader";
 
 export const UpdateWarriorButton = () => {
     const warband = useAppSelector((state) => state.warband);
@@ -77,90 +77,9 @@ export const MetaSection = () => {
             {focusedTab === IMaintainTabs.Equipment ? <EquipmentSection /> : null}
             {focusedTab === IMaintainTabs.Skills ? <SkillsSection /> : null}
             {focusedTab === IMaintainTabs.Injuries ? <InjuriesSection /> : null}
-            {focusedTab === IMaintainTabs.Stats ? <StatsMaintenanceSection /> : null}
+            {/* {focusedTab === IMaintainTabs.Stats ? <StatsMaintenanceSection /> : null} */}
         </div>
     </div>;
-};
-
-export const StatsMaintenanceSection = () => {
-    const dispatch = useAppDispatch();
-    const warrior = useAppSelector((state) => state.tempwarrior);
-    const getWarriorStat = (input: string) => {
-        switch (input) {
-            case Stats.M:
-                return { warriorStat: warrior.M, max: maximums.M };
-            case Stats.W:
-                return { warriorStat: warrior.W, max: maximums.W };
-            case Stats.WS:
-                return { warriorStat: warrior.WS, max: maximums.WS };
-            case Stats.I:
-                return { warriorStat: warrior.I, max: maximums.I };
-            case Stats.BS:
-                return { warriorStat: warrior.BS, max: maximums.BS };
-            case Stats.A:
-                return { warriorStat: warrior.A, max: maximums.A };
-            case Stats.S:
-                return { warriorStat: warrior.S, max: maximums.S };
-            case Stats.Ld:
-                return { warriorStat: warrior.LD, max: maximums.Ld };
-            case Stats.T:
-                return { warriorStat: warrior.T, max: maximums.T };
-            default:
-                throw new Error("Stat not found");
-        }
-    };
-    const [maximums, setMaximums] = useState<IDatabaseEthnicMaximums>({M: 0, WS: 0, BS: 0, S: 0, T: 0, W: 0, I: 0, A: 0, Ld: 0, Ethnicity: ""});
-    useEffect(() => {
-        async function fetchMaximums() {
-            const DatabaseProviderInstance = await DataBaseProvider.getInstance();
-            setMaximums(DatabaseProviderInstance.getEthnicMaximum(warrior.Ethnicity));
-        }
-        fetchMaximums();
-    }, []);
-    return <React.Fragment>
-        <div className="warband-control" style={{ paddingLeft: "0.5em" }}>
-            <FontAwesomeIcon icon={faChartBar} style={{ width: "1.5em" }} /> {"Change XP"}</div>
-        <table className="stats-maintain-table">
-            <tbody>
-<tr>
-                        <td>Experience</td>
-                        <td style={{ fontWeight: "bold" }}>{warrior.Experience}</td>
-                        <td><FontAwesomeIcon
-                            icon={faPlusSquare}
-                            className={"stats-icon"}
-                            onClick={() => {
-                                    dispatch(addDelta({command: "addXP"}));
-                                    dispatch(increaseXP());
-                            }
-                            } /></td>
-                        <td style={{ fontSize: "0.8em" }}>{warrior.Experience ? "max. " : "maximized"}</td>
-                    </tr>
-            </tbody>
-        </table>
-        <div className="warband-control" style={{ paddingLeft: "0.5em" }}>
-            <FontAwesomeIcon icon={faChartBar} style={{ width: "1.5em" }} /> {"Change Stats"}</div>
-        <table className="stats-maintain-table">
-            <tbody>
-                {Object.values(Stats).map((stat) => {
-                    const stats = getWarriorStat(stat);
-                    return <tr key="" >
-                        <td>{stat}</td>
-                        <td style={{ fontWeight: "bold" }}>{stats.warriorStat}</td>
-                        <td><FontAwesomeIcon
-                            icon={faPlusSquare}
-                            className={stats.warriorStat < stats.max ? "stats-icon" : "stats-icon disabled"}
-                            onClick={() => {
-                                if (stats.warriorStat < stats.max) {
-                                    dispatch(increaseStat(stat));
-                                }
-                            }
-                            } /></td>
-                        <td style={{ fontSize: "0.8em" }}>{stats.warriorStat < stats.max ? `max. ${stats.max}` : "maximized"}</td>
-                    </tr>;
-                })}
-            </tbody>
-        </table>
-    </React.Fragment>;
 };
 
 export const EquipmentSection = () => {
@@ -314,7 +233,7 @@ export const EquipmentDropdown = ({ type }: { type: IEquipmentType }) => {
 export const MaintainWarriorSheet = ({ warrior }: { warrior: IWarrior }) => {
     return <React.Fragment>
         <div className="dialog-warrior-sheet">
-            <HeaderSectionWithEdit warrior={warrior} />
+            <WarriorHeaderSection givenWarrior={warrior} />
             <StatsSection unit={warrior} />
             <MaintainWeaponsSection warrior={warrior} />
             <table className="unit-table">

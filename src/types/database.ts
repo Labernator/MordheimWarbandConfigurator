@@ -1,8 +1,9 @@
-import { IUser, IWarband } from "./warband";
+import { IWarband } from "./warband";
 import { IWarrior } from "./warrior";
 
 export interface IDatabaseProviderInstance {
     init: () => void;
+    deleteWarband: (id: string) => void;
     getWarbandMetadata: (faction: string) => Promise<IDatabaseWarband>;
     getEthnicMaximum: (ethnicity: string) => IDatabaseEthnicMaximums;
     // getEquipmentOptions: (lists: string[]) => Promise<IDatabaseListEquipment[]>;
@@ -11,7 +12,7 @@ export interface IDatabaseProviderInstance {
     getWarbandHumanReadableType: (faction: string) => string;
     getEquipment: (list: string) => ICombinedEquipment[];
     searchWarbands: (userId: string) => Promise<IUserWarband[]>;
-    saveWarband: (warband: IWarband, user: IUser) => Promise<boolean>;
+    saveWarband: (warband: IWarband, user: string) => Promise<{success: string}>;
     injuries: IDatabaseInjury[];
     warriors: IWarrior[];
     warbands: IDatabaseWarband[];
@@ -59,7 +60,7 @@ export interface IDatabaseEthnicMaximums {
     W: number;
     I: number;
     A: number;
-    Ld: number;
+    LD: number;
 }
 
 export interface IDatabaseInjury {

@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IWarband } from "../../types/warband";
 import { IWarrior } from "../../types/warrior";
 import { ICombinedEquipment } from "../../types/database";
+import { ILogEntry } from "./logSlice";
 
 export const initialWarband: IWarband = {
     name: "",
@@ -13,6 +14,7 @@ export const initialWarband: IWarband = {
     campaignLink: "",
     limit: 0,
     id: window.self.crypto.randomUUID(),
+    log: [],
 };
 
 const warbandSlice = createSlice({
@@ -60,9 +62,12 @@ const warbandSlice = createSlice({
         addWeaponToStash(_state, _action: PayloadAction<ICombinedEquipment>){
             // state.stash.push(action.payload);
         },
+        addWarbandLog(state, action: PayloadAction<ILogEntry[]>){
+            state.log.push(...action.payload);
+        }
     },
 });
 
-export const { addFunds, addWarrior, loadWarband, removeFunds, removeWarrior, setCampaignUrl, setWarbandFaction, setWarbandName, updateWarrior, addWeaponToStash } = warbandSlice.actions;
+export const { addFunds, addWarrior, addWarbandLog, loadWarband, removeFunds, removeWarrior, setCampaignUrl, setWarbandFaction, setWarbandName, updateWarrior, addWeaponToStash } = warbandSlice.actions;
 
 export default warbandSlice.reducer;

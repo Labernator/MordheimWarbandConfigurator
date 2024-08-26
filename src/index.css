@@ -25,10 +25,10 @@ body {
     --color-darker: #d0d7de;
     --ifm-container-width: 800px;
     --font-color: #495057;
-    --ok-color: #9496a5;
+    /* --ok-color: #9496a5;
     --not-ok-color: #d84f2a;
     --focus-color: #d8dfed;
-    --emphasize-color: #9496a5;
+    --emphasize-color: #9496a5; */
 }
 
 .input-container {
@@ -80,7 +80,25 @@ body {
     color: var(--color-ok-font);
     border: 0.1em solid var(--font-color);
     width: 50%;
-    margin-left: calc(44% - 2px);
+    /* margin-left: calc(44% - 2px); */
+    text-align: center;
+    text-transform: uppercase;
+    height: 1em;
+}
+.button-container-right {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+.delete-button {
+    padding: 0.8em 0.7em;
+    border-radius: 0.25em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    background: var(--color-not-ok);
+    color: var(--color-ok-font);
+    border: 0.1em solid var(--font-color);
+    width: 20%;
     text-align: center;
     text-transform: uppercase;
     height: 1em;
@@ -218,11 +236,6 @@ h2 {
     position: absolute;
 }
 
-h5 {
-    color: #e3a453;
-    font-weight: 600;
-}
-
 .warband-control {
     padding: 0.7em 0.7em;
     font-size: 1.1em;
@@ -254,7 +267,7 @@ h5 {
 
 .table-striped>thead {
     text-align: left;
-    border-bottom: solid 0.15em #dee2e6;
+    border-bottom: solid 0.15em var(--color-light);
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -308,7 +321,7 @@ h5 {
     width: calc(100% - 1em);
     padding: 0.5em;
     pointer-events: auto;
-    background-color: #fff;
+    background-color: var(--color-ok-font);
     background-clip: padding-box;
     border: 1px solid rgba(0, 0, 0, .2);
     border-radius: .3rem;
@@ -327,15 +340,15 @@ h5 {
     margin: 0.5em;
     font-size: 1rem;
     font-weight: 400;
-    color: #495057;
-    background-color: #fff;
+    color: var(--font-color);
+    background-color: var(--color-ok-font);
     background-clip: padding-box;
-    border: 1px solid #ced4da;
+    border: 1px solid var(--color-ok-font);
     border-radius: .25em;
 }
 
 option:disabled {
-    color: lightgrey;
+    color: var(--color-light);
 }
 
 .modal-close-icon {
@@ -344,49 +357,12 @@ option:disabled {
     height: 1.5em;
 }
 
-.dialog-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5em;
-    color: #000;
-    font-weight: 700;
-}
-
-.dialog-header-icon {
-    padding: 0 1em 0 1em;
-    height: 3em;
-}
-
-.dialog-ok {
-    display: flex;
-    /* justify-content: center; */
-}
-
-.dialog-ok-active {
-    height: 3em;
-    color: green;
-}
-
-.dialog-ok-disabled {
-    height: 3em;
-    color: grey;
-}
-
 .unit-card {
     background-image: url(static/pictures/light-texture-bg-sm.jpg);
     border-radius: 0.5em;
     margin-bottom: 0.3em;
     display: flex;
     flex-direction: column;
-}
-
-.unit-card-edit {
-    top: 1.4em;
-    position: absolute;
-    right: 4.5em;
-    height: 1.2em;
-    color: #d6d6d6;
 }
 
 .unit-name-bg {
@@ -762,22 +738,6 @@ option:disabled {
     border-left: 1px solid #ced4da;
 }
 
-.delete-button {
-    background-color: #a05236;
-    color: #ced4da;
-    width: calc(100% - 2.5em);
-    height: calc(2.25em + 2px);
-    padding: .375em .75em;
-    margin: 0.5em;
-    font-weight: 700;
-    border-radius: .25em;
-    text-align: center;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    font-size: 1.25em;
-}
-
 .disabled {
     opacity: 0.3;
 }
@@ -898,7 +858,7 @@ option:disabled {
 
 .stats-icon {
     height: 2em;
-    color: #e3a453;
+    color: color-mix(in srgb, var(--color-emphasis) 50%, white) !important;
 }
 
 .equipmentAction {

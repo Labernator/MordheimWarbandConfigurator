@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import { useNavigate } from "react-router-dom";
 import { ButtonControl, LoadFileButton, LookForButton } from "../components/Button";
 import { DropdownControl } from "../components/Dropdown";
@@ -7,28 +6,32 @@ import { Footer } from "../components/Footer";
 import { TextInputControl } from "../components/Input";
 import { WarbandLoader } from "../components/Miscellaneous";
 import { loadWarband, setWarbandFaction, setWarbandName } from "../redux/slices";
-import { setUserName } from "../redux/slices/userSlice";
-import { initialWarband } from "../redux/slices/warbandSlice";
+import { addWarbandLog, initialWarband } from "../redux/slices/warbandSlice";
 import { useAppDispatch, useAppSelector } from "../redux/store";
 import { IDatabaseWarband } from "../types/database";
 import { DataBaseProvider } from "../utilities/DatabaseProvider";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const nameRegex = new RegExp("[a-zA-Z0-9]{3,}");
-
 export const LandingPage = () => {
-    const dispatch = useAppDispatch();
-    const userName = useAppSelector((state) => state.user.username);
-    const myStorage = localStorage;
-    const userId = myStorage.getItem("mordheim-companion-user-id");
-    if (!userName && userId) {
-        dispatch(setUserName(userId));
-    }
+    const { isAuthenticated, isLoading, user } = useAuth0();
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (isLoading) {
+            // do nothing
+            return;
+        }
+        if (!isAuthenticated || !user) {
+            navigate("/");
+            return;
+        }
+    }, []);
     return <React.Fragment>
         <h2>Create new Warband</h2>
         <div className="section-container">
             <TextInputControl label="Warband name (min. 3 characters)" dispatchCommand={setWarbandName} regex={new RegExp(nameRegex)} />
             <WarbandSelection />
-            <CreateWarbandButton />
+            <div className="button-container-right"><CreateWarbandButton /></div>
         </div>
         <h2>Load existing Warband</h2>
         <div className="section-container">
@@ -39,7 +42,7 @@ export const LandingPage = () => {
         <div className="section-container">
             <label htmlFor="file-uploader">
                 <WarbandLoader />
-                <LoadFileButton />
+                <div className="button-container-right"><LoadFileButton /></div>
             </label>
         </div>
         <Footer />
@@ -73,13 +76,14 @@ export const CreateWarbandButton = () => {
     const handleCreateButtonClick = async () => {
         const DatabaseProviderInstance = await DataBaseProvider.getInstance();
         const warbandMetadata = await DatabaseProviderInstance.getWarbandMetadata(faction);
-        dispatch(loadWarband({ 
-            ...initialWarband, 
-            faction: warbandMetadata.Id, 
-            name: name, 
-            limit: warbandMetadata.Maximum, 
-            cash: warbandMetadata.Gold 
+        dispatch(loadWarband({
+            ...initialWarband,
+            faction: warbandMetadata.Id,
+            name: name,
+            limit: warbandMetadata.Maximum,
+            cash: warbandMetadata.Gold
         }));
+        dispatch(addWarbandLog([{ command: "Set warband name", value: name }, { command: "Set warband faction", value: warbandMetadata.Id }]));
         navigate("/overview");
     };
     return <ButtonControl label={"Create warband"} command={handleCreateButtonClick} enabled={enabled} />;

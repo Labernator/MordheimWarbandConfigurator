@@ -1,3 +1,4 @@
+import { ILogEntry } from "../redux/slices/logSlice";
 import { IEquipment, IWarrior } from "./warrior";
 
 export interface IWarband {
@@ -10,6 +11,7 @@ export interface IWarband {
     campaignLink?: string;
     limit: number;
     id: string;
+    log: ILogEntry[];
 }
 
 
@@ -25,10 +27,4 @@ export interface IDelta {
 export interface IPdf {
     name: string;
     // value?: number;
-}
-
-export interface IUser {
-    username: string;
-    password: string;
-    filename: string;
 }
